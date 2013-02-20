@@ -1,0 +1,71 @@
+<!doctype html>
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <title>Moving/Nav</title>
+    <link rel="stylesheet" href="css/waterwheel-carousel.css" charset="utf-8" />
+    <script type="text/javascript" src="http://code.jquery.com/jquery-1.9.0.min.js"></script>
+    <script type="text/javascript" src="js/jquery.waterwheelCarousel.min.js"></script>
+    <script type="text/javascript">
+      $(document).ready(function () {
+        var carousel = $("#carousel").waterwheelCarousel({
+          flankingItems: 3,
+          movingToCenter: function ($item) {
+            $('#callback-output').prepend('movingToCenter: ' + $item.attr('id') + '<br/>');
+          },
+          movedToCenter: function ($item) {
+            $('#callback-output').prepend('movedToCenter: ' + $item.attr('id') + '<br/>');
+          },
+          movingFromCenter: function ($item) {
+            $('#callback-output').prepend('movingFromCenter: ' + $item.attr('id') + '<br/>');
+          },
+          movedFromCenter: function ($item) {
+            $('#callback-output').prepend('movedFromCenter: ' + $item.attr('id') + '<br/>');
+          },
+          clickedCenter: function ($item) {
+            $('#callback-output').prepend('clickedCenter: ' + $item.attr('id') + '<br/>');
+          }
+        });
+
+        $('#prev').bind('click', function () {
+          carousel.prev();
+          return false
+        });
+
+        $('#next').bind('click', function () {
+          carousel.next();
+          return false;
+        });
+
+        $('#reload').bind('click', function () {
+          newOptions = eval("(" + $('#newoptions').val() + ")");
+          carousel.reload(newOptions);
+          return false;
+        });
+
+      });
+    </script>
+  </head>
+  
+  <body>
+    <div id="carousel">
+	  <img src="images/1.jpg" id="item-1" usemap="#map"/>
+	  
+      <a href="http://flet.fr/cervin/"><img src="images/2.jpg" id="item-2" /></a>
+      <img src="images/3.jpg" id="item-3" />
+      <img src="images/4.jpg" id="item-4" />
+      <img src="images/5.jpg" id="item-5" />
+      <img src="images/6.jpg" id="item-6" />
+      <a href="http://cervin.org/wiki/index.php?title=Accueil"><img src="images/7.jpg" id="item-7" /></a>
+	  <a href="http://www.google.fr/"><img src="images/8.jpg" id="item-8" /></a>
+    </div>
+	
+	  <map name="map">
+		<area shape="rect" coords="0,0,50,50" href="http://www.google.fr/" />
+	  </map>
+
+    <br/>
+
+  </body>
+  
+</html>

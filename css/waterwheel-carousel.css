@@ -1,0 +1,36 @@
+html {
+	height:100%;
+	width:100%;
+}
+
+body {
+  font-family:Arial;
+  font-size:12px;
+  background:#ededed;
+  height: 100%;
+  width:100%;
+}
+.example-desc {
+  margin:3px 0;
+  padding:5px;
+}
+
+#carousel {
+  width:100%;
+  border:1px solid #222;
+  height:100%;
+  position:relative;
+  clear:both;
+  overflow:hidden;
+  background:#000;
+}
+#carousel img {
+  visibility:hidden; /* hide images until carousel can handle them */
+  cursor:pointer; /* otherwise it's not as obvious items can be clicked */
+  border:1px solid #FFF;
+}
+
+#callback-output {
+  height:250px;
+  overflow:scroll;
+}
