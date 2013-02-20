@@ -1,0 +1,10 @@
+Un compilateur Java est un compilateur pour le langage de programmation Java. Le format de sortie le plus courant pour un compilateur Java sont des fichiers .class contenant le bytecode Java plate-forme agnostique. Il existe aussi des compilateurs produisant du code machine optimisé pour une combinaison matériel/système d'exploitation particulière.
+
+La machine virtuelle Java (JVM) charge les fichiers .class et interprètes le bytecode ou le compile à la volée et peut également l'optimiser en utilisant la compilation dynamique.
+
+ Exemples de compilateurs java
+
+    javac, le compilateur Java de Sun Microsystems, livré avec le JDK
+    ECJ (Eclipse Compiler for Java), le compilateur Java intégré à l'environnement de développement intégré Eclipse
+    GCJ (Gnu Compiler for Java), inclus dans la GNU Compiler Collection (GCC), qui génère du code machine grâce au back-end de GCC.
+    Jikes, un projet open source de compilateur Java créé par IBM.

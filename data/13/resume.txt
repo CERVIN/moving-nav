@@ -1,0 +1,5 @@
+
+
+Welcome to IBM1130.org!
+
+The IBM 1130 Computing System was introduced in 1965. It was IBM's least-expensive computer to date, and was aimed at price-sensitive, computing-intensive technical markets like education and engineering. It became quite popular, and the 1130 and its non-IBM clones gave many people their first feel of "personal computing." Though its price-performance ratio was good and it notably included inexpensive disk storage, it otherwise broke no new ground technically. The 1130 holds a place in computing history primarily because of the fondness its former users hold for it.

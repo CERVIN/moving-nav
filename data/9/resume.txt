@@ -1,0 +1,3 @@
+Un interprète, ou interpréteur (voir infra), est un outil informatique ayant pour tâche d'analyser, de traduire et d'exécuter un programme écrit dans un langage informatique. De tels langages sont dits langages interprétés.
+
+L'interprète est capable de lire le code source d'un langage sous forme de script, habituellement un fichier texte, et d'en exécuter les instructions après une analyse syntaxique du contenu. Généralement ces langages textuels sont appelés des langages de programmation. Cette interprétation conduit à une exécution d'action ou à un stockage de contenu ordonné par la syntaxe textuelle.

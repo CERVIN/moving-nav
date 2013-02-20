@@ -1,0 +1,1 @@
+Jéricho execute directement des programmes InterLisp

@@ -1,0 +1,11 @@
+Von Neumann a donné son nom à l'architecture de von Neumann utilisée dans la quasi totalité des ordinateurs modernes, l'apport d'autres collaborateurs de l'EDVAC en est par conséquent grandement minimisé (on citera J. Presper Eckert et John William Mauchly parmi d'autres). Cela est dû au fait qu'il est, en 1945, le rapporteur des travaux pionniers en la matière (First Draft of a Report on the EDVAC). Le modèle de calculateur à programme auquel son nom reste attaché et qu'il attribuait lui-même à Alan Turing, possède une unique mémoire qui sert à conserver les logiciels et les données. Ce modèle, extrêmement innovant pour l'époque, est à la base de la conception de nombre d'ordinateurs.
+Schéma de l'architecture de von Neumann
+
+L’architecture de von Neumann décompose l’ordinateur en 4 parties distinctes :
+
+    l’unité arithmétique et logique (UAL) ou unité de traitement, qui effectue les opérations de base ;
+    l’unité de contrôle, qui est chargée du séquençage des opérations ;
+    la mémoire, qui contient à la fois les données et le programme qui indique à l’unité de contrôle quels calculs faire sur ces données. La mémoire se divise en mémoire vive (programmes et données en cours de fonctionnement) et mémoire de masse (programmes et données de base de la machine) ;
+    les dispositifs d’entrée-sortie, qui permettent de communiquer avec le monde extérieur.
+
+Depuis la publication du « First draft of a report on the EDVAC » par John von Neumann en juin 1945, la paternité de la machine de von Neumann est toutefois discutée. Les opinions divergent. Plusieurs pionniers sont mentionnés: Presper Eckert et John Mauchly (Université de Pennsylvania, Philadelphia), John von Neumann (Institute for Advanced Study, Princeton), Alan Turing (Université de Cambridge) et Konrad Zuse (Berlin). Un aperçu détaillé sur cette question litigieuse se trouve dans l’œuvre suivante : (de) Herbert Bruderer, Konrad Zuse und die Schweiz : Wer hat den Computer erfunden? Charles Babbage, Alan Turing und John von Neumann, Oldenbourg Verlag, 2012, 224 p. (ISBN 978-3-486-71366-4). Un débat intéressant en cette matière s'est déroulé également entre Nancy Stern et Alice Burks.

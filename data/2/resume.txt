@@ -1,0 +1,21 @@
+Le calculateur électronique Bull Gamma 3A est une machine esclave qui se présente sous la forme d'un meuble contenant :
+
+    la mémoire opérateur et 7 mémoires banales circulantes à self capacités
+    un tableau de connexion pour afficher 64 instructions de programme
+    des organes électroniques de commande. 
+
+Il peut être connecté à une machine d'entrée sortie maître, qui peut être une tabulatrice BS ou une poinçonneuse reproductrice duplicatrice PRD ou une unité de lecture et de perforation ULP.
+	
+
+Le Gamma 3 ferme l'ère de la mécanographie et ouvre, en France, celle des ordinateurs.
+
+Ce n'est pas encore vraiment un ordinateur au sens où le programme n'est pas encore enregistré en mémoire : pas de logiciel, mais une programmation trés succincte sur des tableaux de connexion reliés à la tabulatrice, dans lesquels on enfonce des "fiches banane" pour connecter tel ou tel circuit logique.
+
+Une petite mémoire de travail à lignes à retard est connectée à la tabulatrice et permet d'injecter des résultats en cours d'opération.
+
+Les circuits électroniques sont à base de lampes pour l'amplification, et de diodes au germanium pour la bascule (oui/non, ouvert/fermé).
+
+Il faut 10 techniciens pour faire fonctionner cette machine de plusieurs centaines de kilos. Sa capacité de mémoire est inférieure à celle d'une calculatrice à 20 F de 1994.
+
+Grand succés, plus de mille exemplaires vendus."
+Le premier calculateur électronique Gamma 3A a été livré en 1953 au Crédit Lyonnais.

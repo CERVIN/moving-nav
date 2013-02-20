@@ -1,0 +1,11 @@
+Un compilateur est un programme informatique qui transforme un code source écrit dans un langage de programmation (le langage source) en un autre langage informatique (le langage cible).
+
+Pour qu'il puisse être exploité par la machine, le compilateur traduit le code source, écrit dans un langage de haut niveau d'abstraction, facilement compréhensible par l'humain, vers un langage de plus bas niveau, un langage d'assemblage ou langage machine. Dans le cas de langage semi-compilé (ou semi-interprété), le code source est traduit en un langage intermédiaire, sous forme binaire (code objet ou bytecode), avant d'être lui-même interprété ou compilé.
+
+Inversement, un programme qui traduit un langage de bas niveau vers un langage de plus haut niveau est un décompilateur.
+
+Un compilateur effectue les opérations suivantes : analyse lexicale, pré-traitement (préprocesseur), décomposition analytique (parsing), analyse sémantique, génération de code et optimisation de code.
+
+Quand le programme compilé (code objet) peut être exécuté sur un ordinateur dont le processeur ou le système d'exploitation est différent de celui du compilateur, on parle de compilation croisée.
+
+La compilation est souvent suivie d'une étape d'édition des liens, pour générer un fichier exécutable.
