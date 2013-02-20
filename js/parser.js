@@ -3,7 +3,7 @@ $(document).ready(function()
 {
     $.ajax({
     type: "GET",
-    url: "../Moving_Nav/xml/parcoursOK.xml",
+    url: "../moving-nav/data/xml/parcoursOK.xml",
     dataType: "xml",
     success: parseXml
   });
