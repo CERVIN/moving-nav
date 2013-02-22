@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<moving>
+  <info>
+    <parcours>
+      <infoparcours>
+        <id>1</id>
+        <nom>L'informatique</nom>
+        <image>...</image>
+      </infoparcours>
+    </parcours>
+  </info>
+  <noeuds>
+    <noeud>
+      <id>1</id>
+      <listeparcours>
+        <parcours>
+          <id>1</id>
+          <suivant>3</suivant>
+        </parcours>
+      </listeparcours>
+      <voisins>
+        <voisin>
+          <id>1</id>
+          <lien>illustration</lien>
+          <legende>Un peu comme un calamar</legende>
+        </voisin>
+        <voisin>3</voisin>
+      </voisins>
+      <data>
+        <nom>IMB 1130</nom>
+        <images>...</images>
+        ...</data>
+    </noeud>
+    <noeud>
+      <id>2</id>
+      <listeparcours></listeparcours>
+      <voisins></voisins>
+      <data>
+        <nom>IMB 1130 +</nom>
+        <images>...</images>
+        ...</data>
+    </noeud>
+    <noeud>
+      <id>3</id>
+      <listeparcours>
+        <parcours>
+          <id>1</id>
+        </parcours>
+      </listeparcours>
+      <voisins>
+        <voisin>
+          <id>1</id>
+          <lien>experience</lien>
+          <legende>Bien mieux que l'original</legende>
+        </voisin>
+      </voisins>
+      <data>
+        <nom>IMB 1130 -</nom>
+        <images>...</images>
+        ...</data>
+    </noeud>
+  </noeuds>
+</moving>
