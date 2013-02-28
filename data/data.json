@@ -1,5 +1,4 @@
 ﻿{
-  "moving": {
     "info": {
       "parcours": {
         "infoparcours": {
@@ -9,20 +8,18 @@
         }
       }
     },
-    "noeuds": {
-      "noeud": [
-        {
-          "id": "1",
-          "listeparcours": {
-            "parcours": {
-              "id": "1",
-              "suivant": "2",
-              "lien": "Analog",
-              "legende": "Les premiers ordis aussi se cablaient"
-            }
-          },
-          "voisins": {
-            "voisin": [
+	"noeuds": [
+		{
+		  "id": "1",
+          "parcours": [
+				{
+				  "id": "1",
+				  "suivant": "2",
+				  "lien": "Analog",
+				  "legende": "Les premiers ordis aussi se cablaient"
+				}
+            ],
+            "voisins": [
               {
                 "id": "15",
                 "lien": "Digression",
@@ -33,25 +30,24 @@
                 "lien": "Prolepse",
                 "legende": "Le SEA OME résoud des équations de manière analogique. Plus tard, les ordinateurs le feront de manière numérique."
               }
-            ]
-          },
+            ],
           "data": {
             "nom": "SEA OME p2",
             "images": "1"
           }
-        },
-        {
+		},
+		{
           "id": "2",
-          "listeparcours": {
-            "parcours": {
+            "parcours": [
+			{
               "id": "1",
               "suivant": "3",
               "lien": "Enallage",
               "legende": "Pourtant une autre technique existait"
             }
-          },
-          "voisins": "
-			",
+          ],
+          "voisins": [
+			],
           "data": {
             "nom": "Bull Gamma 3",
             "images": "3"
@@ -59,21 +55,21 @@
         },
         {
           "id": "3",
-          "listeparcours": {
-            "parcours": {
+            "parcours": [
+			{
               "id": "1",
               "suivant": "4",
               "lien": "Analog",
               "legende": "Plutôt que de câbler, pourquoi ne pas enregistrer les séquences des calcul ?"
             }
-          },
-          "voisins": {
-            "voisin": {
+          ],
+          "voisins": [
+			{
               "id": "12",
               "lien": "Digression",
               "legende": "L'enregistrement d'un motif existait aussi pour la musique."
             }
-          },
+          ],
           "data": {
             "nom": "Métier Jacquard",
             "images": "1"
@@ -81,16 +77,16 @@
         },
         {
           "id": "4",
-          "listeparcours": {
-            "parcours": {
+            "parcours": [
+			{
               "id": "1",
               "suivant": "5",
               "lien": "Illustration",
               "legende": "Ces programmes peuvent être enregistrés sur un ruban"
             }
-          },
-          "voisins": "
-			",
+          ],
+          "voisins": [
+			],
           "data": {
             "nom": "Von Neumann",
             "images": "1",
@@ -99,21 +95,21 @@
         },
         {
           "id": "5",
-          "listeparcours": {
-            "parcours": {
+            "parcours": [
+			{
               "id": "1",
               "suivant": "6",
               "lien": "Precision",
               "legende": "Pour donner des instructions à l'ordinateur, on utilise un langage machine"
             }
-          },
-          "voisins": {
-            "voisin": {
+          ],
+          "voisins": [
+			{
               "id": "13",
               "lien": "Experience",
               "legende": "Testez par vous même."
             }
-          },
+          ],
           "data": {
             "nom": "IBM 1130",
             "images": "2"
@@ -121,16 +117,15 @@
         },
         {
           "id": "6",
-          "listeparcours": {
-            "parcours": {
+            "parcours": [
+			{
               "id": "1",
               "suivant": "7",
               "lien": "Logique",
               "legende": "Pour écrire de long programmes, on a inventé des langages plus compréhensibles"
             }
-          },
-          "voisins": {
-            "voisin": [
+          ],
+          "voisins": [
               {
                 "id": "16",
                 "lien": "Illustration",
@@ -141,22 +136,21 @@
                 "lien": "Enallage",
                 "legende": "Le langage machine est simple pour l'ordinateur mais illisible pour l'homme !"
               }
-            ]
-          },
+            ],
           "data": { "nom": "Langage machine" }
         },
         {
           "id": "7",
-          "listeparcours": {
-            "parcours": {
+          "parcours": [
+		    {
               "id": "1",
               "suivant": "8",
               "lien": "Enallage",
               "legende": "Mais créer un langage compréhensible n'est pas si simple"
             }
-          },
-          "voisins": "
-			",
+          ],
+          "voisins": [
+			],
           "data": {
             "nom": "Fortran",
             "images": "1"
@@ -164,16 +158,15 @@
         },
         {
           "id": "8",
-          "listeparcours": {
-            "parcours": {
+          "parcours": [
+			{
               "id": "1",
               "suivant": "9",
               "lien": "Logique",
               "legende": "Comme entre les peuples, une option est de demander à quelqu'un de traduire"
             }
-          },
-          "voisins": {
-            "voisin": [
+          ],
+          "voisins": [
               {
                 "id": "20",
                 "lien": "Precision",
@@ -184,8 +177,7 @@
                 "lien": "Digression",
                 "legende": "Les langages informatiques sont des formes caricaturés des langages humains"
               }
-            ]
-          },
+            ],
           "data": {
             "nom": "Tour de Babel",
             "images": "1"
@@ -193,39 +185,42 @@
         },
         {
           "id": "9",
-          "listeparcours": {
-            "parcours": {
+          "parcours": [
+			{
               "id": "1",
               "suivant": "10",
               "lien": "Logique",
               "legende": "PLutôt que traduire chaque fois le même discours, mieux vaut le faire une fois pour toutes"
             }
-          },
-          "voisins": "
-			",
+          ],
+          "voisins": [
+			],
           "data": { "nom": "Interpréteur" }
         },
         {
           "id": "10",
-          "listeparcours": {
-            "parcours": {
+          "parcours": [
+			{
               "id": "1",
               "suivant": "11",
               "lien": "Illustration",
               "legende": "Voici à quoi ressemble un programme écrit dans un langage actuel."
             }
-          },
-          "voisins": "
-			",
+          ],
+          "voisins": [
+			],
           "data": { "nom": "Compilateur" }
         },
         {
           "id": "11",
-          "listeparcours": {
-            "parcours": { "id": "1" }
-          },
-          "voisins": "
-			",
+          "parcours": [
+			{
+				"id": "1",
+				"suivant": "-1"
+			}
+          ],
+          "voisins": [
+			],
           "data": {
             "nom": "Java",
             "images": "2"
@@ -233,10 +228,9 @@
         },
         {
           "id": "12",
-          "listeparcours": "
-			",
-          "voisins": {
-            "voisin": [
+          "parcours": [
+			],
+          "voisins": [
               {
                 "id": "5",
                 "lien": "Analogie",
@@ -247,8 +241,7 @@
                 "lien": "Prolepse",
                 "legende": "Les ordinateurs modernes peuvent aussi faire de la musique."
               }
-            ]
-          },
+            ],
           "data": {
             "nom": "Piano mecanique",
             "images": "1"
@@ -256,36 +249,36 @@
         },
         {
           "id": "13",
-          "listeparcours": "
-			",
-          "voisins": {
-            "voisin": {
+          "parcours": [
+			],
+          "voisins": [
+			{
               "id": "14",
               "lien": "Precision",
               "legende": "Le logiciel que vous essayez s'appelle CSPM."
             }
-          },
+          ],
           "data": { "nom": "Emulateur D'IBM 1130" }
         },
         {
           "id": "14",
-          "listeparcours": "
-			",
-          "voisins": {
-            "voisin": {
+          "parcours": [
+			],
+          "voisins": [
+			{
               "id": "1",
               "lien": "Analepse",
               "legende": "CSPM résoud des équations numériquement. Le SEA OME P2 le faisait de manière analogique."
             }
-          },
+          ],
           "data": { "nom": "CSPM" }
         },
         {
           "id": "15",
-          "listeparcours": "
-			",
-          "voisins": "
-			",
+          "parcours": [
+			],
+          "voisins": [
+			],
           "data": {
             "nom": "Central téléphonique",
             "images": "1"
@@ -293,10 +286,10 @@
         },
         {
           "id": "16",
-          "listeparcours": "
-			",
-          "voisins": "
-			",
+          "parcours": [
+			],
+          "voisins": [
+			],
           "data": {
             "nom": "6502",
             "images": "2"
@@ -304,36 +297,36 @@
         },
         {
           "id": "17",
-          "listeparcours": "
-			",
-          "voisins": {
-            "voisin": {
+          "parcours": [
+			],
+          "voisins": [
+			{
               "id": "18",
               "lien": "Experience",
               "legende": "Observez comment un processeur exécute cette série d'instruction."
             }
-          },
+          ],
           "data": { "nom": "Listing assembleur" }
         },
         {
           "id": "18",
-          "listeparcours": "
-			",
-          "voisins": "
-			",
+          "parcours": [
+			],
+          "voisins": [
+			],
           "data": { "nom": "Emulateur 6502" }
         },
         {
           "id": "19",
-          "listeparcours": "
-			",
-          "voisins": {
-            "voisin": {
+          "parcours": [
+			],
+          "voisins": [
+			{
               "id": "21",
               "lien": "Illustration",
               "legende": "Certaines grammaire ont des propriétés qui les rendent faciles à décoder."
             }
-          },
+          ],
           "data": {
             "nom": "Noam Chomsky",
             "images": "2",
@@ -342,10 +335,9 @@
         },
         {
           "id": "20",
-          "listeparcours": "
-			",
-          "voisins": {
-            "voisin": [
+          "parcours": [
+			],
+          "voisins": [
               {
                 "id": "22",
                 "lien": "Illustration",
@@ -356,21 +348,20 @@
                 "lien": "Logique",
                 "legende": "Construire une machine langage ne fait que repousser le problème."
               }
-            ]
-          },
+            ],
           "data": { "nom": "Machine-langage" }
         },
         {
           "id": "21",
-          "listeparcours": "
-			",
-          "voisins": {
-            "voisin": {
+          "parcours": [
+			],
+          "voisins": [
+			{
               "id": "23",
               "lien": "Illustration",
               "legende": "Un exemple de grammaire : Java."
             }
-          },
+          ],
           "data": {
             "nom": "Lex/Yacc",
             "images": "1"
@@ -378,26 +369,25 @@
         },
         {
           "id": "22",
-          "listeparcours": "
-			",
-          "voisins": "
-			",
+          "parcours": [
+			],
+          "voisins": [
+			],
           "data": { "nom": "Jericho" }
         },
         {
           "id": "23",
-          "listeparcours": "
-			",
-          "voisins": {
-            "voisin": {
+          "parcours": [
+			],
+          "voisins": [
+			{
               "id": "11",
               "lien": "Precision",
               "legende": "Java est un langage actuel."
             }
-          },
+          ],
           "data": { "nom": "Compilateur Java." }
         }
-      ]
-    }
-  }
+		
+	]
 }
