@@ -33,18 +33,8 @@
 </body>
    
 		<script type="text/javascript">
-		
-		function getURLParameter(name) {
-            return decodeURIComponent((new RegExp('[?|&]' + name + '=' + '([^&;]+?)(&|#|;|$)').exec(location.search) || [, ""])[1].replace(/\+/g, '%20')) || null;
-		}
-	
-		var noeud = getURLParameter("noeud");
-		var parcoursid = getURLParameter("parcours");
-		
         function showData(data){
-		var datap = data.noeuds[noeud-1].parcours[0].legende;
-		//console.log(datap);
-        /*    var noeud = 18;
+            var noeud = 18;
             var nbrImage=0;
             var nbrVideo=0;
 			var idNoeud= 19;
@@ -65,17 +55,21 @@
 					if(i==0){actif="class= active"}else{actif=""};				
 					$('.carousel-indicators').append("<li data-target=#myCarousel data-slide-to="+i+" "+actif+"></li>");
 				}
+	
+				<!-- Carousel items -->
+				for (var j=0; j<nbrImage; j++){
+					var actif="";
+					if (j==0){actif="active "}else{actif=""};
+					var image=j+1;
+					$('.carousel-inner').append("<div class=\""+actif+"item\"><img src=data/"+idNoeud+"/image"+image+".jpg width=auto height=auto/></div></div>");
+				}
+	    			
+			}
         }
    	 	</script>
 <script> 
-        $(document).ready(function ()
-{
-		parser(); 
-<script>
 $(document).ready(
 	parser()
 );
-</script>
-});
-</script>  
+</script> 
 </html>
