@@ -2,8 +2,6 @@
 
 var data;
 
-
-
 function parser()
 {
     $.ajax({
