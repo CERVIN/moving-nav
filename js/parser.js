@@ -1,4 +1,23 @@
 // JavaScript Document
+
+
+$(document).ready(function()
+{
+    $.ajax({
+    type: "GET",
+    url: "../moving-nav/data/json/test.json",
+    dataType: "JSON",
+    success: function(string) {
+        data = $.parseJSON(string);
+		console.log(data);
+       }
+  });
+  
+});
+
+
+
+/*
 $(document).ready(function()
 {
     $.ajax({
@@ -24,7 +43,7 @@ function parseXml(xml)
 			/*$("#parcoursList").append("id : "+$(this).find("id").text() + "<br />");
 			$("#parcoursList").append("nom : "+$(this).find("nom").text() + "<br />");
 			$("#parcoursList").append("image : "+$(this).find("image").text() + "<br />");
-			$("#parcoursList").append("</li>");*/
+			$("#parcoursList").append("</li>");
 		});
 	});
 });
@@ -44,5 +63,6 @@ function parseXml(xml)
 
   });
 
-*/
+
 }
+*/
