@@ -1,0 +1,61 @@
+@charset "utf-8";
+/* CSS Document */
+
+html {
+	height:100%;
+	width:100%;
+}
+
+body {
+  font-family:Arial;
+  font-size:12px;
+  background:#000;
+  height: 100%;
+  width:100%;
+}
+
+div.contenu{
+	height:70%;
+	width:95%;
+	background-color:#000;
+	margin-right:auto;
+	margin-left:auto;
+}
+
+.carousel-inner{
+	height:100%;
+}
+
+.imageCarrousel{
+	height:100%;
+	width:50%;
+	float:left;
+}
+
+.textCarrousel{
+	width:50%;
+	height:100%;
+	float:right;
+	text-align:justify;
+	color:#FFFFFF;
+}
+
+.textCarrousel p{
+	padding: 11px 78px 5px 24px;
+}
+
+div.navigation{
+	width:95%;
+	height:24%;
+	background-color:#000;
+	margin-right:auto;
+	margin-left:auto;
+}
+
+div.info{
+	width:95%;
+	height:3%;
+	background-color:#000;
+	margin-right:auto;
+	margin-left:auto;
+}
