@@ -3,7 +3,8 @@
 var data;
 
 
-$(document).ready(function ()
+
+function parser()
 {
     $.ajax({
     type: "GET",
@@ -13,12 +14,11 @@ $(document).ready(function ()
 	error: errorfunction
   });
    
-});
+};
 
 function errorfunction(json)
 {
 	alert("Erreur, impossible de récupérer les données.");
-	
 }
 
 function getData() {

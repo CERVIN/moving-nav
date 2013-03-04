@@ -1,0 +1,18 @@
+﻿{
+  "moving": {
+    "info": {
+      "parcours": {
+        "infoparcours": {
+          "id": "1",
+          "debut": "1",
+          "nom": "L'informatique"
+        },
+		"infoparcours": {
+          "id": "2",
+          "debut": "1",
+          "nom": "Le test"
+        }
+	  }
+  }
+}
+}

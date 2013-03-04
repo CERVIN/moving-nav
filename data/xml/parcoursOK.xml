@@ -6,25 +6,25 @@
         <id>1</id>
         <debut>1</debut>
         <nom>L'informatique</nom>
-        <image>...</image>
+        <image>8.jpg</image>
       </infoparcours>
       <infoparcours>
         <id>2</id>
         <debut>0</debut>
         <nom>Test1</nom>
-        <image>...</image>
+        <image>7.jpg</image>
       </infoparcours>
       <infoparcours>
         <id>3</id>
         <debut>0</debut>
         <nom>Test2</nom>
-        <image>...</image>
+        <image>6.jpg</image>
       </infoparcours>
       <infoparcours>
         <id>4</id>
         <debut>0</debut>
         <nom>Test3</nom>
-        <image>...</image>
+        <image>5.jpg</image>
       </infoparcours>
     </parcours>
   </info>

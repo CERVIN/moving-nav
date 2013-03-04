@@ -1,20 +1,32 @@
 @charset "utf-8";
 /* CSS Document */
 
+  body {
+	background-color: #000;
+  }
+
+   .roundabout-moveable-item img { height:100%; width:100%; }
+   
    .roundabout-holder {
       list-style: none;
       padding: 0;
       margin: 0;
-      height: 5em;
-      width: 5em;
+      height: 40em;
+      width: 80em;
    }
    .roundabout-moveable-item {
-      height: 4em;
-      width: 4em;
+      height: 80%;
+      width: 60%;
       cursor: pointer;
+	  overflow: hidden;
       background-color: #ccc;
-      border: 1px solid #999;
+      border: 3px solid #999;
    }
    .roundabout-in-focus {
       cursor: auto;
    }
+   
+   
+   
+
+

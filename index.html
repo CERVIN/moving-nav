@@ -4,16 +4,41 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>Accueil</title>
 <link rel="stylesheet" href="css/index.css">
+
 </head>
 
 <body>
 <div id="output">
 
 </div>
+
+<script>
+	function showData(json)
+	{
+		$('#output').append("<ul id='parcoursList'></ul>");
+		for( var key in json.info.parcours) {
+			var id = json.info.parcours[key].id;
+			var debut = json.info.parcours[key].debut;
+			var nom = json.info.parcours[key].nom;
+			var image = json.info.parcours[key].image;
+					
+
+							$("#parcoursList").append('<li>'+id+nom+'<a href="interfaceParcours.html"><img src="../moving-nav/images/'+image+'" /></a>'+"</li>");
+						
+		}
+		
+		$("#parcoursList").roundabout({ shape:'rollerCoaster'});
+	}
+</script>
+
 <script src="js/jquery-1.9.1.min.js"></script>
 <script src="js/fredhq-roundabout/jquery.roundabout.js"></script>
-<script src="js/fredhq-roundabout/jquery.roundabout-shape.js"></script>
-<script src="js/parser.js"></script>
+<script src="js/parserJson.js"></script>
+<script>
+$(document).ready(
+	parser()
+);
+</script>
 </body>
 
 </html>
