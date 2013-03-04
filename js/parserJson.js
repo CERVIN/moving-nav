@@ -7,7 +7,7 @@ $(document).ready(function ()
 {
     $.ajax({
     type: "GET",
-    url: "data/data2.json",
+    url: "data/data.json",
     dataType: "json",
     success: showData,
 	error: errorfunction
