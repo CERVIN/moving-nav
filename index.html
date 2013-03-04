@@ -4,16 +4,27 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>Accueil</title>
 <link rel="stylesheet" href="css/index.css">
+
+
 </head>
 
 <body>
-<div id="output">
+<div id="output"> </div>
+<script src="js/jquery-1.9.1.min.js"></script> 
+<script src="js/parserJson.js"></script> 
+<script src="js/fredhq-roundabout/jquery.roundabout.js"></script> 
+<script>
+function showData(data){
+	console.log(data);
+}
 
-</div>
-<script src="js/jquery-1.9.1.min.js"></script>
-<script src="js/fredhq-roundabout/jquery.roundabout.js"></script>
-<script src="js/fredhq-roundabout/jquery.roundabout-shape.js"></script>
-<script src="js/parser.js"></script>
+
+$(document).ready(function ()
+{
+		parseJson();  
+});
+
+</script>
+
 </body>
-
 </html>
