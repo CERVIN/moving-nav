@@ -1,12 +1,12 @@
 ﻿{
     "info": {
-      "parcours": {
-        "infoparcours": {
+      "parcours": [
+        {
           "id": "1",
           "debut": "1",
           "nom": "L'informatique"
         }
-      }
+      ]
     },
 	"noeuds": [
 		{
