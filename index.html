@@ -4,15 +4,19 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>Accueil</title>
 <link rel="stylesheet" href="css/index.css">
-
 </head>
 
 <body>
-<div id="output">
+<div id="output"> </div>
 
-</div>
+<script src="js/jquery-1.9.1.min.js"></script> 
+<script src="js/parserJson.js"></script> 
+<script src="js/fredhq-roundabout/jquery.roundabout.js"></script> 
 
 <script>
+	
+	function getURLParameter(name) {
+  return decodeURIComponent((new RegExp('[?|&]' + name + '=' + '([^&;]+?)(&|#|;|$)').exec(location.search) || [, ""])[1].replace(/\+/g, '%20')) || null;}
 
 	function showData(json)
 	{
@@ -28,17 +32,15 @@
 		}
 		
 		$("#parcoursList").roundabout({ shape:'rollerCoaster'});
-	}
-</script>
+	};
 
-<script src="js/jquery-1.9.1.min.js"></script>
-<script src="js/fredhq-roundabout/jquery.roundabout.js"></script>
-<script src="js/parserJson.js"></script>
-<script>
-$(document).ready(
-	parser()
-);
+
+
+$(document).ready(function ()
+{
+		parser();  
+});
+
 </script>
 </body>
-
 </html>

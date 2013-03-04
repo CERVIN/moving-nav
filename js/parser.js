@@ -1,5 +1,21 @@
 // JavaScript Document
+$(document).ready(function()
+{
+    $.ajax({
+    type: "GET",
+    url: "../moving-nav/data/json/test.json",
+    dataType: "JSON",
+    success: function(string) {
+        data = $.parseJSON(string);
+		console.log(data);
+       }
+  });
+  
+});
 
+
+
+/*
 $(document).ready(function()
 {
     $.ajax({
@@ -21,8 +37,6 @@ function parseXml(xml)
 		$('#output').append("<ul id='parcoursList'></ul>");
 		$(this).find("infoparcours").each(function()
 		{
-			$("#parcoursList").append('<li>'+$(this).find("id").text()+$(this).find("nom").text()+'<a href="'+$(this).find("id").text()+'"><img src="../moving-nav/images/'+$(this).find("image").text()+'" /></a>'+"</li>");
-
 		});
 	});
 });
@@ -30,5 +44,4 @@ function parseXml(xml)
    $("#parcoursList").roundabout({
    shape:'rollerCoaster'
    });
-
-}
+*/

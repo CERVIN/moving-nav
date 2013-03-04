@@ -10,15 +10,10 @@ function parser()
     dataType: "json",
     success: showData,
 	error: errorfunction
-  });
-   
+  })
 };
 
-function errorfunction(json)
-{
-	alert("Erreur, impossible de récupérer les données.");
+function errorfunction(){
+	console.log("Erreur : Fichier non pars&eacute;");
 }
 
-function getData() {
-    return data;
-}
