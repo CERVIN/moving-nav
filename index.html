@@ -13,10 +13,6 @@
 </div>
 
 <script>
-	
-	function getURLParameter(name) {
-                return decodeURIComponent((new RegExp('[?|&]' + name + '=' + '([^&;]+?)(&|#|;|$)').exec(location.search) || [, ""])[1].replace(/\+/g, '%20')) || null;
-    }
 
 	function showData(json)
 	{
@@ -27,7 +23,7 @@
 			var nom = json.info.parcours[key].nom;
 			var image = json.info.parcours[key].image;
 					
-			$("#parcoursList").append('<li>'+id+nom+'<a href="interfaceParcours.html"><img src="../moving-nav/images/'+image+'" /></a>'+"</li>");
+			$("#parcoursList").append('<li>'+id+nom+'<a href="interfaceParcours.html?noeud='+debut+'?parcours='+id+'"><img src="../moving-nav/images/'+image+'" /></a>'+"</li>");
 						
 		}
 		

@@ -9,13 +9,13 @@
         },
 		{
           "id": "2",
-          "debut": "1",
+          "debut": "2",
           "nom": "La science",
 		  "image": "1.jpg"
         },
 		{
           "id": "3",
-          "debut": "2",
+          "debut": "3",
           "nom": "L'astronomie",
 		  "image": "2.jpg"
         }

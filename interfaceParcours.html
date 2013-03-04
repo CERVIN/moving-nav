@@ -8,6 +8,7 @@
 <script src="js/bootstrap.min.js"></script>
 <script type="text/javascript" src="js/parserJson.js"></script>
 
+
 <title>Musée virtuel</title>
 </head>
 
@@ -20,8 +21,18 @@
     <div id="myCarousel" class="contenu carousel slide" data-interval="false">
     <ol class="carousel-indicators">
 		<script type="text/javascript">
+		
+		function getURLParameter(name) {
+            return decodeURIComponent((new RegExp('[?|&]' + name + '=' + '([^&;]+?)(&|#|;|$)').exec(location.search) || [, ""])[1].replace(/\+/g, '%20')) || null;
+		}
+	
+		var noeud = getURLParameter("noeud");
+		var parcoursid = getURLParameter("parcours");
+		
         function showData(data){
-            var noeud = 18;
+		var datap = data.noeuds[noeud-1].parcours[0].legende;
+		//console.log(datap);
+        /*    var noeud = 18;
             var nbrImage=0;
             var nbrVideo=0;
             
@@ -39,7 +50,7 @@
 					newli.attributes("data-target","#myCarousel");
 					
 				}
-			}
+			}*/
             
         }
    	 	</script>
@@ -63,7 +74,11 @@
      </div>
     
      
-
+<script>
+$(document).ready(
+	parser()
+);
+</script>
      
 </body>
 </html>
