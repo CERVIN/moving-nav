@@ -1,6 +1,5 @@
 // JavaScript Document
 
-function parseJson(){
     $.ajax({
     type: "GET",
     url: "data/data.json",
@@ -8,9 +7,6 @@ function parseJson(){
     success: showData,
 	error: errorfunction
   });
-}
 
-function errorfunction(){
-	console.log("parseJson Erreur, impossible de récupérer les donn&eacute;es.");
-}
+
 
