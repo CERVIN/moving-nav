@@ -1,0 +1,265 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <link rel="stylesheet" href="../css/styleInterface.css" charset="utf-8" />
+    <script type="text/javascript" src="js/kinetic-v4.3.3.min.js"></script>
+    <script type="text/javascript" src="js/jquery-1.9.1.min.js"></script>
+     <script type="text/javascript" src="js/parserJson.js"></script>
+    <title>Mus&eacutee virtuel</title>
+</head>
+
+<body>
+    <div class="contenu">
+        <h1>Contenu</h1>
+    </div>
+    <div class="navigation">
+        <div id="container"></div>
+        <!-- <script >
+
+			var c=document.getElementById("myCanvas");
+			var ctx=c.getContext("2d");
+			ctx.fillStyle="#0000FF";
+			ctx.fillRect(0,20,500,1); 
+			ctx.beginPath();
+			ctx.arc(30,20,3,0,2*Math.PI);
+			ctx.fill();
+			
+
+		</script>-->
+       
+        <script type="text/javascript">
+
+            function getURLParameter(name) {
+                return decodeURIComponent((new RegExp('[?|&]' + name + '=' + '([^&;]+?)(&|#|;|$)').exec(location.search) || [, ""])[1].replace(/\+/g, '%20')) || null;
+            }
+
+            function showData(data) {
+
+                function getNodeById(id) {
+                    for (var p in data.noeuds) {
+                        if (data.noeuds[p].id == id) {
+                            return data.noeuds[p];
+                            break;
+                        }
+                    }
+                    return null;
+                }
+
+                function getParcoursFromNode(node,id) {
+
+                }
+
+                var parcours = getURLParameter("parcours");
+
+                if (parcours == null) {
+                    window.location = "exploration.html?parcours=1";
+                }
+
+                var noeud = getURLParameter("noeud");
+
+                if (noeud == null) {
+                    for (var p in data.info.parcours) {
+                        if (data.info.parcours[p].id == parcours) {
+                            noeud = data.info.parcours[p].debut;
+                            break;
+                        }
+                    }
+                    if (noeud == null) {
+                        //TODO: SI mauvais numero parcours
+                        alert("Erreur, pas de noeuds");
+                    }
+                }
+
+                for (var p in data.noeuds) {
+                    if (data.noeuds[p].id == noeud) {
+                        noeud = data.noeud;
+                        break;
+                    }
+                }
+
+                var stage = new Kinetic.Stage({
+                    container: 'container',
+                    width: document.body.clientWidth,
+                    height: 200
+                });
+
+                function writeMessage(messageLayer, message) {
+                    var context = messageLayer.getContext();
+                    messageLayer.clear();
+                    context.font = '18pt Calibri';
+                    context.fillStyle = 'black';
+                    context.fillText(message, 10, 25);
+                }
+
+                var debugLayer = new Kinetic.Layer();
+
+
+                var lineLayer = new Kinetic.Layer();
+                var shapesLayer = new Kinetic.Layer();
+
+                var historiqueLayer = new Kinetic.Layer();
+                var selectionLayer = new Kinetic.Layer();
+                var futurLayer = new Kinetic.Layer();
+
+                var noeudsDansHistorique;
+
+
+                var zoneHistorique = new Kinetic.Rect({
+                    x: 0,
+                    y: 0,
+                    width: stage.getWidth() / 3,
+                    height: stage.getHeight(),
+                    fill: 'green',
+                    opacity: 0
+
+                });
+
+
+                var zoneSelection = new Kinetic.Rect({
+                    x: stage.getWidth() / 3,
+                    y: 0,
+                    width: stage.getWidth() / 3,
+                    height: stage.getHeight(),
+                    fill: 'blue',
+                    opacity: 1
+
+                });
+
+                var zoneFutur = new Kinetic.Rect({
+                    x: (stage.getWidth() / 3) * 2,
+                    y: 0,
+                    width: stage.getWidth() / 3,
+                    height: stage.getHeight(),
+                    fill: 'red',
+                    opacity: 0
+
+                });
+
+
+
+                var parcoursLine = new Kinetic.Line({
+                    points: [0, stage.getHeight() / 3, stage.getWidth(), stage.getHeight() / 3],
+                    stroke: 'red',
+                    strokeWidth: 15
+                });
+
+                //var circle = new Kinetic.Circle({
+                //    x: 100,
+                //    y: stage.getHeight() / 3,
+                //    radius: 20,
+                //    fill: 'red',
+                //    stroke: 'black',
+                //    strokeWidth: 2
+                //});
+
+                var lastDrag = [-1, -1];
+
+
+                function startDrag(zone, layer) {
+                    zone.on('mousemove', function () {
+                        var mousePos = stage.getMousePosition();
+                        if (lastDrag[0] != -1 && lastDrag[1] != -1) {
+                            circle.move(mousePos.x - lastDrag[0], 0);
+                            //writeMessage(debugLayer, "" + circle.getPosition().x+" - "+circle.getY());
+
+                            layer.draw();
+                        }
+                        lastDrag[0] = mousePos.x;
+                        lastDrag[1] = mousePos.y;
+                    });
+                }
+
+                function stopDrag(zone, layer) {
+                    zone.off('mousemove');
+                    lastDrag[0] = -1;
+                    lastDrag[1] = -1;
+                }
+
+                zoneHistorique.on('mousedown', function () {
+                    startDrag(zoneHistorique, historiqueLayer);
+                });
+
+                zoneHistorique.on('mouseup mouseout', function () {
+                    stopDrag(zoneHistorique, historiqueLayer);
+                });
+
+                var suivant = noeud;
+                while (suivant.)
+
+                lineLayer.add(parcoursLine);
+
+                //historiqueLayer.add(parcoursLine);
+                historiqueLayer.add(zoneHistorique);
+                //historiqueLayer.add(circle);
+
+
+                selectionLayer.add(zoneSelection);
+
+                futurLayer.add(zoneFutur);
+
+
+                stage.add(lineLayer);
+                stage.add(historiqueLayer);
+                stage.add(futurLayer);
+                stage.add(selectionLayer);
+                stage.add(debugLayer);
+
+            }
+
+
+            //var historique = new Kinetic.Group({
+            //  	width:100,
+            //  	height:100,
+            //    draggable: true,
+            //    dragBoundFunc: function(pos) {
+            //      return {
+            //        x: pos.x,
+            //        y: 0
+            //      };
+            //    }
+            //  });
+
+            //var redLine = new Kinetic.Line({
+            //  points: [0, 50, stage.getWidth(), 50],
+            //  stroke: 'red',
+            //  strokeWidth: 15
+            //});
+
+            //var t = new Kinetic.Rect({
+            //  x: 0,
+            //  y: 0,
+            //  width: historique.getWidth(),
+            //  height: historique.getHeight(),
+            //  fill: 'green',
+            //   opacity: 0
+
+            //});
+
+            //var circle = new Kinetic.Circle({
+            //  x: 380,
+            //  y: 50,
+            //  radius: 20,
+            //  fill: 'red',
+            //  stroke: 'black',
+            //  strokeWidth: 2
+            //});
+
+            //circle.on('mousedown', function() {
+
+            //});
+            //circle.on('mouseup', function() {
+            //  alert("end");
+            //});
+
+            //lineLayer.add(redLine);
+
+            //historique.add(circle).add(t);
+            //shapesLayer.add(historique);
+
+            //stage.add(lineLayer);
+            //stage.add(shapesLayer);
+        </script>
+    </div>
+</body>
+</html>
