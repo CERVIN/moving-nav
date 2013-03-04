@@ -1,10 +1,6 @@
 // JavaScript Document
 
-var data;
-
-
-$(document).ready(function ()
-{
+function parseJson(){
     $.ajax({
     type: "GET",
     url: "data/data.json",
@@ -12,15 +8,9 @@ $(document).ready(function ()
     success: showData,
 	error: errorfunction
   });
-   
-});
-
-function errorfunction(json)
-{
-	alert("Erreur, impossible de récupérer les données.");
-	
 }
 
-function getData() {
-    return data;
+function errorfunction(){
+	console.log("parseJson Erreur, impossible de récupérer les donn&eacute;es.");
 }
+
