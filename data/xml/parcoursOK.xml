@@ -1,0 +1,417 @@
+<?xml version="1.0" encoding="utf-8"?>
+<moving>
+  <info>
+    <parcours>
+      <infoparcours>
+        <id>1</id>
+        <debut>1</debut>
+        <nom>L'informatique</nom>
+        <image>7.jpg</image>
+      </infoparcours>
+      <infoparcours>
+        <id>2</id>
+        <debut>0</debut>
+        <nom>Test1</nom>
+        <image>3.jpg</image>
+      </infoparcours>
+      <infoparcours>
+        <id>3</id>
+        <debut>0</debut>
+        <nom>Test2</nom>
+        <image>8.jpg</image>
+      </infoparcours>
+      <infoparcours>
+        <id>4</id>
+        <debut>0</debut>
+        <nom>Test3</nom>
+        <image>5.jpg</image>
+      </infoparcours>
+    </parcours>
+  </info>
+  <noeuds>
+    <noeud>
+      <id>1</id>
+      <listeparcours>
+        <parcours>
+          <id>1</id>
+          <suivant>2</suivant>
+          <lien>Analog</lien>
+          <legende>Les premiers ordis aussi se cablaient</legende>
+        </parcours>
+      </listeparcours>
+      <voisins>
+        <voisin>
+          <id>15</id>
+          <lien>Digression</lien>
+          <legende>Le câblage provient des télécoms</legende>
+        </voisin>
+        <voisin>
+          <id>14</id>
+          <lien>Prolepse</lien>
+          <legende>Le SEA OME résoud des équations de manière analogique. Plus tard, les ordinateurs le feront de manière numérique.</legende>
+        </voisin>
+      </voisins>
+      <data>
+        <nom>SEA OME p2</nom>
+        <images>...</images>
+        ...</data>
+    </noeud>
+    <noeud>
+      <id>2</id>
+      <listeparcours>
+        <parcours>
+          <id>1</id>
+          <suivant>3</suivant>
+          <lien>Enallage</lien>
+          <legende>Pourtant une autre technique existait</legende>
+        </parcours>
+      </listeparcours>
+      <voisins></voisins>
+      <data>
+        <nom>Bull Gamma 3</nom>
+        <images>...</images>
+        ...</data>
+    </noeud>
+    <noeud>
+      <id>3</id>
+      <listeparcours>
+        <parcours>
+          <id>1</id>
+          <suivant>4</suivant>
+          <lien>Analog</lien>
+          <legende>Plutôt que de câbler, pourquoi ne pas enregistrer les séquences des calcul ?</legende>
+        </parcours>
+      </listeparcours>
+      <voisins>
+        <voisin>
+          <id>12</id>
+          <lien>Digression</lien>
+          <legende>L'enregistrement d'un motif existait aussi pour la musique.</legende>
+        </voisin>
+      </voisins>
+      <data>
+        <nom>Métier Jacquard</nom>
+        <images>...</images>
+        ...</data>
+    </noeud>
+    <noeud>
+      <id>4</id>
+      <listeparcours>
+        <parcours>
+          <id>1</id>
+          <suivant>5</suivant>
+          <lien>Illustration</lien>
+          <legende>Ces programmes peuvent être enregistrés sur un ruban</legende>
+        </parcours>
+      </listeparcours>
+      <voisins></voisins>
+      <data>
+        <nom>Von Neumann</nom>
+        <images>...</images>
+        ...</data>
+    </noeud>
+    <noeud>
+      <id>5</id>
+      <listeparcours>
+        <parcours>
+          <id>1</id>
+          <suivant>6</suivant>
+          <lien>Precision</lien>
+          <legende>Pour donner des instructions à l'ordinateur, on utilise un langage machine</legende>
+        </parcours>
+      </listeparcours>
+      <voisins>
+        <voisin>
+          <id>13</id>
+          <lien>Experience</lien>
+          <legende>Testez par vous même.</legende>
+        </voisin>
+      </voisins>
+      <data>
+        <nom>IBM 1130</nom>
+        <images>...</images>
+        ...</data>
+    </noeud>
+    <noeud>
+      <id>6</id>
+      <listeparcours>
+        <parcours>
+          <id>1</id>
+          <suivant>7</suivant>
+          <lien>Logique</lien>
+          <legende>Pour écrire de long programmes, on a inventé des langages plus compréhensibles</legende>
+        </parcours>
+      </listeparcours>
+      <voisins>
+        <voisin>
+          <id>16</id>
+          <lien>Illustration</lien>
+          <legende>Le processeur est le circuit qui execute le programme d'un ordinateur</legende>
+        </voisin>
+        <voisin>
+          <id>17</id>
+          <lien>Enallage</lien>
+          <legende>Le langage machine est simple pour l'ordinateur mais illisible pour l'homme !</legende>
+        </voisin>
+      </voisins>
+      <data>
+        <nom>Langage machine</nom>
+        <images>...</images>
+        ...</data>
+    </noeud>
+    <noeud>
+      <id>7</id>
+      <listeparcours>
+        <parcours>
+          <id>1</id>
+          <suivant>8</suivant>
+          <lien>Enallage</lien>
+          <legende>Mais créer un langage compréhensible n'est pas si simple</legende>
+        </parcours>
+      </listeparcours>
+      <voisins></voisins>
+      <data>
+        <nom>Fortran</nom>
+        <images>...</images>
+        ...</data>
+    </noeud>
+    <noeud>
+      <id>8</id>
+      <listeparcours>
+        <parcours>
+          <id>1</id>
+          <suivant>9</suivant>
+          <lien>Logique</lien>
+          <legende>Comme entre les peuples, une option est de demander à quelqu'un de traduire</legende>
+        </parcours>
+      </listeparcours>
+      <voisins>
+        <voisin>
+          <id>20</id>
+          <lien>Precision</lien>
+          <legende>Une solution est de construire un ordinateur qui comprend le langage complexe directement.</legende>
+        </voisin>
+        <voisin>
+          <id>19</id>
+          <lien>Digression</lien>
+          <legende>Les langages informatiques sont des formes caricaturés des langages humains</legende>
+        </voisin>
+      </voisins>
+      <data>
+        <nom>Tour de Babel</nom>
+        <images>...</images>
+        ...</data>
+    </noeud>
+    <noeud>
+      <id>9</id>
+      <listeparcours>
+        <parcours>
+          <id>1</id>
+          <suivant>10</suivant>
+          <lien>Logique</lien>
+          <legende>PLutôt que traduire chaque fois le même discours, mieux vaut le faire une fois pour toutes</legende>
+        </parcours>
+      </listeparcours>
+      <voisins></voisins>
+      <data>
+        <nom>Interpréteur</nom>
+        <images>...</images>
+        ...</data>
+    </noeud>
+    <noeud>
+      <id>10</id>
+      <listeparcours>
+        <parcours>
+          <id>1</id>
+          <suivant>11</suivant>
+          <lien>Illustration</lien>
+          <legende>Voici à quoi ressemble un programme écrit dans un langage actuel.</legende>
+        </parcours>
+      </listeparcours>
+      <voisins></voisins>
+      <data>
+        <nom>Compilateur</nom>
+        <images>...</images>
+        ...</data>
+    </noeud>
+    <noeud>
+      <id>11</id>
+      <listeparcours>
+        <parcours>
+          <id>1</id>
+        </parcours>
+      </listeparcours>
+      <voisins></voisins>
+      <data>
+        <nom>Java</nom>
+        <images>...</images>
+        ...</data>
+    </noeud>
+    <noeud>
+      <id>12</id>
+      <listeparcours></listeparcours>
+      <voisins>
+        <voisin>
+          <id>5</id>
+          <lien>Analogie</lien>
+          <legende>Le logiciel de l'ordinateur est un peu comme la partition du piano.</legende>
+        </voisin>
+        <voisin>
+          <id>11</id>
+          <lien>Prolepse</lien>
+          <legende>Les ordinateurs modernes peuvent aussi faire de la musique.</legende>
+        </voisin>
+      </voisins>
+      <data>
+        <nom>Piano mecanique</nom>
+        <images>...</images>
+        ...</data>
+    </noeud>
+    <noeud>
+      <id>13</id>
+      <listeparcours></listeparcours>
+      <voisins>
+        <voisin>
+          <id>14</id>
+          <lien>Precision</lien>
+          <legende>Le logiciel que vous essayez s'appelle CSPM.</legende>
+        </voisin>
+      </voisins>
+      <data>
+        <nom>Emulateur D'IBM 1130</nom>
+        <images>...</images>
+        ...</data>
+    </noeud>
+    <noeud>
+      <id>14</id>
+      <listeparcours></listeparcours>
+      <voisins>
+        <voisin>
+          <id>1</id>
+          <lien>Analepse</lien>
+          <legende>CSPM résoud des équations numériquement. Le SEA OME P2 le faisait de manière analogique.</legende>
+        </voisin>
+      </voisins>
+      <data>
+        <nom>CSPM</nom>
+        <images>...</images>
+        ...</data>
+    </noeud>
+    <noeud>
+      <id>15</id>
+      <listeparcours></listeparcours>
+      <voisins></voisins>
+      <data>
+        <nom>Central téléphonique</nom>
+        <images>...</images>
+        ...</data>
+    </noeud>
+    <noeud>
+      <id>16</id>
+      <listeparcours></listeparcours>
+      <voisins></voisins>
+      <data>
+        <nom>6502</nom>
+        <images>...</images>
+        ...</data>
+    </noeud>
+    <noeud>
+      <id>17</id>
+      <listeparcours></listeparcours>
+      <voisins>
+        <voisin>
+          <id>18</id>
+          <lien>Experience</lien>
+          <legende>Observez comment un processeur exécute cette série d'instruction.</legende>
+        </voisin>
+      </voisins>
+      <data>
+        <nom>Listing assembleur</nom>
+        <images>...</images>
+        ...</data>
+    </noeud>
+    <noeud>
+      <id>18</id>
+      <listeparcours></listeparcours>
+      <voisins></voisins>
+      <data>
+        <nom>Emulateur 6502</nom>
+        <images>...</images>
+        ...</data>
+    </noeud>
+    <noeud>
+      <id>19</id>
+      <listeparcours></listeparcours>
+      <voisins>
+        <voisin>
+          <id>21</id>
+          <lien>Illustration</lien>
+          <legende>Certaines grammaire ont des propriétés qui les rendent faciles à décoder.</legende>
+        </voisin>
+      </voisins>
+      <data>
+        <nom>Noam Chomsky</nom>
+        <images>...</images>
+        ...</data>
+    </noeud>
+    <noeud>
+      <id>20</id>
+      <listeparcours></listeparcours>
+      <voisins>
+        <voisin>
+          <id>22</id>
+          <lien>Illustration</lien>
+          <legende>Un exemple de machine LISP.</legende>
+        </voisin>
+        <voisin>
+          <id>9</id>
+          <lien>Logique</lien>
+          <legende>Construire une machine langage ne fait que repousser le problème.</legende>
+        </voisin>
+      </voisins>
+      <data>
+        <nom>Machine-langage</nom>
+        <images>...</images>
+        ...</data>
+    </noeud>
+    <noeud>
+      <id>21</id>
+      <listeparcours></listeparcours>
+      <voisins>
+        <voisin>
+          <id>23</id>
+          <lien>Illustration</lien>
+          <legende>Un exemple de grammaire : Java.</legende>
+        </voisin>
+      </voisins>
+      <data>
+        <nom>Lex/Yacc</nom>
+        <images>...</images>
+        ...</data>
+    </noeud>
+    <noeud>
+      <id>22</id>
+      <listeparcours></listeparcours>
+      <voisins></voisins>
+      <data>
+        <nom>Jericho</nom>
+        <images>...</images>
+        ...</data>
+    </noeud>
+    <noeud>
+      <id>23</id>
+      <listeparcours></listeparcours>
+      <voisins>
+        <voisin>
+          <id>11</id>
+          <lien>Precision</lien>
+          <legende>Java est un langage actuel.</legende>
+        </voisin>
+      </voisins>
+      <data>
+        <nom>Compilateur Java.</nom>
+        <images>...</images>
+        ...</data>
+    </noeud>
+  </noeuds>
+</moving>

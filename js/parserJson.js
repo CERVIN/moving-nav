@@ -1,6 +1,5 @@
 // JavaScript Document
 
-var data;
 
 function parser()
 {
