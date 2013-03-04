@@ -4,8 +4,6 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>Accueil</title>
 <link rel="stylesheet" href="css/index.css">
-
-
 </head>
 
 <body>
@@ -14,9 +12,27 @@
 <script src="js/parserJson.js"></script> 
 <script src="js/fredhq-roundabout/jquery.roundabout.js"></script> 
 <script>
-function showData(data){
-	console.log(data);
-}
+	
+	function getURLParameter(name) {
+  return decodeURIComponent((new RegExp('[?|&]' + name + '=' + '([^&;]+?)(&|#|;|$)').exec(location.search) || [, ""])[1].replace(/\+/g, '%20')) || null;}
+	
+
+	function showData(json)
+	{
+		$('#output').append("<ul id='parcoursList'></ul>");
+		for( var key in json.info.parcours) {
+			var id = json.info.parcours[key].id;
+			var debut = json.info.parcours[key].debut;
+			var nom = json.info.parcours[key].nom;
+			var image = json.info.parcours[key].image;
+					
+			$("#parcoursList").append('<li>'+id+nom+'<a href="interfaceParcours.html"><img src="../moving-nav/images/'+image+'" /></a>'+"</li>");
+						
+		}
+		
+		$("#parcoursList").roundabout({ shape:'rollerCoaster'});
+	};
+
 
 
 $(document).ready(function ()
@@ -25,6 +41,5 @@ $(document).ready(function ()
 });
 
 </script>
-
 </body>
 </html>
