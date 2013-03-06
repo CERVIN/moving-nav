@@ -4,361 +4,374 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <script type="text/javascript" src="js/kinetic-v4.3.3.min.js"></script>
     <script type="text/javascript" src="js/jquery-1.9.1.min.js"></script>
-     <script type="text/javascript" src="js/parserJson.js"></script>
+    <script type="text/javascript" src="js/parserJson.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="css/styleInterface.css" charset="utf-8" />
+    <link href="css/bootstrap.min.css" rel="stylesheet" media="screen">
     <title>Mus&eacutee virtuel</title>
 </head>
 
 <body>
-    <div class="contenu">
-        <h1>Contenu</h1>
+    <div class="info">
+    </div>
+    <div id="myCarousel" class="contenu carousel slide" data-interval="false">
+        <!-- Carousel indicator -->
+        <ol class="carousel-indicators">
+        </ol>
+        <!-- Carousel item -->
+        <div class="carousel-inner"></div>
+        <!-- Carousel nav -->
+        <a class="carousel-control left" href="#myCarousel" data-slide="prev">&lsaquo;</a>
+        <a class="carousel-control right" href="#myCarousel" data-slide="next">&rsaquo;</a>
     </div>
     <div class="navigation">
         <div id="container"></div>
-        <!-- <script >
+    </div>
 
-			var c=document.getElementById("myCanvas");
-			var ctx=c.getContext("2d");
-			ctx.fillStyle="#0000FF";
-			ctx.fillRect(0,20,500,1); 
-			ctx.beginPath();
-			ctx.arc(30,20,3,0,2*Math.PI);
-			ctx.fill();
-			
 
-		</script>-->
-       
-        <script type="text/javascript">
 
-            $(document).ready(parser("data/data.json"));
 
-            function getURLParameter(name) {
-                return decodeURIComponent((new RegExp('[?|&]' + name + '=' + '([^&;]+?)(&|#|;|$)').exec(location.search) || [, ""])[1].replace(/\+/g, '%20')) || null;
+    <!-- script Navigation -->
+    <script type="text/javascript">
+
+        $(document).ready(parser("data/data.json"));
+
+        function getURLParameter(name) {
+            return decodeURIComponent((new RegExp('[?|&]' + name + '=' + '([^&;]+?)(&|#|;|$)').exec(location.search) || [, ""])[1].replace(/\+/g, '%20')) || null;
+        }
+
+        function formatNameByLength(name, length) {
+            if (name.length <= length) {
+                return name;
+            } else {
+                return name.substring(0, length - 3) + "...";
             }
+        }
 
-            function formatNameByLength(name, length) {
-                if (name.length <= length) {
-                    return name;
-                } else {
-                    return  name.substring(0, length - 3) + "...";
-                }
-            }
+        function showData(data) {
 
-            function showData(data) {
-
-                function getNodeById(id) {
-                    for (var p in data.noeuds) {
-                        if (data.noeuds[p].id == id) {
-                            return data.noeuds[p];
-                            break;
-                        }
-                    }
-                    return null;
-                }
-
-                function getParcoursFromNode(node, id) {
-                    for (var p in node.parcours) {
-                        if (node.parcours[p].id == id) {
-                            return node.parcours[p];
-                            break;
-                        }
-                    }
-                    return null;
-                }
-
-                /* Recuperation des parametres */
-
-                    /* Recupération du parcours */
-                var parcours = getURLParameter("parcours");
-
-                if (parcours == null) {
-                    window.location = "exploration.html?parcours=1";
-                }
-
-                    /* Récupération du noeud en cours */
-
-                var noeud = getURLParameter("noeud");
-
-                if (noeud == null) {
-                    for (var p in data.info.parcours) {
-                        if (data.info.parcours[p].id == parcours) {
-                            noeud = data.info.parcours[p].debut;
-                            break;
-                        }
-                    }
-                    if (noeud == null) {
-                        //TODO: Si mauvais numero parcours, retourner au caroussel
-                        alert("Erreur, pas de noeuds");
-                    }
-                }
-
+            function getNodeById(id) {
                 for (var p in data.noeuds) {
-                    if (data.noeuds[p].id == noeud) {
-                        noeud = data.noeuds[p];
+                    if (data.noeuds[p].id == id) {
+                        return data.noeuds[p];
                         break;
                     }
                 }
+                return null;
+            }
 
-                    /* Récupération de l'historique */
-
-                var historique = [];
-
-                if (getURLParameter("historique") != null) {
-                    historique = getURLParameter("historique").split("N");
+            function getParcoursFromNode(node, id) {
+                for (var p in node.parcours) {
+                    if (node.parcours[p].id == id) {
+                        return node.parcours[p];
+                        break;
+                    }
                 }
-                
+                return null;
+            }
 
-                /* Création de la scène */
+            /* Configurations couleurs */
+            var TEXTCOLOR = "white";
 
-                var stage = new Kinetic.Stage({
-                    container: 'container',
-                    width: document.body.clientWidth,
-                    height: 200
-                });
 
-                function writeMessage(messageLayer, message) {
-                    var context = messageLayer.getContext();
-                    messageLayer.clear();
-                    context.font = '18pt Calibri';
-                    context.fillStyle = 'black';
-                    context.fillText(message, 10, 25);
+            /* Recupération du parcours */
+            var parcours = getURLParameter("parcours");
+
+            if (parcours == null) {
+                window.location = "exploration.html?parcours=1";
+            }
+
+            /* Récupération du noeud en cours */
+
+            var noeud = getURLParameter("noeud");
+
+
+            if (noeud == null) {
+                for (var p in data.info.parcours) {
+                    if (data.info.parcours[p].id == parcours) {
+                        noeud = data.info.parcours[p].debut;
+                        break;
+                    }
+                }
+                if (noeud == null) {
+                    //TODO: Si mauvais numero parcours, retourner au caroussel
+                    alert("Erreur, pas de noeuds");
+                }
+            }
+
+            for (var p in data.noeuds) {
+                if (data.noeuds[p].id == noeud) {
+                    noeud = data.noeuds[p];
+                    break;
+                }
+            }
+
+            /* Récupération de l'historique */
+
+            var historique = [];
+
+            if (getURLParameter("historique") != null) {
+                historique = getURLParameter("historique").split("N");
+            }
+
+            /* Création du carroussel */
+
+            var nbrImage = noeud.data.images;
+            var nbrVideo = noeud.data.videos;
+
+            if (nbrImage != null) {
+
+
+                for (var i = 0; i < nbrImage; i++) {
+                    var actif = "";
+                    if (i == 0) { actif = "class= active" } else { actif = "" };
+                    $('.carousel-indicators').append("<li data-target=#myCarousel data-slide-to=" + i + " " + actif + "></li>");
                 }
 
-                var debugLayer = new Kinetic.Layer();
 
+                for (var j = 0; j < nbrImage; j++) {
+                    var actif = "";
+                    if (j == 0) { actif = "active " } else { actif = "" };
+                    var image = j + 1;
+                    $('.carousel-inner').append("<div class=\"" + actif + "item\"><img src=data/" + noeud.id + "/image" + image + ".jpg width=auto height=auto/></div></div>");
+                }
 
-                var lineLayer = new Kinetic.Layer();
-                var shapesLayer = new Kinetic.Layer();
-
-                var historiqueLayer = new Kinetic.Layer();
-                var selectionLayer = new Kinetic.Layer();
-                var futurLayer = new Kinetic.Layer();
-
-                var noeudsDansHistorique;
-
-
-                var zoneHistorique = new Kinetic.Rect({
-                    x: 0,
-                    y: 0,
-                    width: stage.getWidth() / 3,
-                    height: stage.getHeight(),
-                    fill: 'green',
-                    opacity: 0
-
-                });
-
-
-                var zoneSelection = new Kinetic.Rect({
-                    x: stage.getWidth() / 3,
-                    y: 0,
-                    width: stage.getWidth() / 3,
-                    height: stage.getHeight(),
-                    fill: 'blue',
-                    opacity: 0
-
-                });
-
-                var zoneFutur = new Kinetic.Rect({
-                    x: (stage.getWidth() / 3) * 2,
-                    y: 0,
-                    width: stage.getWidth() / 3,
-                    height: stage.getHeight(),
-                    fill: 'red',
-                    opacity: 0
-
-                });
+            }
 
 
 
-                var parcoursLine = new Kinetic.Line({
-                    points: [0, stage.getHeight() / 3, stage.getWidth(), stage.getHeight() / 3],
-                    stroke: 'red',
-                    strokeWidth: 15
-                });
+            /* Création de la scène */
 
-                /* Marqueurs de contenu caché */
+            var stage = new Kinetic.Stage({
+                container: 'container',
+                width: document.body.clientWidth,
+                height: 200
+            });
 
-                var pointilleGauche = new Kinetic.Group();
+            function writeMessage(messageLayer, message) {
+                var context = messageLayer.getContext();
+                messageLayer.clear();
+                context.font = '18pt Calibri';
+                context.fillStyle = TEXTCOLOR;
+                context.fillText(message, 10, 25);
+            }
 
-                var flecheGauche = new Kinetic.RegularPolygon({
-                    x: (stage.getWidth() / 3) ,
-                    y: stage.getHeight() / 3,
-                    sides: 3,
-                    radius: 20,
-                    fill: 'white',
-                    stroke: 'red',
-                    strokeWidth: 2,
-                    rotationDeg: 90
-                });
-
-                var flecheGauche2 = new Kinetic.RegularPolygon({
-                    x: (stage.getWidth() / 3)  + 30,
-                    y: stage.getHeight() / 3,
-                    sides: 3,
-                    radius: 20,
-                    fill: 'white',
-                    stroke: 'red',
-                    strokeWidth: 2,
-                    rotationDeg: 90
-                });
-
-                pointilleGauche.add(flecheGauche);
-                pointilleGauche.add(flecheGauche2);
-                pointilleGauche.setOpacity(0);
-
-                var pointilleDroite = new Kinetic.Group();
-
-                var flecheDroite = new Kinetic.RegularPolygon({
-                    x: (stage.getWidth() / 3) * 2,
-                    y: stage.getHeight() / 3,
-                    sides: 3,
-                    radius: 20,
-                    fill: 'white',
-                    stroke: 'red',
-                    strokeWidth: 2,
-                    rotationDeg: 270
-                });
-
-                var flecheDroite2 = new Kinetic.RegularPolygon({
-                    x: (stage.getWidth() / 3) * 2-30,
-                    y: stage.getHeight() / 3,
-                    sides: 3,
-                    radius: 20,
-                    fill: 'white',
-                    stroke: 'red',
-                    strokeWidth: 2,
-                    rotationDeg: 270
-                });
+            var debugLayer = new Kinetic.Layer();
 
 
-                pointilleDroite.add(flecheDroite);
-                pointilleDroite.add(flecheDroite2);
-                pointilleDroite.setOpacity(0);
-                
+            var lineLayer = new Kinetic.Layer();
+            var shapesLayer = new Kinetic.Layer();
 
-                /* Zones draggable */
+            var historiqueLayer = new Kinetic.Layer();
+            var selectionLayer = new Kinetic.Layer();
+            var futurLayer = new Kinetic.Layer();
 
-                var lastDrag = [-1, -1];
+            var noeudsDansHistorique;
 
-                var suiteParcours = [];
-                var precedentParcours = [];
 
-                function startDrag(zone, layer, obj, limite, cacherGauche, marqueur) {
-                    zone.on('mousemove', function () {
-                        var mousePos = stage.getMousePosition();
-                        if (lastDrag[0] != -1 && lastDrag[1] != -1) {
-                            //writeMessage(debugLayer, "" + circle.getPosition().x+" - "+circle.getY());                             
-                            for (var o in obj) {
-                                //obj[o].move(mousePos.x - lastDrag[0], 0);
-                                for (var child in obj[o].children) {
-                                    obj[o].children[child].move(mousePos.x - lastDrag[0], 0);
+            var zoneHistorique = new Kinetic.Rect({
+                x: 0,
+                y: 0,
+                width: stage.getWidth() / 3,
+                height: stage.getHeight(),
+                fill: 'green',
+                opacity: 0
+
+            });
+
+
+            var zoneSelection = new Kinetic.Rect({
+                x: stage.getWidth() / 3,
+                y: 0,
+                width: stage.getWidth() / 3,
+                height: stage.getHeight(),
+                fill: 'blue',
+                opacity: 0
+
+            });
+
+            var zoneFutur = new Kinetic.Rect({
+                x: (stage.getWidth() / 3) * 2,
+                y: 0,
+                width: stage.getWidth() / 3,
+                height: stage.getHeight(),
+                fill: 'red',
+                opacity: 0
+
+            });
+
+
+
+            var parcoursLine = new Kinetic.Line({
+                points: [0, stage.getHeight() / 3, stage.getWidth(), stage.getHeight() / 3],
+                stroke: 'red',
+                strokeWidth: 15
+            });
+
+            var imageIndiceDrag= new Image();
+            var indiceDrag1 = new Kinetic.Image({
+                x: zoneHistorique.getX() + zoneHistorique.getWidth() / 6,
+                y: (stage.getHeight() / 3) * 2 ,
+                image: imageIndiceDrag,
+                width: (zoneHistorique.getWidth() / 3) * 2,
+                height: 20 * ((zoneHistorique.getWidth() / 3) * 2) / 168
+            });
+
+            var indiceDrag2 = new Kinetic.Image({
+                x: zoneFutur.getX() + zoneFutur.getWidth() / 6,
+                y: (stage.getHeight() / 3) * 2,
+                image: imageIndiceDrag,
+                width: (zoneFutur.getWidth() / 3) * 2,
+                height: 20 * ((zoneFutur.getWidth() / 3) * 2) / 168
+            });
+
+            imageIndiceDrag.src = "images/indice_drag.png"
+
+            historiqueLayer.add(indiceDrag1);
+            futurLayer.add(indiceDrag2);
+
+            /* Marqueurs de contenu caché */
+
+            var pointilleGauche = new Kinetic.Group();
+
+            var flecheGauche = new Kinetic.RegularPolygon({
+                x: (stage.getWidth() / 3),
+                y: stage.getHeight() / 3,
+                sides: 3,
+                radius: 20,
+                fill: 'white',
+                stroke: 'red',
+                strokeWidth: 2,
+                rotationDeg: 90
+            });
+
+            var flecheGauche2 = new Kinetic.RegularPolygon({
+                x: (stage.getWidth() / 3) + 30,
+                y: stage.getHeight() / 3,
+                sides: 3,
+                radius: 20,
+                fill: 'white',
+                stroke: 'red',
+                strokeWidth: 2,
+                rotationDeg: 90
+            });
+
+            pointilleGauche.add(flecheGauche);
+            pointilleGauche.add(flecheGauche2);
+            pointilleGauche.setOpacity(0);
+
+            var pointilleDroite = new Kinetic.Group();
+
+            var flecheDroite = new Kinetic.RegularPolygon({
+                x: (stage.getWidth() / 3) * 2,
+                y: stage.getHeight() / 3,
+                sides: 3,
+                radius: 20,
+                fill: 'white',
+                stroke: 'red',
+                strokeWidth: 2,
+                rotationDeg: 270
+            });
+
+            var flecheDroite2 = new Kinetic.RegularPolygon({
+                x: (stage.getWidth() / 3) * 2 - 30,
+                y: stage.getHeight() / 3,
+                sides: 3,
+                radius: 20,
+                fill: 'white',
+                stroke: 'red',
+                strokeWidth: 2,
+                rotationDeg: 270
+            });
+
+
+            pointilleDroite.add(flecheDroite);
+            pointilleDroite.add(flecheDroite2);
+            pointilleDroite.setOpacity(0);
+
+
+            /* Zones draggable */
+
+            var lastDrag = [-1, -1];
+
+            var suiteParcours = [];
+            var precedentParcours = [];
+
+            function startDrag(zone, layer, obj, limite, cacherGauche, marqueur) {
+                zone.on('mousemove touchmove', function () {
+                    var mousePos = stage.getMousePosition();
+                    if (lastDrag[0] != -1 && lastDrag[1] != -1) {
+                        //writeMessage(debugLayer, "" + circle.getPosition().x+" - "+circle.getY());                             
+                        for (var o in obj) {
+                            //obj[o].move(mousePos.x - lastDrag[0], 0);
+                            for (var child in obj[o].children) {
+                                obj[o].children[child].move(mousePos.x - lastDrag[0], 0);
+                            }
+                            if ((!cacherGauche && obj[o].children[0].getX() + obj[o].children[0].getWidth() > limite) || (cacherGauche && obj[o].children[0].getX() < limite)) {
+                                if (o == 0) {
+                                    marqueur.setOpacity(1);
                                 }
-                                if ((!cacherGauche && obj[o].children[0].getX() + obj[o].children[0].getWidth() > limite) || (cacherGauche && obj[o].children[0].getX() < limite)) {
-                                    if (o == 0) {
-                                        marqueur.setOpacity(1);
-                                    }
-                                    if ((cacherGauche && Math.abs(obj[o].children[0].getX() - limite) > obj[o].children[0].getWidth()) || (!cacherGauche && obj[o].children[0].getX() > limite)) {
-                                        obj[o].setOpacity(0);
-                                    } else {
-                                        // Effet transparent
-                                        var opacity = Math.abs(obj[o].children[0].getX() - limite) / obj[o].children[0].getWidth();
-                                        if (cacherGauche) {
-                                            opacity = 1 - opacity;
-                                        }
-                                        obj[o].setOpacity(opacity);
-                                    }
+                                if ((cacherGauche && Math.abs(obj[o].children[0].getX() - limite) > obj[o].children[0].getWidth()) || (!cacherGauche && obj[o].children[0].getX() > limite)) {
+                                    obj[o].setOpacity(0);
                                 } else {
-                                    if (o == 0) {
-                                        marqueur.setOpacity(0);
+                                    // Effet transparent
+                                    var opacity = Math.abs(obj[o].children[0].getX() - limite) / obj[o].children[0].getWidth();
+                                    if (cacherGauche) {
+                                        opacity = 1 - opacity;
                                     }
-                                    obj[o].setOpacity(1);
+                                    obj[o].setOpacity(opacity);
                                 }
-
+                            } else {
+                                if (o == 0) {
+                                    marqueur.setOpacity(0);
+                                }
+                                obj[o].setOpacity(1);
                             }
-                            layer.draw();
-                            selectionLayer.draw();
+
                         }
-                        lastDrag[0] = mousePos.x;
-                        lastDrag[1] = mousePos.y;
-                    });
-                }
+                        layer.draw();
+                        selectionLayer.draw();
+                    }
+                    lastDrag[0] = mousePos.x;
+                    lastDrag[1] = mousePos.y;
+                });
+            }
 
-                function stopDrag(zone) {
-                    zone.off('mousemove');
-                    lastDrag[0] = -1;
-                    lastDrag[1] = -1;
-                }
+            function stopDrag(zone) {
+                zone.off('mousemove touchmove');
+                lastDrag[0] = -1;
+                lastDrag[1] = -1;
+            }
 
-                zoneHistorique.on('mousedown', function () {
-                    startDrag(zoneHistorique, historiqueLayer, precedentParcours, (stage.getWidth() / 3), false, pointilleGauche);
+            zoneHistorique.on('mousedown touchstart', function () {
+                startDrag(zoneHistorique, historiqueLayer, precedentParcours, (stage.getWidth() / 3), false, pointilleGauche);
+            });
+
+            zoneHistorique.on('mouseup mouseout touchend', function () {
+                stopDrag(zoneHistorique);
+            });
+
+            zoneFutur.on('mousedown touchstart', function () {
+                startDrag(zoneFutur, futurLayer, suiteParcours, (stage.getWidth() / 3) * 2, true, pointilleDroite);
+            });
+
+            zoneFutur.on('mouseup mouseout touchend', function () {
+                stopDrag(zoneFutur);
+            });
+
+
+            /* Zone historique */
+            
+            for (var h = historique.length - 1; h >= 0 && historique.length != 0; h--) {
+                var noeudHisto = getNodeById(historique[h]);
+
+                var group = new Kinetic.Group({
+                    name: historique[h]
                 });
 
-                zoneHistorique.on('mouseup mouseout', function () {
-                    stopDrag(zoneHistorique);
-                });
 
-                zoneFutur.on('mousedown', function () {
-                    startDrag(zoneFutur, futurLayer, suiteParcours, (stage.getWidth() / 3) * 2, true, pointilleDroite);
-                });
-
-                zoneFutur.on('mouseup mouseout', function () {
-                    stopDrag(zoneFutur);
-                });
-
-
-                /* Zone historique */
-                for (var h = historique.length-1; h >= 0 && historique.length != 0; h--) {
-                    var noeudHisto = getNodeById(historique[h]);
-
-                    var group = new Kinetic.Group({
-                        name: historique[h]
-                    });
-
-
-                    var rond = new Kinetic.Circle({
-                        x: stage.getWidth() / 3 - ((precedentParcours.length + 1) * 200),
-                        y: stage.getHeight() / 3,
-                        radius: 20,
-                        fill: 'red',
-                        stroke: 'black',
-                        strokeWidth: 2
-                    });
-
-                    var texteAAfficher = formatNameByLength(noeudHisto.data.nom, 10)
-
-                    var texte = new Kinetic.Text({
-                        x: stage.getWidth() / 3 - ((precedentParcours.length + 1) * 200) - (texteAAfficher.length / 2) * 10,
-                        y: stage.getHeight() / 3 - 60,
-                        text: texteAAfficher,
-                        fill: 'black',
-                        fontSize: 30,
-                        fontFamily: 'Calibri'
-                    });
-
-                    //TODO : touch event
-                    group.on("click", function () {
-                        historique.push(noeud.id);
-                        var url = "exploration.html?parcours=" + parcours + "&noeud=" + this.getName() + "&historique=";
-                        for (var h in historique) {
-                            if (h != 0) {
-                                url += "N";
-                            }
-                            url += historique[h];
-                        }
-                        window.location = url;
-                    });
-
-
-                    group.add(texte);
-                    group.add(rond);
-
-                    precedentParcours.push(group);
-
-                }
-
-
-                /* Zone selection */
-                var rondNoeud = new Kinetic.Circle({
-                    x: stage.getWidth() / 2 ,
+                var rond = new Kinetic.Circle({
+                    x: stage.getWidth() / 3 - ((precedentParcours.length + 1) * 200),
                     y: stage.getHeight() / 3,
                     radius: 20,
                     fill: 'red',
@@ -366,98 +379,145 @@
                     strokeWidth: 2
                 });
 
+                var texteAAfficher = formatNameByLength(noeudHisto.data.nom, 10)
 
-                var texteNoeud = new Kinetic.Text({
-                    x: stage.getWidth() /2 - (noeud.data.nom.length / 2) * 10,
+                var texte = new Kinetic.Text({
+                    x: stage.getWidth() / 3 - ((precedentParcours.length + 1) * 200) - (texteAAfficher.length / 2) * 10,
                     y: stage.getHeight() / 3 - 60,
-                    text: noeud.data.nom,
-                    fill: 'black',
+                    text: texteAAfficher,
+                    fill: TEXTCOLOR,
                     fontSize: 30,
                     fontFamily: 'Calibri'
                 });
 
-                
-                /* Zone futur */
-                var suivant = getParcoursFromNode(noeud, parcours).suivant;
-                while (suivant != -1) {
-                    var noeudSuivant = getNodeById(suivant);
-                    var group = new Kinetic.Group({
-                        name: suivant
-                    });
-                    
-
-                    var rond = new Kinetic.Circle({
-                        x: stage.getWidth() / 3 * 2 + ((suiteParcours.length + 1) * 200),
-                        y: stage.getHeight() / 3,
-                        radius: 20,
-                        fill: 'red',
-                        stroke: 'black',
-                        strokeWidth: 2
-                    });
-
-                    var texteAAfficher = formatNameByLength(noeudSuivant.data.nom, 10)
-                    
-                    var texte = new Kinetic.Text({
-                        x: stage.getWidth() / 3 * 2 + ((suiteParcours.length + 1) * 200) - (texteAAfficher.length / 2)*10,
-                        y: stage.getHeight() / 3 - 60,
-                        text: texteAAfficher,
-                        fill: 'black',
-                        fontSize: 30,
-                        fontFamily: 'Calibri'
-                    });
-
-                    group.on("click", function () {
-                        historique.push(noeud.id);
-                        var url = "exploration.html?parcours=" + parcours + "&noeud=" + this.getName()+"&historique=";
-                        for (var h in historique) {
-                            if (h != 0) {
-                                url += "N";
-                            }
-                            url += historique[h];
+                //TODO : touch event
+                group.on("click", function () {
+                    historique.push(noeud.id);
+                    var url = "exploration.html?parcours=" + parcours + "&noeud=" + this.getName() + "&historique=";
+                    for (var h in historique) {
+                        if (h != 0) {
+                            url += "N";
                         }
-                        window.location = url;
-                    });
+                        url += historique[h];
+                    }
+                    window.location = url;
+                });
 
 
-                    group.add(texte);
-                    group.add(rond);
+                group.add(texte);
+                group.add(rond);
 
-                    suiteParcours.push(group);
-
-                    suivant = getParcoursFromNode(noeudSuivant, parcours).suivant;
-                }
-
-                lineLayer.add(parcoursLine);
-
-                historiqueLayer.add(zoneHistorique);
-                for (var rond in precedentParcours) {
-                    historiqueLayer.add(precedentParcours[rond]);
-                }
-
-                selectionLayer.add(zoneSelection);
-                selectionLayer.add(texteNoeud);
-                selectionLayer.add(rondNoeud);
-                selectionLayer.add(pointilleGauche);
-                selectionLayer.add(pointilleDroite);
-
-                futurLayer.add(zoneFutur);
-                for (var rond in suiteParcours) {
-                    futurLayer.add(suiteParcours[rond]);
-                }
-
-                
-
-                stage.add(lineLayer);
-                stage.add(selectionLayer);
-                stage.add(historiqueLayer);
-                stage.add(futurLayer);
-                
-                stage.add(debugLayer);
-                
+                precedentParcours.push(group);
 
             }
 
-        </script>
-    </div>
+
+            /* Zone selection */
+
+
+
+
+            var rondNoeud = new Kinetic.Circle({
+                x: stage.getWidth() / 2,
+                y: stage.getHeight() / 3,
+                radius: 20,
+                fill: 'red',
+                stroke: 'black',
+                strokeWidth: 2
+            });
+
+
+            var texteNoeud = new Kinetic.Text({
+                x: stage.getWidth() / 2 - (noeud.data.nom.length / 2) * 10,
+                y: stage.getHeight() / 3 - 60,
+                text: noeud.data.nom,
+                fill: TEXTCOLOR,
+                fontSize: 30,
+                fontFamily: 'Calibri'
+            });
+
+
+            /* Zone futur */
+            var suivant = getParcoursFromNode(noeud, parcours).suivant;
+            while (suivant != -1) {
+                var noeudSuivant = getNodeById(suivant);
+                var group = new Kinetic.Group({
+                    name: suivant
+                });
+
+
+                var rond = new Kinetic.Circle({
+                    x: stage.getWidth() / 3 * 2 + ((suiteParcours.length + 1) * 200),
+                    y: stage.getHeight() / 3,
+                    radius: 20,
+                    fill: 'red',
+                    stroke: 'black',
+                    strokeWidth: 2
+                });
+
+                var texteAAfficher = formatNameByLength(noeudSuivant.data.nom, 10)
+
+                var texte = new Kinetic.Text({
+                    x: stage.getWidth() / 3 * 2 + ((suiteParcours.length + 1) * 200) - (texteAAfficher.length / 2) * 10,
+                    y: stage.getHeight() / 3 - 60,
+                    text: texteAAfficher,
+                    fill: TEXTCOLOR,
+                    fontSize: 30,
+                    fontFamily: 'Calibri'
+                });
+
+                group.on("click tap", function () {
+                    historique.push(noeud.id);
+                    var url = "exploration.html?parcours=" + parcours + "&noeud=" + this.getName() + "&historique=";
+                    for (var h in historique) {
+                        if (h != 0) {
+                            url += "N";
+                        }
+                        url += historique[h];
+                    }
+                    window.location = url;
+                });
+
+
+                group.add(texte);
+                group.add(rond);
+
+                suiteParcours.push(group);
+
+                suivant = getParcoursFromNode(noeudSuivant, parcours).suivant;
+            }
+
+            lineLayer.add(parcoursLine);
+
+            historiqueLayer.add(zoneHistorique);
+            for (var rond in precedentParcours) {
+                historiqueLayer.add(precedentParcours[rond]);
+            }
+
+            selectionLayer.add(zoneSelection);
+            selectionLayer.add(texteNoeud);
+            selectionLayer.add(rondNoeud);
+            selectionLayer.add(pointilleGauche);
+            selectionLayer.add(pointilleDroite);
+
+            futurLayer.add(zoneFutur);
+            for (var rond in suiteParcours) {
+                futurLayer.add(suiteParcours[rond]);
+            }
+
+
+
+            stage.add(lineLayer);
+            stage.add(selectionLayer);
+            stage.add(historiqueLayer);
+            stage.add(futurLayer);
+
+            stage.add(debugLayer);
+
+
+        }
+
+    </script>
+
 </body>
 </html>
