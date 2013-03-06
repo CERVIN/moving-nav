@@ -13,72 +13,63 @@
 </head>
 
 <body>
-
-
-
 	<div class="info">
     </div>
     <div id="myCarousel" class="contenu carousel slide" data-interval="false">
-    <ol class="carousel-indicators">
+     <!-- Carousel indicator -->
+  <ol class="carousel-indicators">
+  </ol>
+  <!-- Carousel item -->
+  <div class="carousel-inner"></div>
+  <!-- Carousel nav --> 
+  <a class="carousel-control left" href="#myCarousel" data-slide="prev">&lsaquo;</a> 
+  <a class="carousel-control right" href="#myCarousel" data-slide="next">&rsaquo;</a> </div>
+<div class="navigation"></div>
+     
+     <!--<div class="carousel-inner">-->
+       <!-- <div class="active item"><img src="images/7.jpg" width="auto" height="auto"/></div>
+        <div class="item"><img src="images/8.jpg" /></div>
+        <div class="item"><div class="imageCarrousel"><img src="images/3.jpg"/></div> <div class="textCarrousel"><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed non risus. Suspendisse lectus tortor, dignissim sit amet, adipiscing nec, ultricies sed, dolor. Cras elementum ultrices diam. Maecenas ligula massa, varius a, semper congue, euismod non, mi. Proin porttitor, orci nec nonummy molestie, enim est eleifend mi, non fermentum diam nisl sit amet erat. Duis semper. Duis arcu massa, scelerisque vitae, consequat in, pretium a, enim. Pellentesque congue. Ut in risus volutpat libero pharetra tempor. Cras vestibulum bibendum augue. Praesent egestas leo in pede. Praesent blandit odio eu enim. Pellentesque sed dui ut augue blandit sodales. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Aliquam nibh. Mauris ac mauris sed pede pellentesque fermentum. Maecenas adipiscing ante non diam sodales hendrerit. Ut velit mauris, egestas sed, gravida nec, ornare ut, mi. Aenean ut orci vel massa suscipit pulvinar.</p></div></div>-->
+</body>
+   
 		<script type="text/javascript">
-		
-		function getURLParameter(name) {
-            return decodeURIComponent((new RegExp('[?|&]' + name + '=' + '([^&;]+?)(&|#|;|$)').exec(location.search) || [, ""])[1].replace(/\+/g, '%20')) || null;
-		}
-	
-		var noeud = getURLParameter("noeud");
-		var parcoursid = getURLParameter("parcours");
-		
         function showData(data){
-		var datap = data.noeuds[noeud-1].parcours[0].legende;
-		//console.log(datap);
-        /*    var noeud = 18;
+            var noeud = 18;
             var nbrImage=0;
             var nbrVideo=0;
+			var idNoeud= 19;
             
+			
             for(var p in data.noeuds){
                 if (data.noeuds[p].id == noeud){
                     nbrImage=data.noeuds[noeud].data.images;
                     nbrVideo= data.noeuds[noeud].data.videos;
-                    alert(nbrImage);
-                    alert(nbrVideo);
                 }
             }
+			
 			if (data.noeuds[noeud].data.images != null){
-				for (var i in nbrImage){
-					var newli = document.createElement('li');
-					newli.attributes("data-target","#myCarousel");
-					
+
+				<!-- Carousel indicators -->
+				for (var i =0; i<nbrImage; i++){
+					var actif="";
+					if(i==0){actif="class= active"}else{actif=""};				
+					$('.carousel-indicators').append("<li data-target=#myCarousel data-slide-to="+i+" "+actif+"></li>");
 				}
-			}*/
-            
+	
+				<!-- Carousel items -->
+				for (var j=0; j<nbrImage; j++){
+					var actif="";
+					if (j==0){actif="active "}else{actif=""};
+					var image=j+1;
+					$('.carousel-inner').append("<div class=\""+actif+"item\"><img src=data/"+idNoeud+"/image"+image+".jpg width=auto height=auto/></div></div>");
+				}
+	    			
+			}
         }
    	 	</script>
-        
-      
-        <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
-        <li data-target="#myCarousel" data-slide-to="1"></li>
-        <li data-target="#myCarousel" data-slide-to="2"></li>
-      </ol>
-      <!-- Carousel items -->
-      <div class="carousel-inner">
-        <div class="active item"><img src="images/7.jpg" width="auto" height="auto"/></div>
-        <div class="item"><img src="images/8.jpg" /></div>
-        <div class="item"><div class="imageCarrousel"><img src="images/3.jpg"/></div> <<div class="textCarrousel"><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed non risus. Suspendisse lectus tortor, dignissim sit amet, adipiscing nec, ultricies sed, dolor. Cras elementum ultrices diam. Maecenas ligula massa, varius a, semper congue, euismod non, mi. Proin porttitor, orci nec nonummy molestie, enim est eleifend mi, non fermentum diam nisl sit amet erat. Duis semper. Duis arcu massa, scelerisque vitae, consequat in, pretium a, enim. Pellentesque congue. Ut in risus volutpat libero pharetra tempor. Cras vestibulum bibendum augue. Praesent egestas leo in pede. Praesent blandit odio eu enim. Pellentesque sed dui ut augue blandit sodales. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Aliquam nibh. Mauris ac mauris sed pede pellentesque fermentum. Maecenas adipiscing ante non diam sodales hendrerit. Ut velit mauris, egestas sed, gravida nec, ornare ut, mi. Aenean ut orci vel massa suscipit pulvinar.</p></div></div>
-      </div>
-      <!-- Carousel nav -->
-      <a class="carousel-control left" href="#myCarousel" data-slide="prev">&lsaquo;</a>
-      <a class="carousel-control right" href="#myCarousel" data-slide="next">&rsaquo;</a>
-    </div>
-    <div class="navigation">
-     </div>
-    
-     
-<script>
+<script> 
 $(document).ready(
 	parser()
 );
-</script>
-     
-</body>
+</script> 
 </html>
