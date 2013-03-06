@@ -1,6 +1,15 @@
 // JavaScript Document
 
+function parser(url) {
+	$.ajax({
+    type: "GET",
+    url: url,
+    dataType: "json",
+    success: showData,
+	error: errorfunction
+	});
 
+}
 
 function parser(){
     $.ajax({
@@ -15,7 +24,7 @@ function parser(){
 
 function errorfunction(json)
 {
-	alert("Erreur, impossible de récupérer les données.");
+	alert("Erreur, impossible de r&eacutecup&eacuterer les donn&eacutees.");
 	
 }
 
