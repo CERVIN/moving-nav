@@ -39,14 +39,16 @@
 		}
 	
 		var noeudurl = getURLParameter("noeud");
-		alert(noeudurl);
 		
         function showData(data){
             var noeud = 18;
             var nbrImage=0;
             var nbrVideo=0;
 			var idNoeud= 19;
-            
+            var i =0;
+			var j=0;
+			var k=0;
+			var l=0;
 			
             for(var p in data.noeuds){
                 if (data.noeuds[p].id == noeudurl-1){
@@ -55,24 +57,56 @@
                 }
             }
 			
-			if (data.noeuds[noeudurl-1].data.images != null){
+			
+			//image
+			if (data.noeuds[noeudurl-1].data.images != null ){
 
 				<!-- Carousel indicators -->
-				for (var i =0; i<nbrImage; i++){
+				for (i =0; i<nbrImage; i++){
 					var actif="";
 					if(i==0){actif="class= active"}else{actif=""};				
 					$('.carousel-indicators').append("<li data-target=#myCarousel data-slide-to="+i+" "+actif+"></li>");
 				}
 	
 				<!-- Carousel items -->
-				for (var j=0; j<nbrImage; j++){
+				var image=j;
+				for (j=0; j<nbrImage; j++){
 					var actif="";
-					if (j==0){actif="active "}else{actif=""};
-					var image=j+1;
-					$('.carousel-inner').append("<div class=\""+actif+"item\"><img src=data/"+noeudurl+"/image"+image+".jpg width=auto height=auto/></div></div>");
-				}
-	    			
+					 image=j+1;
+					if (j==0){
+						actif="active ";
+						$('.carousel-inner').append("<div class=\""+actif+"item\"><div class=imageCarrousel><img src=data/"+noeudurl+"/image"+image+".jpg width=auto height=auto/></div> <div class=textCarrousel><p></p></div></div>");
+						}
+						else{
+							actif="";
+							$('.carousel-inner').append("<div class=\""+actif+"item\"><img src=data/"+noeudurl+"/image"+image+".jpg width=auto height=auto/></div>");
+						}
+					
+				}			
 			}
+			
+			//video
+			if(data.noeuds[noeudurl-1].data.videos != null){
+				<!-- Carousel indicators -->
+				nbrVideo=parseInt(nbrVideo)+i;
+				for (k=i; k<nbrVideo; k++){
+					var actif="";
+					if(k==0){actif="class= active"}else{actif=""};				
+					$('.carousel-indicators').append("<li data-target=#myCarousel data-slide-to="+k+" "+actif+"></li>");
+				}
+				
+				<!-- Carousel items -->
+				var adrVideo=1;
+				for (l=j; l<nbrVideo; l++){
+					var actif="";
+					if (l==0){actif="active "}else{actif=""};
+					$('.carousel-inner').append("<div class=\""+actif+"item\"><video controls=controls width=400 height=222><source src=data/"+noeudurl+"/video"+adrVideo+".mp4 type=video/mp4 /><source src=video1.webm type=video/webm /><source src=video1.ogv type=video/ogg /></video></div></div>");	
+					adrVideo++;
+				}	
+			}
+			
+			
+			$('.textCarrousel p').load('data/'+noeudurl+'/resume.txt');
         }
    	 	</script>
 <script> 
