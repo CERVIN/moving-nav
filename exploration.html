@@ -187,6 +187,7 @@
 
             var nbrImage = noeud.data.images;
             var nbrVideo = noeud.data.videos;
+			var name = noeud.data.nom;
             var i =0;
             var j=0;
             var k=0;
@@ -245,7 +246,7 @@
 			
 			
             $('.textCarrousel p').load('data/' + noeud.id + '/resume.txt');
-
+			$('.info').append("<p>"+parcours.nom+" - "+name+"<p>");
 
 
             /* Création de la scène */
