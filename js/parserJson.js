@@ -24,7 +24,7 @@ function parser(){
 
 function errorfunction(json)
 {
-	alert("Erreur, impossible de r&eacutecup&eacuterer les donn&eacutees.");
+	alert("Erreur, impossible de récupérer les données.");
 	
 }
 
