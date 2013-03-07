@@ -253,10 +253,12 @@
 
             /* Création de la scène */
 
+			
+
             var stage = new Kinetic.Stage({
                 container: 'container',
                 width: document.body.clientWidth,
-                height: 200
+                height: $(".navigation").height()
             });
 
             function writeMessage(messageLayer, message) {
@@ -316,7 +318,7 @@
             var parcoursLine = new Kinetic.Line({
                 points: [0, stage.getHeight() / 3, stage.getWidth(), stage.getHeight() / 3],
                 stroke: COLOR1,
-                strokeWidth: 15
+                strokeWidth: 10
             });
 
             var imageIndiceDrag= new Image();
@@ -494,7 +496,7 @@
                 }
 
                 var rond = new Kinetic.Circle({
-                    x: stage.getWidth() / 3 - ((precedentParcours.length + 1) * 200),
+                    x: stage.getWidth() / 3 - ((precedentParcours.length + 1) * 100),
                     y: stage.getHeight() / 3,
                     radius: 20,
                     fill: colorNoeud,
@@ -505,11 +507,11 @@
                 var texteAAfficher = formatNameByLength(noeudHisto.data.nom, 10)
 
                 var texte = new Kinetic.Text({
-                    x: stage.getWidth() / 3 - ((precedentParcours.length + 1) * 200) - (texteAAfficher.length / 2) * 10,
-                    y: stage.getHeight() / 3 - 60,
+                    x: stage.getWidth() / 3 - ((precedentParcours.length + 1) * 100) - (texteAAfficher.length / 2) * 10,
+                    y: stage.getHeight() / 3 - 44,
                     text: texteAAfficher,
                     fill: TEXTCOLOR,
-                    fontSize: 30,
+                    fontSize: 20,
                     fontFamily: 'Calibri'
                 });
 
@@ -561,10 +563,10 @@
 
             var texteNoeud = new Kinetic.Text({
                 x: stage.getWidth() / 2 - (noeud.data.nom.length / 2) * 10,
-                y: stage.getHeight() / 3 - 60,
+                y: stage.getHeight() / 3 - 44,
                 text: noeud.data.nom,
                 fill: TEXTCOLOR,
-                fontSize: 30,
+                fontSize: 20,
                 fontFamily: 'Calibri'
             });
 
@@ -586,7 +588,7 @@
                                 name: noeud.voisins[v].id
                             });
                             voisinSimple.add(new Kinetic.Rect({
-                                x: stage.getWidth() / 3 * 2 + ((suiteParcours.length) * 200),
+                                x: stage.getWidth() / 3 * 2 + ((suiteParcours.length) * 100),
                                 y: stage.getHeight() / 3,
                                 fill: COLORDEFAULT,
                                 width: 200,
@@ -595,12 +597,12 @@
                             }));
                             voisinSimple.add(new Kinetic.Line({
                                 name: "line",
-                                points: [stage.getWidth() / 3 * 2 + ((suiteParcours.length) * 200), stage.getHeight() / 3, stage.getWidth() / 3 * 2 + ((suiteParcours.length + 1) * 200), (stage.getHeight() / 6) * 5],
+                                points: [stage.getWidth() / 3 * 2 + ((suiteParcours.length) * 100), stage.getHeight() / 3, stage.getWidth() / 3 * 2 + ((suiteParcours.length + 1) * 100), (stage.getHeight() / 6) * 5],
                                 stroke: COLORDEFAULT,
-                                strokeWidth: 15,
+                                strokeWidth: 10,
                             }));
                             voisinSimple.add(new Kinetic.Circle({
-                                x: stage.getWidth() / 3 * 2 + ((suiteParcours.length + 1) * 200),
+                                x: stage.getWidth() / 3 * 2 + ((suiteParcours.length + 1) * 100),
                                 y: (stage.getHeight() / 6) * 5,
                                 radius: 20,
                                 fill: COLORDEFAULT,
@@ -609,11 +611,11 @@
                             }));
                             var texteAAfficher = formatNameByLength(monVoisin.data.nom, 10)
                             voisinSimple.add(new Kinetic.Text({
-                                x: stage.getWidth() / 3 * 2 + ((suiteParcours.length + 1) * 200) - (texteAAfficher.length / 2) * 10,
-                                y: (stage.getHeight() / 6) * 5 - 50,
+                                x: stage.getWidth() / 3 * 2 + ((suiteParcours.length + 1) * 100) - (texteAAfficher.length / 2) * 10,
+                                y: (stage.getHeight() / 6) * 5 - 44,
                                 text: texteAAfficher,
                                 fill: TEXTCOLOR,
-                                fontSize: 30,
+                                fontSize: 20,
                                 fontFamily: 'Calibri'
                             }));
                             voisinSimple.on("click tap", function () {
@@ -664,7 +666,7 @@
 
 
                 var rond = new Kinetic.Circle({
-                    x: stage.getWidth() / 3 * 2 + ((suiteParcours.length ) * 200),
+                    x: stage.getWidth() / 3 * 2 + ((suiteParcours.length ) * 100),
                     y: stage.getHeight() / 3,
                     radius: 20,
                     fill: COLOR1,
@@ -675,11 +677,11 @@
                 var texteAAfficher = formatNameByLength(noeudSuivant.data.nom, 10)
 
                 var texte = new Kinetic.Text({
-                    x: stage.getWidth() / 3 * 2 + ((suiteParcours.length ) * 200) - (texteAAfficher.length / 2) * 10,
-                    y: stage.getHeight() / 3 - 60,
+                    x: stage.getWidth() / 3 * 2 + ((suiteParcours.length ) * 100) - (texteAAfficher.length / 2) * 10,
+                    y: stage.getHeight() / 3 - 44,
                     text: texteAAfficher,
                     fill: TEXTCOLOR,
-                    fontSize: 30,
+                    fontSize: 20,
                     fontFamily: 'Calibri'
                 });
 
