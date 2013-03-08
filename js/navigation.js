@@ -46,7 +46,6 @@ function createNavigation(data, noeud, parcours, historique, TEXTCOLOR, COLOR1, 
 
     });
 
-
     var zoneSelection = new Kinetic.Rect({
         x: stage.getWidth() / 3,
         y: 0,
@@ -66,8 +65,6 @@ function createNavigation(data, noeud, parcours, historique, TEXTCOLOR, COLOR1, 
         opacity: 0
 
     });
-
-
 
     var parcoursLine = new Kinetic.Line({
         points: [0, stage.getHeight() / 3, stage.getWidth(), stage.getHeight() / 3],
@@ -99,92 +96,40 @@ function createNavigation(data, noeud, parcours, historique, TEXTCOLOR, COLOR1, 
 
     /* Marqueurs de contenu caché */
 
-    var pointilleGauche = new Kinetic.Group();
-
-    var flecheGauche = new Kinetic.RegularPolygon({
-        x: (stage.getWidth() / 3),
-        y: stage.getHeight() / 3,
-        sides: 3,
-        radius: 20,
-        fill: 'white',
-        stroke: COLOR1,
-        strokeWidth: 2,
-        rotationDeg: 90
-    });
-
-    var flecheGauche2 = new Kinetic.RegularPolygon({
-        x: (stage.getWidth() / 3) + 30,
-        y: stage.getHeight() / 3,
-        sides: 3,
-        radius: 20,
-        fill: 'white',
-        stroke: COLOR1,
-        strokeWidth: 2,
-        rotationDeg: 90
-    });
-
-    pointilleGauche.add(flecheGauche);
-    pointilleGauche.add(flecheGauche2);
+    var pointilleGauche = createHiddenSprite(COLOR1, 'white', 90, stage);
     pointilleGauche.setOpacity(0);
 
     var pointilleDroite = new Kinetic.Group();
 
-    var flecheDroite = new Kinetic.RegularPolygon({
-        x: (stage.getWidth() / 3) * 2,
-        y: stage.getHeight() / 3,
-        sides: 3,
-        radius: 20,
-        fill: 'white',
-        stroke: COLOR1,
-        strokeWidth: 2,
-        rotationDeg: 270
-    });
-
-    var flecheDroite2 = new Kinetic.RegularPolygon({
-        x: (stage.getWidth() / 3) * 2 - 30,
-        y: stage.getHeight() / 3,
-        sides: 3,
-        radius: 20,
-        fill: 'white',
-        stroke: COLOR1,
-        strokeWidth: 2,
-        rotationDeg: 270
-    });
-
-
-    pointilleDroite.add(flecheDroite);
-    pointilleDroite.add(flecheDroite2);
+    var flecheDroite = createHiddenSprite(COLOR1, 'white', 270, stage);
     pointilleDroite.setOpacity(0);
 
-
     /* Zones draggable */
-
     var lastDrag = [-1, -1];
-
     var suiteParcours = [];
     var precedentParcours = [];
 
     zoneHistorique.on('mousedown touchstart', function () {
-        startDrag(zoneHistorique, historiqueLayer, precedentParcours, (stage.getWidth() / 3), false, pointilleGauche);
+        startDrag(zoneHistorique, historiqueLayer, precedentParcours, (stage.getWidth() / 3), false, pointilleGauche, lastDrag, stage, selectionLayer);
     });
 
     zoneHistorique.on('mouseup mouseout touchend', function () {
-        stopDrag(zoneHistorique);
+        stopDrag(zoneHistorique, lastDrag);
     });
 
     zoneFutur.on('mousedown touchstart', function () {
-        startDrag(zoneFutur, futurLayer, suiteParcours, (stage.getWidth() / 3) * 2, true, pointilleDroite);
+        startDrag(zoneFutur, futurLayer, suiteParcours, (stage.getWidth() / 3) * 2, true, pointilleDroite, lastDrag, stage, selectionLayer);
     });
 
     zoneFutur.on('mouseup mouseout touchend', function () {
-        stopDrag(zoneFutur);
+        stopDrag(zoneFutur, lastDrag);
     });
 
 
     /* Zone historique */
 
     for (var h = historique.length - 1; h >= 0 && historique.length != 0; h--) {
-        var noeudHisto = getNodeById(historique[h],data);
+        var noeudHisto = getNodeById(historique[h], data);
 
         var group = new Kinetic.Group({
             name: historique[h]
@@ -215,7 +160,6 @@ function createNavigation(data, noeud, parcours, historique, TEXTCOLOR, COLOR1, 
         group.on("click tap", function () {
             navigateTo(noeud, parcours, historique, this.getName());
         });
-
 
         group.add(texte);
         group.add(rond);
@@ -254,7 +198,6 @@ function createNavigation(data, noeud, parcours, historique, TEXTCOLOR, COLOR1, 
         fontFamily: 'Calibri'
     });
 
-
     /* Zone futur */
 
     // Récupération noeuds voisins
@@ -264,7 +207,7 @@ function createNavigation(data, noeud, parcours, historique, TEXTCOLOR, COLOR1, 
         var voisinSimple;
         var voisinParcours;
         for (var v in noeud.voisins) {
-            var monVoisin = getNodeById(noeud.voisins[v].id,data);
+            var monVoisin = getNodeById(noeud.voisins[v].id, data);
             if (monVoisin.parcours.length == 0) {
                 if (nbVoisinsSimple == 0) {
                     //Création du lien
@@ -324,17 +267,16 @@ function createNavigation(data, noeud, parcours, historique, TEXTCOLOR, COLOR1, 
     }
 
     // Récupération noeuds parcours
-
     var noeudParcoursPrecedent = noeud;
     var incrHisto = historique.length - 1;
     while (!isNodeParcours(noeudParcoursPrecedent, parcours.id) && incrHisto >= 0) {
         noeudParcoursPrecedent = getNodeById(historique[incrHisto--], data);
     }
-    if (!isNodeParcours(noeudParcoursPrecedent, parcours.id,data)) {
+    if (!isNodeParcours(noeudParcoursPrecedent, parcours.id, data)) {
         noeudParcoursPrecedent = getNodeById(parcours.debut, data);
     }
 
-    var suivant = getParcoursFromNode(noeudParcoursPrecedent, parcours.id,data).suivant;
+    var suivant = getParcoursFromNode(noeudParcoursPrecedent, parcours.id, data).suivant;
     while (suivant != -1) {
         var noeudSuivant = getNodeById(suivant, data);
         var group = new Kinetic.Group({
@@ -371,7 +313,7 @@ function createNavigation(data, noeud, parcours, historique, TEXTCOLOR, COLOR1, 
         group.add(rond);
 
         suiteParcours.push(group);
-        suivant = getParcoursFromNode(noeudSuivant, parcours.id,data).suivant;
+        suivant = getParcoursFromNode(noeudSuivant, parcours.id, data).suivant;
     }
 
     lineLayer.add(parcoursLine);
@@ -393,8 +335,6 @@ function createNavigation(data, noeud, parcours, historique, TEXTCOLOR, COLOR1, 
         futurLayer.add(suiteParcours[rond]);
     }
 
-
-
     stage.add(lineLayer);
     stage.add(selectionLayer);
     stage.add(historiqueLayer);
@@ -411,7 +351,7 @@ function writeMessage(messageLayer, message) {
     context.fillText(message, 10, 25);
 }
 
-function startDrag(zone, layer, obj, limite, cacherGauche, marqueur) {
+function startDrag(zone, layer, obj, limite, cacherGauche, marqueur, lastDrag, stage, selectionLayer) {
     zone.on('mousemove touchmove', function () {
         var mousePos = stage.getMousePosition();
         if (lastDrag[0] != -1 && lastDrag[1] != -1) {
@@ -459,7 +399,7 @@ function startDrag(zone, layer, obj, limite, cacherGauche, marqueur) {
     });
 }
 
-function stopDrag(zone) {
+function stopDrag(zone, lastDrag) {
     zone.off('mousemove touchmove');
     lastDrag[0] = -1;
     lastDrag[1] = -1;
@@ -469,11 +409,42 @@ function stopDrag(zone) {
 function navigateTo(noeud, parcours, historique, idToNavigate) {
     var url = "exploration.html?parcours=" + parcours.id + "&noeud=" + idToNavigate + "&historique=";
     for (var h in historique) {
-        if (historique[h] != idToNavigate) {               
+        if (historique[h] != idToNavigate) {
             url += historique[h];
             url += "N";
         }
     }
     url += noeud.id;
     window.location = url;
+}
+
+/** Retourne le signe qui indique que le plan a été scrollé **/
+function createHiddenSprite(strokeColor, inColor, rotation, stage) {
+    var pointille = new Kinetic.Group();
+
+    var fleche = new Kinetic.RegularPolygon({
+        x: (stage.getWidth() / 3),
+        y: stage.getHeight() / 3,
+        sides: 3,
+        radius: 20,
+        fill: inColor,
+        stroke: strokeColor,
+        strokeWidth: 2,
+        rotationDeg: rotation
+    });
+
+    var fleche2 = new Kinetic.RegularPolygon({
+        x: (stage.getWidth() / 3) + 30,
+        y: stage.getHeight() / 3,
+        sides: 3,
+        radius: 20,
+        fill: inColor,
+        stroke: strokeColor,
+        strokeWidth: 2,
+        rotationDeg: rotation
+    });
+
+    pointille.add(fleche);
+    pointille.add(fleche2);
+    return pointille;
 }
