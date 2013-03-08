@@ -60,7 +60,7 @@ function isNodeParcours(node, id, data) {
 
 function getInfoVoisinFromNode(node, idVoisin, data) {
     for (var p in node.voisins) {
-        if (node.voisins[p].id == id) {
+        if (node.voisins[p].id == idVoisin) {
             return node.voisins[p];
             break;
         }
