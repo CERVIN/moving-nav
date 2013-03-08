@@ -4,7 +4,7 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <script type="text/javascript" src="js/kinetic-v4.3.3.min.js"></script>
     <script type="text/javascript" src="js/jquery-1.9.1.min.js"></script>
-    <script type="text/javascript" src="js/parserJson.js"></script>
+    <script type="text/javascript" src="js/data.js"></script>
     <script type="text/javascript" src="js/parametres.js"></script>
     <script type="text/javascript" src="js/carousel.js"></script>
     <script type="text/javascript" src="js/navigation.js"></script>
@@ -100,7 +100,7 @@
             var historique = getHistorique();
 
             /* Création du carroussel */
-            createCarousel(data,noeud,parcours);
+            createCarousel(data,noeud,parcours,historique);
 
             /* Création de la scène */
             createNavigation(data, noeud, parcours, historique);

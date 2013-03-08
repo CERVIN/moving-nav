@@ -1,7 +1,8 @@
-﻿function createCarousel(data, noeud, parcours) {
+﻿function createCarousel(data, noeud, parcours, historique) {
     var nbrImage = noeud.data.images;
     var nbrVideo = noeud.data.videos;
     var name = noeud.data.nom;
+   
     var i = 0;
     var j = 0;
     var k = 0;
@@ -24,7 +25,7 @@
             image = j + 1;
             if (j == 0) {
                 actif = "active ";
-                $('.carousel-inner').append("<div class=\"" + actif + "item\"><div class=imageCarrousel><img src=data/" + noeud.id + "/image" + image + ".jpg width=auto height=auto/></div> <div class=textCarrousel><p></p></div></div>");
+                $('.carousel-inner').append("<div class=\"" + actif + "item\"><div class=imageCarrousel><img src=data/" + noeud.id + "/image" + image + ".jpg width=auto height=auto/></div> <div class=textCarrousel><p><span class=legende></span><span class=resume></span></p></div></div>");
             }
             else {
                 actif = "";
@@ -58,8 +59,24 @@
             adrVideo++;
         }
     }
+    //lien
+    if (historique.length != 0) {
+        var parent = getNodeById(historique[historique.length - 1], data);
+        var legende;
+        if (isNodeParcours(parent, parcours.id, data)) {
+           legende = getParcoursFromNode(parent, parcours.id, data).legende;
+        } else {
+            var info = getInfoVoisinFromNode(parent, noeud.id, data);
+            if (info != null) {
+                legende = info.legende;
+            }
+        }
+        if (legende != null) {
+            $('.textCarrousel p .legende').append(legende+"<br/>");
+        }
+    }
 
-
-    $('.textCarrousel p').load('data/' + noeud.id + '/resume.txt');
+    //Resume
+    $('.textCarrousel p .resume').load('data/' + noeud.id + '/resume.txt');
     $('.info').append("<p>" + parcours.nom + " - " + name + "<p>");
 }
