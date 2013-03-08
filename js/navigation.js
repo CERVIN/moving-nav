@@ -164,60 +164,6 @@ function createNavigation(data, noeud, parcours, historique, TEXTCOLOR, COLOR1, 
     var suiteParcours = [];
     var precedentParcours = [];
 
-    function startDrag(zone, layer, obj, limite, cacherGauche, marqueur) {
-        zone.on('mousemove touchmove', function () {
-            var mousePos = stage.getMousePosition();
-            if (lastDrag[0] != -1 && lastDrag[1] != -1) {
-                //writeMessage(debugLayer, "" + obj[0].children[0].getPosition().x + " - " + obj[0].children[0].getY());
-
-                for (var o in obj) {
-                    //obj[o].move(mousePos.x - lastDrag[0], 0);
-                    for (var child in obj[o].children) {
-                        if (obj[o].children[child].getName() == "line") {
-                            var points = obj[o].children[child].getPoints();
-                            points[0].x += mousePos.x - lastDrag[0];
-                            points[1].x += mousePos.x - lastDrag[0];
-                            obj[o].children[child].setPoints(points);
-                        } else {
-                            obj[o].children[child].move(mousePos.x - lastDrag[0], 0);
-                        }
-                    }
-                    if ((!cacherGauche && obj[o].children[0].getX() + obj[o].children[0].getWidth() > limite) || (cacherGauche && obj[o].children[0].getX() < limite)) {
-                        if (o == 0) {
-                            marqueur.setOpacity(1);
-                        }
-                        if ((cacherGauche && Math.abs(obj[o].children[0].getX() - limite) > obj[o].children[0].getWidth()) || (!cacherGauche && obj[o].children[0].getX() > limite)) {
-                            obj[o].setOpacity(0);
-                        } else {
-                            // Effet transparent
-                            var opacity = Math.abs(obj[o].children[0].getX() - limite) / obj[o].children[0].getWidth();
-                            if (cacherGauche) {
-                                opacity = 1 - opacity;
-                            }
-                            obj[o].setOpacity(opacity);
-                        }
-                    } else {
-                        if (o == 0) {
-                            marqueur.setOpacity(0);
-                        }
-                        obj[o].setOpacity(1);
-                    }
-
-                }
-                layer.draw();
-                selectionLayer.draw();
-            }
-            lastDrag[0] = mousePos.x;
-            lastDrag[1] = mousePos.y;
-        });
-    }
-
-    function stopDrag(zone) {
-        zone.off('mousemove touchmove');
-        lastDrag[0] = -1;
-        lastDrag[1] = -1;
-    }
-
     zoneHistorique.on('mousedown touchstart', function () {
         startDrag(zoneHistorique, historiqueLayer, precedentParcours, (stage.getWidth() / 3), false, pointilleGauche);
     });
@@ -267,15 +213,7 @@ function createNavigation(data, noeud, parcours, historique, TEXTCOLOR, COLOR1, 
         });
 
         group.on("click tap", function () {
-            historique.push(noeud.id);
-            var url = "exploration.html?parcours=" + parcours.id + "&noeud=" + this.getName() + "&historique=";
-            for (var h in historique) {
-                if (h != 0) {
-                    url += "N";
-                }
-                url += historique[h];
-            }
-            window.location = url;
+            navigateTo(noeud, parcours, historique, this.getName());
         });
 
 
@@ -365,20 +303,13 @@ function createNavigation(data, noeud, parcours, historique, TEXTCOLOR, COLOR1, 
                         fontFamily: 'Calibri'
                     }));
                     voisinSimple.on("click tap", function () {
-                        historique.push(noeud.id);
-                        var url = "exploration.html?parcours=" + parcours.id + "&noeud=" + this.getName() + "&historique=";
-                        for (var h in historique) {
-                            if (h != 0) {
-                                url += "N";
-                            }
-                            url += historique[h];
-                        }
-                        window.location = url;
+                        navigateTo(noeud, parcours, historique, this.getName());
                     });
                     suiteParcours.push(voisinSimple);
                     nbVoisinsSimple++;
                 } else {
-                    //TODO: MENU MULTI NOEUD
+                    //MENU MULTI NOEUD
+
                 }
             } else {
                 if (nbVoisinsParcours == 0) {
@@ -432,15 +363,7 @@ function createNavigation(data, noeud, parcours, historique, TEXTCOLOR, COLOR1, 
         });
 
         group.on("click tap", function () {
-            historique.push(noeud.id);
-            var url = "exploration.html?parcours=" + parcours.id + "&noeud=" + this.getName() + "&historique=";
-            for (var h in historique) {
-                if (h != 0) {
-                    url += "N";
-                }
-                url += historique[h];
-            }
-            window.location = url;
+            navigateTo(noeud, parcours, historique, this.getName());
         });
 
 
@@ -486,4 +409,71 @@ function writeMessage(messageLayer, message) {
     context.font = '18pt Calibri';
     context.fillStyle = TEXTCOLOR;
     context.fillText(message, 10, 25);
+}
+
+function startDrag(zone, layer, obj, limite, cacherGauche, marqueur) {
+    zone.on('mousemove touchmove', function () {
+        var mousePos = stage.getMousePosition();
+        if (lastDrag[0] != -1 && lastDrag[1] != -1) {
+            //writeMessage(debugLayer, "" + obj[0].children[0].getPosition().x + " - " + obj[0].children[0].getY());
+
+            for (var o in obj) {
+                //obj[o].move(mousePos.x - lastDrag[0], 0);
+                for (var child in obj[o].children) {
+                    if (obj[o].children[child].getName() == "line") {
+                        var points = obj[o].children[child].getPoints();
+                        points[0].x += mousePos.x - lastDrag[0];
+                        points[1].x += mousePos.x - lastDrag[0];
+                        obj[o].children[child].setPoints(points);
+                    } else {
+                        obj[o].children[child].move(mousePos.x - lastDrag[0], 0);
+                    }
+                }
+                if ((!cacherGauche && obj[o].children[0].getX() + obj[o].children[0].getWidth() > limite) || (cacherGauche && obj[o].children[0].getX() < limite)) {
+                    if (o == 0) {
+                        marqueur.setOpacity(1);
+                    }
+                    if ((cacherGauche && Math.abs(obj[o].children[0].getX() - limite) > obj[o].children[0].getWidth()) || (!cacherGauche && obj[o].children[0].getX() > limite)) {
+                        obj[o].setOpacity(0);
+                    } else {
+                        // Effet transparent
+                        var opacity = Math.abs(obj[o].children[0].getX() - limite) / obj[o].children[0].getWidth();
+                        if (cacherGauche) {
+                            opacity = 1 - opacity;
+                        }
+                        obj[o].setOpacity(opacity);
+                    }
+                } else {
+                    if (o == 0) {
+                        marqueur.setOpacity(0);
+                    }
+                    obj[o].setOpacity(1);
+                }
+
+            }
+            layer.draw();
+            selectionLayer.draw();
+        }
+        lastDrag[0] = mousePos.x;
+        lastDrag[1] = mousePos.y;
+    });
+}
+
+function stopDrag(zone) {
+    zone.off('mousemove touchmove');
+    lastDrag[0] = -1;
+    lastDrag[1] = -1;
+}
+
+/** Change la page vers le noeud idToNavigate **/
+function navigateTo(noeud, parcours, historique, idToNavigate) {
+    var url = "exploration.html?parcours=" + parcours.id + "&noeud=" + idToNavigate + "&historique=";
+    for (var h in historique) {
+        if (historique[h] != idToNavigate) {               
+            url += historique[h];
+            url += "N";
+        }
+    }
+    url += noeud.id;
+    window.location = url;
 }
