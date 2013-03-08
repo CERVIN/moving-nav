@@ -8,15 +8,24 @@
     var k = 0;
     var l = 0;
 
-
+	if (nbrVideo == null){
+		nbrVideo="0";
+	}
+	if (nbrImage == null){
+		nbrImage="0";
+	}
     //image
-    if (nbrImage != null) {
-
-        for (i = 0; i < nbrImage; i++) {
-            var actif = "";
-            if (i == 0) { actif = "class= active" } else { actif = "" };
-            $('.carousel-indicators').append("<li data-target=#myCarousel data-slide-to=" + i + " " + actif + "></li>");
-        }
+    if (nbrImage != "0") {
+		if(parseInt(nbrImage) + parseInt(nbrVideo) == 1){
+			$('.carousel-indicators').append("");
+		}
+		else{
+			for (i = 0; i < nbrImage; i++) {
+				var actif = "";
+				if (i == 0) { actif = "class= active" } else { actif = "" };
+				$('.carousel-indicators').append("<li data-target=#myCarousel data-slide-to=" + i + " " + actif + "></li>");
+			}
+		}
 
         var image = j;
         for (j = 0; j < nbrImage; j++) {
@@ -42,15 +51,33 @@
 
 
     }
+	
+	else{
+		if (i == 0) { actif = "class= active" } else { actif = "" };
+		if(nbrImage + nbrVideo <2){
+			$('.carousel-indicators').append("");
+		}
+		else{
+			$('.carousel-indicators').append("<li data-target=#myCarousel data-slide-to=" + i + " " + actif + "></li>");
+		}	
+		$('.carousel-inner').append("<div class=\"" + actif + "item\"><div class=textCarrousel><p><span class=legende></span><span class=resume></span></p></div></div>");
+	
+		
+	}
 
     //video
-    if (nbrVideo != null) {
-        nbrVideo = parseInt(nbrVideo) + i;
-        for (k = i; k < nbrVideo; k++) {
-            var actif = "";
-            if (k == 0) { actif = "class= active" } else { actif = "" };
-            $('.carousel-indicators').append("<li data-target=#myCarousel data-slide-to=" + k + " " + actif + "></li>");
-        }
+    if (nbrVideo != 0) {
+		if(nbrImage + nbrVideo == 1){
+			$('.carousel-indicators').append("");
+		}
+		else{
+			nbrVideo = parseInt(nbrVideo) + i;
+			for (k = i; k < nbrVideo; k++) {
+				var actif = "";
+				if (k == 0) { actif = "class= active" } else { actif = "" };
+				$('.carousel-indicators').append("<li data-target=#myCarousel data-slide-to=" + k + " " + actif + "></li>");
+			}
+		}
 
         var adrVideo = 1;
         for (l = j; l < nbrVideo; l++) {
@@ -76,6 +103,12 @@
             $('.textCarrousel p .legende').append(legende+"<br/>");
         }
     }
+	
+	if(parseInt(nbrImage) + parseInt(nbrVideo) < 2){
+			document.getElementById('myCarousel').removeChild(document.getElementById('controlLeft'));
+			document.getElementById('myCarousel').removeChild(document.getElementById('controlRight'));
+		}
+
 
     //Resume
     $('.textCarrousel p .resume').load('data/' + noeud.id + '/resume.txt');
