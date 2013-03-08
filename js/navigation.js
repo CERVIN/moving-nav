@@ -1,34 +1,4 @@
-﻿function getNodeById(id, data) {
-    for (var p in data.noeuds) {
-        if (data.noeuds[p].id == id) {
-            return data.noeuds[p];
-            break;
-        }
-    }
-    return null;
-}
-
-function getParcoursFromNode(node, id,data) {
-    for (var p in node.parcours) {
-        if (node.parcours[p].id == id) {
-            return node.parcours[p];
-            break;
-        }
-    }
-    return null;
-}
-
-function isNodeParcours(node, id,data) {
-    for (var p in node.parcours) {
-        if (node.parcours[p].id == id) {
-            return true;
-            break;
-        }
-    }
-    return false;
-}
-
-function formatNameByLength(name, length) {
+﻿function formatNameByLength(name, length) {
     if (name.length <= length) {
         return name;
     } else {
@@ -37,12 +7,15 @@ function formatNameByLength(name, length) {
 }
 
 function createNavigation(data, noeud, parcours, historique, TEXTCOLOR, COLOR1, COLOR2, COLORDEFAULT, STROKECOLOR) {
-    /* PARAMETRES COULEURS */
+    /* PARAMETRES */
     var TEXTCOLOR = "white";
     var COLOR1 = parcours.couleur1;
     var COLOR2 = parcours.couleur2;
     var COLORDEFAULT = '#F58F00';
     var STROKECOLOR = 'black';
+    var ESPACE_ENTRE_NOEUD = 150;
+    var NB_CHAR_MAX = 15;
+
 
     /* Scene */
     var stage = new Kinetic.Stage({
@@ -272,12 +245,9 @@ function createNavigation(data, noeud, parcours, historique, TEXTCOLOR, COLOR1, 
         });
 
         var colorNoeud = COLOR1;
-        if (noeudHisto.parcours.length == 0) {
-            colorNoeud = COLORDEFAULT;
-        }
 
         var rond = new Kinetic.Circle({
-            x: stage.getWidth() / 3 - ((precedentParcours.length + 1) * 100),
+            x: stage.getWidth() / 3 - ((precedentParcours.length + 1) * ESPACE_ENTRE_NOEUD),
             y: stage.getHeight() / 3,
             radius: 20,
             fill: colorNoeud,
@@ -285,10 +255,10 @@ function createNavigation(data, noeud, parcours, historique, TEXTCOLOR, COLOR1, 
             strokeWidth: 2
         });
 
-        var texteAAfficher = formatNameByLength(noeudHisto.data.nom, 10)
+        var texteAAfficher = formatNameByLength(noeudHisto.data.nom, NB_CHAR_MAX)
 
         var texte = new Kinetic.Text({
-            x: stage.getWidth() / 3 - ((precedentParcours.length + 1) * 100) - (texteAAfficher.length / 2) * 10,
+            x: stage.getWidth() / 3 - ((precedentParcours.length + 1) * ESPACE_ENTRE_NOEUD) - (texteAAfficher.length / 2) * 10,
             y: stage.getHeight() / 3 - 44,
             text: texteAAfficher,
             fill: TEXTCOLOR,
@@ -319,9 +289,6 @@ function createNavigation(data, noeud, parcours, historique, TEXTCOLOR, COLOR1, 
 
     /* Zone selection */
     var colorNoeud = COLOR1;
-    if (noeud.parcours.length == 0) {
-        colorNoeud = COLORDEFAULT;
-    }
 
     var rondNoeud = new Kinetic.Circle({
         x: stage.getWidth() / 2,
@@ -367,30 +334,30 @@ function createNavigation(data, noeud, parcours, historique, TEXTCOLOR, COLOR1, 
                         name: noeud.voisins[v].id
                     });
                     voisinSimple.add(new Kinetic.Rect({
-                        x: stage.getWidth() / 3 * 2 + ((suiteParcours.length) * 100),
+                        x: stage.getWidth() / 3 * 2 + ((suiteParcours.length) * ESPACE_ENTRE_NOEUD),
                         y: stage.getHeight() / 3,
-                        fill: COLORDEFAULT,
+                        fill: COLOR1,
                         width: 200,
                         height: (stage.getHeight() / 6) * 5 - stage.getHeight() / 3,
                         opacity: 0
                     }));
                     voisinSimple.add(new Kinetic.Line({
                         name: "line",
-                        points: [stage.getWidth() / 3 * 2 + ((suiteParcours.length) * 100), stage.getHeight() / 3, stage.getWidth() / 3 * 2 + ((suiteParcours.length + 1) * 100), (stage.getHeight() / 6) * 5],
-                        stroke: COLORDEFAULT,
+                        points: [stage.getWidth() / 3 * 2 + ((suiteParcours.length) * ESPACE_ENTRE_NOEUD), stage.getHeight() / 3, stage.getWidth() / 3 * 2 + ((suiteParcours.length + 1) * ESPACE_ENTRE_NOEUD), (stage.getHeight() / 6) * 5],
+                        stroke: COLOR1,
                         strokeWidth: 10,
                     }));
                     voisinSimple.add(new Kinetic.Circle({
-                        x: stage.getWidth() / 3 * 2 + ((suiteParcours.length + 1) * 100),
+                        x: stage.getWidth() / 3 * 2 + ((suiteParcours.length + 1) * ESPACE_ENTRE_NOEUD),
                         y: (stage.getHeight() / 6) * 5,
                         radius: 20,
-                        fill: COLORDEFAULT,
+                        fill: COLOR1,
                         stroke: STROKECOLOR,
                         strokeWidth: 2
                     }));
-                    var texteAAfficher = formatNameByLength(monVoisin.data.nom, 10)
+                    var texteAAfficher = formatNameByLength(monVoisin.data.nom, NB_CHAR_MAX)
                     voisinSimple.add(new Kinetic.Text({
-                        x: stage.getWidth() / 3 * 2 + ((suiteParcours.length + 1) * 100) - (texteAAfficher.length / 2) * 10,
+                        x: stage.getWidth() / 3 * 2 + ((suiteParcours.length + 1) * ESPACE_ENTRE_NOEUD) - (texteAAfficher.length / 2) * 10,
                         y: (stage.getHeight() / 6) * 5 - 44,
                         text: texteAAfficher,
                         fill: TEXTCOLOR,
@@ -445,7 +412,7 @@ function createNavigation(data, noeud, parcours, historique, TEXTCOLOR, COLOR1, 
 
 
         var rond = new Kinetic.Circle({
-            x: stage.getWidth() / 3 * 2 + ((suiteParcours.length) * 100),
+            x: stage.getWidth() / 3 * 2 + ((suiteParcours.length) * ESPACE_ENTRE_NOEUD),
             y: stage.getHeight() / 3,
             radius: 20,
             fill: COLOR1,
@@ -453,10 +420,10 @@ function createNavigation(data, noeud, parcours, historique, TEXTCOLOR, COLOR1, 
             strokeWidth: 2
         });
 
-        var texteAAfficher = formatNameByLength(noeudSuivant.data.nom, 10)
+        var texteAAfficher = formatNameByLength(noeudSuivant.data.nom, NB_CHAR_MAX)
 
         var texte = new Kinetic.Text({
-            x: stage.getWidth() / 3 * 2 + ((suiteParcours.length) * 100) - (texteAAfficher.length / 2) * 10,
+            x: stage.getWidth() / 3 * 2 + ((suiteParcours.length) * ESPACE_ENTRE_NOEUD) - (texteAAfficher.length / 2) * 10,
             y: stage.getHeight() / 3 - 44,
             text: texteAAfficher,
             fill: TEXTCOLOR,
