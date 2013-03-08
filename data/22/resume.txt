@@ -1,1 +1,1 @@
-J�richo execute directement des programmes InterLisp
+﻿Jéricho execute directement des programmes InterLisp
