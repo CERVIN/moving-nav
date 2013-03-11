@@ -1,7 +1,7 @@
-Machine classée au titre des monuments historiques en 2005.
+ï»¿Machine classÃ©e au titre des monuments historiques en 2005.
 
-Le calculateur analogique SEA OME P2 est constitué d"un grand bati vertical portant :
-- au dos les amplificateurs à courant continu (tubes électroniques apparents)
-- sur l'avant l'ensemble des potentiométres permettant de fixer les coefficients, les platines recevant les éléments "non linéaires" (selfs et condensateurs) et les panneaux d'interconnexion permettant de relier tous les éléments entre eux.
+Le calculateur analogique SEA OME P2 est constituÃ© d"un grand bati vertical portant :
+- au dos les amplificateurs Ã  courant continu (tubes Ã©lectroniques apparents)
+- sur l'avant l'ensemble des potentiomÃ©tres permettant de fixer les coefficients, les platines recevant les Ã©lÃ©ments "non linÃ©aires" (selfs et condensateurs) et les panneaux d'interconnexion permettant de relier tous les Ã©lÃ©ments entre eux.
 
-Le calcul analogique est la première forme performante de calcul électronique. Il consiste à remplacer les valeurs étudiées par des courants électriques. Des amplificateurs permettent de faire les sommes et différences. Des éléments auxiliaires, selfs et condensateurs, permettent de simuler des phénomènes physiques "non linéaires".
+Le calcul analogique est la premiÃ¨re forme performante de calcul Ã©lectronique. Il consiste Ã  remplacer les valeurs Ã©tudiÃ©es par des courants Ã©lectriques. Des amplificateurs permettent de faire les sommes et diffÃ©rences. Des Ã©lÃ©ments auxiliaires, selfs et condensateurs, permettent de simuler des phÃ©nomÃ¨nes physiques "non linÃ©aires".
