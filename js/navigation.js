@@ -175,7 +175,7 @@ function createNavigation(data, noeud, parcours, historique, TEXTCOLOR, COLOR1, 
                     suiteParcours.push(voisinSimple);
                     // Création du popupMenu
                     popupMenu = createPopupMenu(popupStage, layerPopup, BACKGROUNDCOLOR, COLOR1);
-                    popupMenu.add(createLinePopupMenu(noeud, parcours, historique, popupStage, COLOR1, STROKECOLOR, TEXTCOLOR, popupMenu, monVoisin));
+                    popupMenu.children[1].add(createLinePopupMenu(noeud, parcours, historique, popupStage, COLOR1, STROKECOLOR, TEXTCOLOR, popupMenu, monVoisin));
 
                     nbVoisinsSimple++;
                 } else {
@@ -187,7 +187,7 @@ function createNavigation(data, noeud, parcours, historique, TEXTCOLOR, COLOR1, 
                         popupMenu.show();
                         layerPopup.draw();
                     });
-                    popupMenu.add(createLinePopupMenu(noeud, parcours, historique, popupStage, COLOR1, STROKECOLOR, TEXTCOLOR, popupMenu, monVoisin));
+                    popupMenu.children[1].add(createLinePopupMenu(noeud, parcours, historique, popupStage, COLOR1, STROKECOLOR, TEXTCOLOR, popupMenu, monVoisin));
                 }
             } else {
                 if (nbVoisinsParcours == 0) {
@@ -315,6 +315,16 @@ function createPopupMenu(stage,layer, BACKGROUNDCOLOR, COLOR1) {
 
     }));
     var groupCroix = new Kinetic.Group();
+    var groupNoeud = new Kinetic.Group({
+        draggable: true,
+        dragBoundFunc: function (pos) {
+            return {
+                x: this.getAbsolutePosition().x,
+                y: pos.y
+            }
+        }
+
+    });
     groupCroix.add(new Kinetic.Line({
         points: [stage.getWidth()- 40, 20, stage.getWidth() - 20, 40],
         stroke: COLOR1,
@@ -329,6 +339,7 @@ function createPopupMenu(stage,layer, BACKGROUNDCOLOR, COLOR1) {
         popupMenu.hide();
         layer.draw();
     });
+    popupMenu.add(groupNoeud);
     popupMenu.add(groupCroix);
     popupMenu.hide();
     return popupMenu;
@@ -339,7 +350,7 @@ function createLinePopupMenu(noeud, parcours, historique, stage, COLOR1, STROKEC
     var line = new Kinetic.Group();
     line.add(new Kinetic.Circle({
         x: 50,
-        y: (popupMenu.children.length -1)* 50,
+        y: (popupMenu.children[1].children.length +1)* 50,
         radius: 20,
         fill: COLOR1,
         stroke: STROKECOLOR,
@@ -347,7 +358,7 @@ function createLinePopupMenu(noeud, parcours, historique, stage, COLOR1, STROKEC
     }));
     line.add(new Kinetic.Text({
         x: 100,
-        y: (popupMenu.children.length - 1) * 50 -20,
+        y: (popupMenu.children[1].children.length +1) * 50 - 20,
         width: stage.getWidth() - 140,
         height: 50,
         text: monVoisin.data.nom,
@@ -356,7 +367,7 @@ function createLinePopupMenu(noeud, parcours, historique, stage, COLOR1, STROKEC
         fontFamily: 'Calibri'
     }));
 
-    line.on("click tap", function () {
+    line.children[0].on("click tap", function () {
         navigateTo(noeud, parcours, historique, monVoisin.id);
     });
 
