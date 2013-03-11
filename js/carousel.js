@@ -2,7 +2,9 @@
     var nbrImage = noeud.data.images;
     var nbrVideo = noeud.data.videos;
     var name = noeud.data.nom;
-   
+    $("#myCarousel").carousel({direction: "horizontal"});
+	
+	
     var i = 0;
     var j = 0;
     var k = 0;
@@ -112,5 +114,5 @@
 
     //Resume
     $('.textCarrousel p .resume').load('data/' + noeud.id + '/resume.txt');
-    $('.info').append("<p>" + parcours.nom + " - " + name + "<p>");
+    $('.info p').append(parcours.nom + " - " + name);
 }
