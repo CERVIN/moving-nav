@@ -62,14 +62,14 @@ transitionDuration: 250,
 dimmingOpacity: 0, // Lightbox style dimming background
 dimmingDuration: 50, // 0 for instant dimming
 
-anchor : 'top', // where the image expands from
-align : 'center', // position in the client (overrides anchor)
+anchor : 'auto', // where the image expands from
+align : 'auto', // position in the client (overrides anchor)
 targetX: null, // the id of a target element
 targetY: null,
 dragByHeading: true,
 minWidth: 200,
 minHeight: 200,
-allowSizeReduction: false, // allow the image to reduce to fit client size. If false, this overrides minWidth and minHeight
+allowSizeReduction: true, // allow the image to reduce to fit client size. If false, this overrides minWidth and minHeight
 outlineType : 'drop-shadow', // set null to disable outlines
 skin : {
 	controls:

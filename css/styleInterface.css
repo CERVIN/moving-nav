@@ -13,8 +13,14 @@ body {
   height: 100%;
   width:100%;
   margin: 0 auto;
+
 }
 
+.btnInfo{
+	float:left;
+	margin-top:2px;
+	margin-left:3px;
+}
 div.contenu{
 	height:60%;
 	background-color:#000;
@@ -22,6 +28,19 @@ div.contenu{
 	margin-left:auto;
 }
 
+#myCarousel ol{
+	right:6%;
+	top:3%;	
+}
+
+
+#myCarousel li{
+	background-color:#F00;
+}
+
+#myCarousel li.active{
+	background-color:#FFF;
+}
 
 
 .carousel-inner{
@@ -32,9 +51,11 @@ div.contenu{
 .imageCarrousel{
 	height:260px;
 	max-height:260px;
-	width:50%;
+	width:43%;
 	float:left;
 	text-align:center;
+	margin-top: 3%;
+	margin-left: 6%;
 }
 
 .textCarrousel{
@@ -42,17 +63,42 @@ div.contenu{
 	float:right;
 	text-align:justify;
 	color:#FFFFFF;
+	margin-top: 2%;
 	
 }
 
 .textCarrousel p{
-	padding: 6% 10% 0% 2%;
+	padding: 2% 10% 0% 2%;
 	height:260px;
 	max-height:260px;
 	overflow-y: auto;
 	font-size:20px;
-	
+}
 
+.textOnly{
+	width:76%;
+	margin-left: 18%;
+	text-align:justify;
+	color:#FFFFFF;
+	margin-top: 2%;
+}
+
+.textOnly p{
+	padding: 2% 10% 0% 2%;
+	height:260px;
+	max-height:260px;
+	overflow-y: auto;
+	font-size:20px;
+}
+
+.titleMedia{
+	font-size:x-large;
+	color:#FFF;
+	margin-left: 15%;
+   border-color:#CCC;
+   border-width	: 0 0 1px;
+   border-style	: solid;
+   margin-right: 6%;
 }
 
 div.navigation{
