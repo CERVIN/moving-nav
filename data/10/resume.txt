@@ -1,11 +1,11 @@
-Un compilateur est un programme informatique qui transforme un code source écrit dans un langage de programmation (le langage source) en un autre langage informatique (le langage cible).
+ï»¿Un compilateur est un programme informatique qui transforme un code source Ã©crit dans un langage de programmation (le langage source) en un autre langage informatique (le langage cible).
 
-Pour qu'il puisse être exploité par la machine, le compilateur traduit le code source, écrit dans un langage de haut niveau d'abstraction, facilement compréhensible par l'humain, vers un langage de plus bas niveau, un langage d'assemblage ou langage machine. Dans le cas de langage semi-compilé (ou semi-interprété), le code source est traduit en un langage intermédiaire, sous forme binaire (code objet ou bytecode), avant d'être lui-même interprété ou compilé.
+Pour qu'il puisse Ãªtre exploitÃ© par la machine, le compilateur traduit le code source, Ã©crit dans un langage de haut niveau d'abstraction, facilement comprÃ©hensible par l'humain, vers un langage de plus bas niveau, un langage d'assemblage ou langage machine. Dans le cas de langage semi-compilÃ© (ou semi-interprÃ©tÃ©), le code source est traduit en un langage intermÃ©diaire, sous forme binaire (code objet ou bytecode), avant d'Ãªtre lui-mÃªme interprÃ©tÃ© ou compilÃ©.
 
-Inversement, un programme qui traduit un langage de bas niveau vers un langage de plus haut niveau est un décompilateur.
+Inversement, un programme qui traduit un langage de bas niveau vers un langage de plus haut niveau est un dÃ©compilateur.
 
-Un compilateur effectue les opérations suivantes : analyse lexicale, pré-traitement (préprocesseur), décomposition analytique (parsing), analyse sémantique, génération de code et optimisation de code.
+Un compilateur effectue les opÃ©rations suivantes : analyse lexicale, prÃ©-traitement (prÃ©processeur), dÃ©composition analytique (parsing), analyse sÃ©mantique, gÃ©nÃ©ration de code et optimisation de code.
 
-Quand le programme compilé (code objet) peut être exécuté sur un ordinateur dont le processeur ou le système d'exploitation est différent de celui du compilateur, on parle de compilation croisée.
+Quand le programme compilÃ© (code objet) peut Ãªtre exÃ©cutÃ© sur un ordinateur dont le processeur ou le systÃ¨me d'exploitation est diffÃ©rent de celui du compilateur, on parle de compilation croisÃ©e.
 
-La compilation est souvent suivie d'une étape d'édition des liens, pour générer un fichier exécutable.
+La compilation est souvent suivie d'une Ã©tape d'Ã©dition des liens, pour gÃ©nÃ©rer un fichier exÃ©cutable.

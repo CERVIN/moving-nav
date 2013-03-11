@@ -1,21 +1,21 @@
-Le calculateur électronique Bull Gamma 3A est une machine esclave qui se présente sous la forme d'un meuble contenant :
+ï»¿Le calculateur Ã©lectronique Bull Gamma 3A est une machine esclave qui se prÃ©sente sous la forme d'un meuble contenant :
 
-    la mémoire opérateur et 7 mémoires banales circulantes à self capacités
+    la mÃ©moire opÃ©rateur et 7 mÃ©moires banales circulantes Ã  self capacitÃ©s
     un tableau de connexion pour afficher 64 instructions de programme
-    des organes électroniques de commande. 
+    des organes Ã©lectroniques de commande. 
 
-Il peut être connecté à une machine d'entrée sortie maître, qui peut être une tabulatrice BS ou une poinçonneuse reproductrice duplicatrice PRD ou une unité de lecture et de perforation ULP.
+Il peut Ãªtre connectÃ© Ã  une machine d'entrÃ©e sortie maÃ®tre, qui peut Ãªtre une tabulatrice BS ou une poinÃ§onneuse reproductrice duplicatrice PRD ou une unitÃ© de lecture et de perforation ULP.
 	
 
-Le Gamma 3 ferme l'ère de la mécanographie et ouvre, en France, celle des ordinateurs.
+Le Gamma 3 ferme l'Ã¨re de la mÃ©canographie et ouvre, en France, celle des ordinateurs.
 
-Ce n'est pas encore vraiment un ordinateur au sens où le programme n'est pas encore enregistré en mémoire : pas de logiciel, mais une programmation trés succincte sur des tableaux de connexion reliés à la tabulatrice, dans lesquels on enfonce des "fiches banane" pour connecter tel ou tel circuit logique.
+Ce n'est pas encore vraiment un ordinateur au sens oÃ¹ le programme n'est pas encore enregistrÃ© en mÃ©moire : pas de logiciel, mais une programmation trÃ©s succincte sur des tableaux de connexion reliÃ©s Ã  la tabulatrice, dans lesquels on enfonce des "fiches banane" pour connecter tel ou tel circuit logique.
 
-Une petite mémoire de travail à lignes à retard est connectée à la tabulatrice et permet d'injecter des résultats en cours d'opération.
+Une petite mÃ©moire de travail Ã  lignes Ã  retard est connectÃ©e Ã  la tabulatrice et permet d'injecter des rÃ©sultats en cours d'opÃ©ration.
 
-Les circuits électroniques sont à base de lampes pour l'amplification, et de diodes au germanium pour la bascule (oui/non, ouvert/fermé).
+Les circuits Ã©lectroniques sont Ã  base de lampes pour l'amplification, et de diodes au germanium pour la bascule (oui/non, ouvert/fermÃ©).
 
-Il faut 10 techniciens pour faire fonctionner cette machine de plusieurs centaines de kilos. Sa capacité de mémoire est inférieure à celle d'une calculatrice à 20 F de 1994.
+Il faut 10 techniciens pour faire fonctionner cette machine de plusieurs centaines de kilos. Sa capacitÃ© de mÃ©moire est infÃ©rieure Ã  celle d'une calculatrice Ã  20 F de 1994.
 
-Grand succés, plus de mille exemplaires vendus."
-Le premier calculateur électronique Gamma 3A a été livré en 1953 au Crédit Lyonnais.
+Grand succÃ©s, plus de mille exemplaires vendus."
+Le premier calculateur Ã©lectronique Gamma 3A a Ã©tÃ© livrÃ© en 1953 au CrÃ©dit Lyonnais.

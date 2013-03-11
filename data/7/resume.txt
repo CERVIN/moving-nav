@@ -1,24 +1,24 @@
-John Backus, pionnier de l'informatique, publie en 1954 un article titré Preliminary Report, Specifications for the IBM Mathematical FORmula TRANslating System, FORTRAN. Il faut ensuite deux ans d'efforts à l'équipe qu'il dirige au sein d'IBM pour écrire le premier compilateur FORTRAN (25 000 lignes, pour l'IBM 704).
+ï»¿John Backus, pionnier de l'informatique, publie en 1954 un article titrÃ© Preliminary Report, Specifications for the IBM Mathematical FORmula TRANslating System, FORTRAN. Il faut ensuite deux ans d'efforts Ã  l'Ã©quipe qu'il dirige au sein d'IBM pour Ã©crire le premier compilateur FORTRAN (25 000 lignes, pour l'IBM 704).
 
-Le nom du langage a été écrit conventionnellement en majuscules (FORTRAN) jusqu'en 1992 et l'introduction du Fortran 90 à syntaxe libre. En FORTRAN 77, les lettres minuscules ne font pas partie du langage. Cette convention se retrouve dans cet article et est conforme aux différentes normes du Fortran, de 1966 à aujourd'hui.
+Le nom du langage a Ã©tÃ© Ã©crit conventionnellement en majuscules (FORTRAN) jusqu'en 1992 et l'introduction du Fortran 90 Ã  syntaxe libre. En FORTRAN 77, les lettres minuscules ne font pas partie du langage. Cette convention se retrouve dans cet article et est conforme aux diffÃ©rentes normes du Fortran, de 1966 Ã  aujourd'hui.
 
-Aujourd'hui encore (2011), le langage Fortran reste très utilisé pour deux raisons :
+Aujourd'hui encore (2011), le langage Fortran reste trÃ¨s utilisÃ© pour deux raisons :
 
-    La présence de très nombreuses bibliothèques de fonctions,
-    L'existence de compilateurs Fortran performants qui produisent des exécutables très rapides.
+    La prÃ©sence de trÃ¨s nombreuses bibliothÃ¨ques de fonctions,
+    L'existence de compilateurs Fortran performants qui produisent des exÃ©cutables trÃ¨s rapides.
 
-Toutefois, beaucoup de programmes scientifiques sont à présent écrits en C et C++1, dont les compilateurs sont disponibles sur la plupart des machines. D'autres langages compilés sont parfois utilisés pour le calcul scientifique, et surtout des logiciels tels que Scilab ou Matlab.
+Toutefois, beaucoup de programmes scientifiques sont Ã  prÃ©sent Ã©crits en C et C++1, dont les compilateurs sont disponibles sur la plupart des machines. D'autres langages compilÃ©s sont parfois utilisÃ©s pour le calcul scientifique, et surtout des logiciels tels que Scilab ou Matlab.
 
 
-Le FORTRAN, créé à l'époque des cartes perforées (en particulier avec le système FMS), optimise la mise en page de ses sources dans cette optique, jusqu'au Fortran 90 qui introduit une syntaxe « libre ». Avant Fortran 90, le code commence à partir de la 7e colonne et ne doit pas dépasser la 72e. Il se présente alors ainsi :
+Le FORTRAN, crÃ©Ã© Ã  l'Ã©poque des cartes perforÃ©es (en particulier avec le systÃ¨me FMS), optimise la mise en page de ses sources dans cette optique, jusqu'au Fortran 90 qui introduit une syntaxe Â« libre Â». Avant Fortran 90, le code commence Ã  partir de la 7e colonne et ne doit pas dÃ©passer la 72e. Il se prÃ©sente alors ainsi :
 
-    La colonne 1 peut contenir la lettre C indiquant un commentaire. Le caractère * est aussi accepté.
-    Les colonnes 1 à 5 peuvent contenir une étiquette numérique (facultative) de l'instruction, dont la valeur peut être limitée à 32767 ou 9999 suivant le compilateur (en FORTRAN II des ordinateurs Advanced Scientific Instruments ASI 210 et ASI 2100).
-    La colonne 6 indique une suite de l'instruction précédente.
-    Les colonnes 73 à 80 servent à l'identification et la numérotation des cartes perforées (souvent les trois initiales du projet, du chef de projet ou du programmeur, suivies de numéros de cinq chiffres attribués de dix en dix pour permettre des insertions de dernière minute).
+    La colonne 1 peut contenir la lettre C indiquant un commentaire. Le caractÃ¨re * est aussi acceptÃ©.
+    Les colonnes 1 Ã  5 peuvent contenir une Ã©tiquette numÃ©rique (facultative) de l'instruction, dont la valeur peut Ãªtre limitÃ©e Ã  32767 ou 9999 suivant le compilateur (en FORTRAN II des ordinateurs Advanced Scientific Instruments ASI 210 et ASI 2100).
+    La colonne 6 indique une suite de l'instruction prÃ©cÃ©dente.
+    Les colonnes 73 Ã  80 servent Ã  l'identification et la numÃ©rotation des cartes perforÃ©es (souvent les trois initiales du projet, du chef de projet ou du programmeur, suivies de numÃ©ros de cinq chiffres attribuÃ©s de dix en dix pour permettre des insertions de derniÃ¨re minute).
 
-Il faut également noter qu'avant Fortran 90, les espaces n'ont pas de signification entre la 7e et la 72e colonne. Ainsi, la boucle « DO I=1,5 » peut aussi s'écrire « DOI=1,5 ». En revanche, « DO I=1.5 » est équivalent à « DOI=1.5 », une affectation.
+Il faut Ã©galement noter qu'avant Fortran 90, les espaces n'ont pas de signification entre la 7e et la 72e colonne. Ainsi, la boucle Â« DO I=1,5 Â» peut aussi s'Ã©crire Â« DOI=1,5 Â». En revanche, Â« DO I=1.5 Â» est Ã©quivalent Ã  Â« DOI=1.5 Â», une affectation.
 
-De nombreux codes industriels ont été écrits en Fortran et la compatibilité des nouvelles versions avec les précédentes est indispensable, au prix de conserver des notions qui ne s'imposent plus. Pour cette raison, Fortran 90 est complètement compatible avec FORTRAN 77. Les versions suivantes du standard ont cependant introduit des incompatibilités.
+De nombreux codes industriels ont Ã©tÃ© Ã©crits en Fortran et la compatibilitÃ© des nouvelles versions avec les prÃ©cÃ©dentes est indispensable, au prix de conserver des notions qui ne s'imposent plus. Pour cette raison, Fortran 90 est complÃ¨tement compatible avec FORTRAN 77. Les versions suivantes du standard ont cependant introduit des incompatibilitÃ©s.
 
-Le langage BASIC, dans sa version originale (1964), a été conçu comme un petit langage à caractère pédagogique permettant d'initier les étudiants à la programmation, avant de passer aux langages « sérieux » de l'époque : FORTRAN et Algol. On y retrouve donc quelques traits du langage Fortran.
+Le langage BASIC, dans sa version originale (1964), a Ã©tÃ© conÃ§u comme un petit langage Ã  caractÃ¨re pÃ©dagogique permettant d'initier les Ã©tudiants Ã  la programmation, avant de passer aux langages Â« sÃ©rieux Â» de l'Ã©poque : FORTRAN et Algol. On y retrouve donc quelques traits du langage Fortran.

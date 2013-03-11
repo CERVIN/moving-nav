@@ -1,5 +1,5 @@
-Le langage machine, ou code machine, est la suite de bits qui est interprétée par le processeur d'un ordinateur exécutant un programme informatique. C'est le langage natif d'un processeur, c'est-à-dire le seul qu'il puisse traiter. Il est composé d'instructions et de données à traiter codées en binaire.
+ï»¿Le langage machine, ou code machine, est la suite de bits qui est interprÃ©tÃ©e par le processeur d'un ordinateur exÃ©cutant un programme informatique. C'est le langage natif d'un processeur, c'est-Ã -dire le seul qu'il puisse traiter. Il est composÃ© d'instructions et de donnÃ©es Ã  traiter codÃ©es en binaire.
 
-Chaque processeur possède son propre langage machine, dont un code machine qui ne peut s'exécuter que sur la machine pour laquelle il a été préparé. Si un processeur A est capable d'exécuter toutes les instructions du processeur B, on dit que A est compatible avec B. L'inverse n'est pas forcément vrai : A peut avoir des instructions supplémentaires que B ne connaît pas.
+Chaque processeur possÃ¨de son propre langage machine, dont un code machine qui ne peut s'exÃ©cuter que sur la machine pour laquelle il a Ã©tÃ© prÃ©parÃ©. Si un processeur A est capable d'exÃ©cuter toutes les instructions du processeur B, on dit que A est compatible avec B. L'inverse n'est pas forcÃ©ment vrai : A peut avoir des instructions supplÃ©mentaires que B ne connaÃ®t pas.
 
-Le code machine est aujourd'hui généré automatiquement, généralement par le compilateur d'un langage de programmation ou par l'intermédiaire d'un bytecode.
+Le code machine est aujourd'hui gÃ©nÃ©rÃ© automatiquement, gÃ©nÃ©ralement par le compilateur d'un langage de programmation ou par l'intermÃ©diaire d'un bytecode.

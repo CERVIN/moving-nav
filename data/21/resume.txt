@@ -1,5 +1,5 @@
-Lex est un programme informatique qui génère des analyseurs lexicaux («scanners» ou «lexers").
+ï»¿Lex est un programme informatique qui gÃ©nÃ¨re des analyseurs lexicaux (Â«scannersÂ» ou Â«lexers").
 
-Lex est couramment utilisé avec le générateur de parseur yacc. Lex, à l'origine écrit par Mike Lesk et Eric Schmidt et décrit en 1975, est le générateur d'analyseur lexical norme sur les systèmes Unix, et un outil présentant son comportement est spécifié dans le cadre de la norme POSIX.
+Lex est couramment utilisÃ© avec le gÃ©nÃ©rateur de parseur yacc. Lex, Ã  l'origine Ã©crit par Mike Lesk et Eric Schmidt et dÃ©crit en 1975, est le gÃ©nÃ©rateur d'analyseur lexical norme sur les systÃ¨mes Unix, et un outil prÃ©sentant son comportement est spÃ©cifiÃ© dans le cadre de la norme POSIX.
 
-Lex lit un flux d'entrée spécifiant l'analyseur lexical et le code source des sorties mettre en œuvre le lexer dans le langage de programmation C.
+Lex lit un flux d'entrÃ©e spÃ©cifiant l'analyseur lexical et le code source des sorties mettre en Å“uvre le lexer dans le langage de programmation C.
