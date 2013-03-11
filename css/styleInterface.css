@@ -72,3 +72,12 @@ div.info{
 	font-size:20px;
 	padding-bottom:1%;
 }
+
+#popupmenu {
+    z-index: 100;
+    position:absolute;
+    top: 5%;
+    right: 1%;
+    width: 50%;
+    height: 60%;
+}
