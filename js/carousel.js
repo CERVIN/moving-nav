@@ -35,18 +35,15 @@
             if (j == 0) {
                 actif = "active ";
                 $('.carousel-inner').append("<div class=\"" + actif + "item\"><div class=imageCarrousel><img src=data/" + noeud.id + "/image" + image + ".jpg width=auto height=auto/></div> <div class=textCarrousel><p><span class=legende></span><span class=resume></span></p></div></div>");
+				
+				$('.carousel-inner').append("<div class=\"item\"> <div class=\"html5gallery\" data-skin=\"vertical\" data-width=\"500\" data-height=\"300\" style=\"dispay:block; position:relative; left:5%; width:660px; height: 371px;\"> <a href=data/" + noeud.id + "/image" + image + ".jpg><img src=data/" + noeud.id + "/image" + image + ".jpg alt=\"image"+image +"\"></a>  </div></div></div>");
             }
             else {
                 actif = "";
                 $('.carousel-inner').append("<div class=\"" + actif + "item\"><img src=data/" + noeud.id + "/image" + image + ".jpg width=auto height=auto/></div>");
 
-				if(hiddenobject == 0){
-                $('.carousel-inner').append("<div class=\""+actif+"item\"> <div class=\"html5gallery\" data-skin=\"vertical\" data-width=\"400\" data-height=\"225\" style=\"dispay:block; position:relative; left:20%; width:660px; height: 371px;\"> <a href=data/" + noeud.id + "/image" + image + ".jpg><img src=data/" + noeud.id + "/image" + image + ".jpg alt=\"Fireworks\"></a>  </div></div></div>");
-								hiddenobject = hiddenobject+1;
-					}
-				else {
-					 $('.html5gallery').append("<a href=data/" + noeud.id + "/image" + image + ".jpg><img src=data/" + noeud.id + "/image" + image + ".jpg alt=\"Fireworks\"></a>");
-				}
+					 $('.html5gallery').append("<a href=data/" + noeud.id + "/image" + image + ".jpg><img src=data/" + noeud.id + "/image" + image + ".jpg alt=\"image"+image +"\"></a>");
+				
             }
 
         }
