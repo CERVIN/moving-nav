@@ -2,6 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<script type="text/javascript" src="js/html5gallery.js"></script>
     <script type="text/javascript" src="js/kinetic-v4.3.3.min.js"></script>
     <script type="text/javascript" src="js/jquery-1.9.1.min.js"></script>
     <script type="text/javascript" src="js/data.js"></script>
@@ -9,8 +10,7 @@
     <script type="text/javascript" src="js/carousel.js"></script>
     <script type="text/javascript" src="js/navigation.js"></script>
     <script src="js/bootstrap.min.js"></script>
-    <link rel="stylesheet"  href="css/styleInterface.css"  media="(orientation:landscape)" charset="utf-8" />
-    <link href="css/bootstrap.min.css" rel="stylesheet"  media="screen">
+   
 	
 	<!-- script et css pour miniature -->
 <script src="miniature/highslide/highslide-with-gallery.js"></script>
@@ -30,31 +30,12 @@
 	hs.height = 400;
 	hs.showCredits = false;
 
-	hs.addSlideshow({
-		// slideshowGroup: 'group1',
-		interval: 5000,
-		repeat: false,
-		useControls: false,
-		fixedControls: 'fit',
-		overlayOptions: {
-			position: 'top center',
-			offsetX: 200,
-			offsetY: -65
-		},
-		thumbstrip: {
-			position: 'rightpanel',
-			mode: 'float',
-			relativeTo: 'expander',
-			width: '210px'
-		}
-	});
-	
-	var miniGalleryOptions1 = {
-		thumbnailId: 'thumb1'
-	}
-
-</script>
-	
+	</script>
+    
+	 <link rel="stylesheet"  href="css/styleInterface.css"  charset="utf-8" />
+    <link href="css/bootstrap.min.css" rel="stylesheet"  media="screen">
+    
+    
     <title>Mus&eacutee virtuel</title>
 </head>
 
@@ -76,7 +57,7 @@
         <div id="container"></div>
     </div>
 
-    <script type="text/javascript">
+    <script type="text/javascript" >
 
         $(document).ready(parser("data/data.json"));
 		
@@ -108,6 +89,5 @@
         }
 
     </script>
-
 </body>
 </html>
