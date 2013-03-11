@@ -32,9 +32,12 @@
                 $('.carousel-inner').append("<div class=\"" + actif + "item\"><img src=data/" + noeud.id + "/image" + image + ".jpg width=auto height=auto/></div>");
 
 				if(hiddenobject == 0){
-                $('.carousel-inner').append("<div class=\""+actif+"item\"> <div class=\"highslide-gallery\"> <a class=\"highslide\" href=\"miniature/images/gallery3.jpg\" onclick=\"return hs.expand(this, { anchor: 'top' })\"> <img src=\"miniature/images/gallery3.thumb.jpg\" alt=\"\"/> </a> <a class=\"highslide\" href=\"miniature/images/gallery2.jpg\" onclick=\"return hs.expand(this, { anchor: 'top' })\"> <img src=\"miniature/images/gallery2.thumb.jpg\" alt=\"\"/> </a> <a class=\"highslide\" href=\"miniature/images/thumbstrip24.jpg\" onclick=\"return hs.expand(this, { anchor: 'top' })\"> <img src=\"miniature/images/thumbstrip24.thumb.png\" alt=\"\"/> </a> </div></div></div>");
+                $('.carousel-inner').append("<div class=\""+actif+"item\"> <div class=\"html5gallery\" data-skin=\"vertical\" data-width=\"400\" data-height=\"225\" style=\"dispay:block; position:relative; left:20%; width:660px; height: 371px;\"> <a href=data/" + noeud.id + "/image" + image + ".jpg><img src=data/" + noeud.id + "/image" + image + ".jpg alt=\"Fireworks\"></a>  </div></div></div>");
 								hiddenobject = hiddenobject+1;
 					}
+				else {
+					 $('.html5gallery').append("<a href=data/" + noeud.id + "/image" + image + ".jpg><img src=data/" + noeud.id + "/image" + image + ".jpg alt=\"Fireworks\"></a>");
+				}
             }
 
         }
