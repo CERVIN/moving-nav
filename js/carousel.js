@@ -2,7 +2,8 @@
     var nbrImage = noeud.data.images;
     var nbrVideo = noeud.data.videos;
     var name = noeud.data.nom;
-   
+	
+	
     var i = 0;
     var j = 0;
     var k = 0;
@@ -34,15 +35,16 @@
             image = j + 1;
             if (j == 0) {
                 actif = "active ";
-                $('.carousel-inner').append("<div class=\"" + actif + "item\"><div class=imageCarrousel><img src=data/" + noeud.id + "/image" + image + ".jpg width=auto height=auto/></div> <div class=textCarrousel><p><span class=legende></span><span class=resume></span></p></div></div>");
+
+                $('.carousel-inner').append("<div class=\"" + actif + "item\"><div class=titleMedia>Résumé</div><div class=imageCarrousel><img src=data/" + noeud.id + "/image" + image + ".jpg width=auto height=auto/></div> <div class=textCarrousel><p><span class=legende></span><span class=resume></span></p></div></div>");
 				
-				$('.carousel-inner').append("<div class=\"item\"> <div class=\"html5gallery\" data-skin=\"vertical\" data-width=\"500\" data-height=\"300\" style=\"dispay:block; position:relative; left:10%; width:660px; height: 371px;\"> <a href=data/" + noeud.id + "/image" + image + ".jpg><img src=data/" + noeud.id + "/image" + image + ".jpg alt=\"image"+image +"\"></a>  </div></div></div>");
+				$('.carousel-inner').append("<div class=\"item\"><div class=titleMedia>Visionneuse</div> <div class=\"html5gallery\" data-skin=\"horizontal\" data-width=\"400\" data-height=\"225\" style=\"dispay:block; position:relative; left:20%; width:660px; height: 371px;\"> <a href=data/" + noeud.id + "/image" + image + ".jpg><img src=data/" + noeud.id + "/image" + image + ".jpg alt=\"image"+image +"\"></a>  </div></div></div>");
+
             }
             else {
                 actif = "";
-                $('.carousel-inner').append("<div class=\"" + actif + "item\"><img src=data/" + noeud.id + "/image" + image + ".jpg width=auto height=auto/></div>");
 
-					 $('.html5gallery').append("<a href=data/" + noeud.id + "/image" + image + ".jpg><img src=data/" + noeud.id + "/image" + image + ".jpg alt=\"image"+image +"\"></a>");
+				$('.html5gallery').append("<a href=data/" + noeud.id + "/image" + image + ".jpg><img src=data/" + noeud.id + "/image" + image + ".jpg alt=\"image"+image +"\"></a>");
 				
             }
 
@@ -59,7 +61,7 @@
 		else{
 			$('.carousel-indicators').append("<li data-target=#myCarousel data-slide-to=" + i + " " + actif + "></li>");
 		}	
-		$('.carousel-inner').append("<div class=\"" + actif + "item\"><div class=textCarrousel><p><span class=legende></span><span class=resume></span></p></div></div>");
+		$('.carousel-inner').append("<div class=\"" + actif + "item\"><div class=titleMedia>Résumé</div><div class=textOnly><p><span class=legende></span><span class=resume></span></p></div></div>");
 	
 		
 	}
@@ -78,14 +80,12 @@
 			}
 		}
 
-        var adrVideo = 1;
-        for (l = j; l < nbrVideo; l++) {
-            var actif = "";
-            if (l == 0) { actif = "active " } else { actif = "" };
-            $('.carousel-inner').append("<div class=\"" + actif + "item\"><video controls=controls width=400 height=222><source src=data/" + noeud.id + "/video" + adrVideo + ".mp4 type=video/mp4 /><source src=video1.webm type=video/webm /><source src=video1.ogv type=video/ogg /></video></div></div>");
-            adrVideo++;
+    var actif = "";
+    //if (j == 0) {actif = "active "}else {actif = ""};
+   
+	$('.carousel-inner').append("<div class=\"item\"> <div id=\"video\" class=\"html5gallery\" data-skin=\"vertical\" data-width=\"480\" data-height=\"272\"  data-showimagetoolbox=\"true\" data-showsocialmedia= \"false\"  data-xml=\"./data/"+noeud.id+"/videos.xml\" style=\"display:none;\"></div></div>");
         }
-    }
+		
     //lien
     if (historique.length != 0) {
         var parent = getNodeById(historique[historique.length - 1], data);
@@ -99,7 +99,8 @@
             }
         }
         if (legende != null) {
-            $('.textCarrousel p .legende').append(legende+"<br/>");
+            $('.textCarrousel p .legende').append(legende+"<br/><br/>");
+			$('.textOnly p .legende').append(legende+"<br/><br/>");
         }
     }
 	
@@ -111,5 +112,6 @@
 
     //Resume
     $('.textCarrousel p .resume').load('data/' + noeud.id + '/resume.txt');
-    $('.info').append("<p>" + parcours.nom + " - " + name + "<p>");
+	$('.textOnly p .resume').load('data/' + noeud.id + '/resume.txt');
+    $('.info p').append(parcours.nom + " - " + name);
 }

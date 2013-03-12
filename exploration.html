@@ -2,8 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-	<link href="css/html5gallery.css" rel="stylesheet" media="screen">
-		<script type="text/javascript" src="js/html5gallery.js"></script>
+	<script type="text/javascript" src="js/html5gallery.js"></script>
     <script type="text/javascript" src="js/kinetic-v4.3.3.min.js"></script>
     <script type="text/javascript" src="js/jquery-1.9.1.min.js"></script>
     <script type="text/javascript" src="js/data.js"></script>
@@ -11,16 +10,17 @@
     <script type="text/javascript" src="js/carousel.js"></script>
     <script type="text/javascript" src="js/navigation.js"></script>
     <script src="js/bootstrap.min.js"></script>
-    <link rel="stylesheet" href="css/styleInterface.css" charset="utf-8" />
-    <link href="css/bootstrap.min.css" rel="stylesheet" media="screen">
-
-	
-	
+    <link rel="stylesheet"  href="css/html5gallery.css"  charset="utf-8" />
+	<link rel="stylesheet"  href="css/styleInterface.css"  charset="utf-8" />
+    <link href="css/bootstrap.min.css" rel="stylesheet"  media="screen">
+    
+    
     <title>Mus&eacutee virtuel</title>
 </head>
 
 <body>
     <div class="info">
+     <p><a href="index.html" class="btn btn-small btn btn-danger btnInfo" type="button">Home</a></p>
     </div>
     <div id="myCarousel" class="contenu carousel slide" data-interval="false">
         <!-- Carousel indicator -->
@@ -32,16 +32,18 @@
         <a class="carousel-control left" id="controlLeft" href="#myCarousel" data-slide="prev">&lsaquo;</a>
         <a class="carousel-control right" id="controlRight" href="#myCarousel" data-slide="next">&rsaquo;</a>
     </div>
+    <div id="popupmenu"></div>
     <div class="navigation">
         <div id="container"></div>
     </div>
 
-    <script type="text/javascript">
+    <script type="text/javascript" >
 
         $(document).ready(parser("data/data.json"));
+		
 
         function showData(data) {
-
+			
             /* Recupération du parcours */
             var parcours = getParcours(data);
             if (parcours == null) {
