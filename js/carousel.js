@@ -36,7 +36,7 @@
                 actif = "active ";
                 $('.carousel-inner').append("<div class=\"" + actif + "item\"><div class=imageCarrousel><img src=data/" + noeud.id + "/image" + image + ".jpg width=auto height=auto/></div> <div class=textCarrousel><p><span class=legende></span><span class=resume></span></p></div></div>");
 				
-				$('.carousel-inner').append("<div class=\"item\"> <div class=\"html5gallery\" data-skin=\"vertical\" data-width=\"500\" data-height=\"300\" style=\"dispay:block; position:relative; left:5%; width:660px; height: 371px;\"> <a href=data/" + noeud.id + "/image" + image + ".jpg><img src=data/" + noeud.id + "/image" + image + ".jpg alt=\"image"+image +"\"></a>  </div></div></div>");
+				$('.carousel-inner').append("<div class=\"item\"> <div class=\"html5gallery\" data-skin=\"vertical\" data-width=\"500\" data-height=\"300\" style=\"dispay:block; position:relative; left:10%; width:660px; height: 371px;\"> <a href=data/" + noeud.id + "/image" + image + ".jpg><img src=data/" + noeud.id + "/image" + image + ".jpg alt=\"image"+image +"\"></a>  </div></div></div>");
             }
             else {
                 actif = "";
