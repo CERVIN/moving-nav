@@ -1,8 +1,10 @@
-@charset "utf-8";
+﻿@charset "utf-8";
 /* CSS Document */
 
   body {
 	background-color: #000;
+    margin: 0 auto;
+    padding: 0;
   }
 
    .roundabout-moveable-item img { height:100%; width:100%; }
@@ -11,8 +13,8 @@
       list-style: none;
       padding: 0;
       margin: 0;
-      height: 40em;
-      width: 80em;
+     height: 40em;
+      width: 100%;
    }
    .roundabout-moveable-item {
       height: 80%;
