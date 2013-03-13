@@ -54,10 +54,17 @@ function createNavigation(data, noeud, parcours, historique, TEXTCOLOR, COLOR1, 
         var noeudHisto = getNodeById(historique[h], data);
 
         var group = new Kinetic.Group({
-            name: historique[h]
+            name: noeud.id + "K" + parcours.id + "K" + historique[h]
         });
 
         var colorNoeud = COLOR1;
+        // SI on était dans un parcours différent
+        if (noeudHisto.parcours.length != 0 && getParcoursFromNode(noeudHisto, parcours.id, data) == null) {
+            var parcoursDuNoeudId = tryGetDifferentParcoursFromNode(noeudHisto, parcours.id);
+            group.setName(noeud.id + "K" + parcoursDuNoeudId + "K" + historique[h]);
+            colorNoeud = getInfoParcours(parcoursDuNoeudId, data).couleur1;
+
+        }
 
         var rond = new Kinetic.Circle({
             x: stage.getWidth() / 3 - ((precedentParcours.length + 1) * ESPACE_ENTRE_NOEUD),
@@ -79,8 +86,14 @@ function createNavigation(data, noeud, parcours, historique, TEXTCOLOR, COLOR1, 
             fontFamily: 'Calibri'
         });
 
+
+
         group.on("click tap", function () {
-            navigateTo(noeud, parcours, historique, this.getName());
+            var param = this.getName().split("K");
+            //alert(this.getName());
+            // alert(getNodeById(param[0], data) + "-" + getInfoParcours(param[1], data) + "-histo-" + param[2]);
+            //noeud parcours historique idTO
+            navigateTo(getNodeById(param[0], data), getInfoParcours(param[1], data), historique, param[2]);
         });
 
         group.add(texte);
@@ -122,11 +135,10 @@ function createNavigation(data, noeud, parcours, historique, TEXTCOLOR, COLOR1, 
 
     /* Zone futur */
 
-    var popupMenu =new Kinetic.Group();
-    //alert("2 : "+(noeud.voisins.length));
+    var popupMenu = new Kinetic.Group();
+    var popupMenuParcours = new Kinetic.Group();
     // Récupération noeuds voisins
-    //alert(noeud.id);
-    if (noeud.voisins.length != 0) {
+    if (noeud.voisins.length != 0 || noeud.parcours.length > 1) {
         var nbVoisinsParcours = 0;
         var nbVoisinsSimple = 0;
         var voisinSimple;
@@ -136,71 +148,70 @@ function createNavigation(data, noeud, parcours, historique, TEXTCOLOR, COLOR1, 
             if (monVoisin.parcours.length == 0) {
                 if (nbVoisinsSimple == 0) {
                     //Création du lien
-                    voisinSimple = new Kinetic.Group({
-                        name: noeud.voisins[v].id
-                    });
-                    voisinSimple.add(new Kinetic.Rect({
-                        x: stage.getWidth() / 3 * 2 + ((suiteParcours.length) * ESPACE_ENTRE_NOEUD),
-                        y: stage.getHeight() / 3,
-                        fill: COLOR1,
-                        width: 200,
-                        height: (stage.getHeight() / 6) * 5 - stage.getHeight() / 3,
-                        opacity: 0
-                    }));
-                    voisinSimple.add(new Kinetic.Line({
-                        name: "line",
-                        points: [stage.getWidth() / 3 * 2 + ((suiteParcours.length) * ESPACE_ENTRE_NOEUD), stage.getHeight() / 3, stage.getWidth() / 3 * 2 + ((suiteParcours.length + 1) * ESPACE_ENTRE_NOEUD), (stage.getHeight() / 6) * 5],
-                        stroke: COLOR1,
-                        strokeWidth: 10,
-                    }));
-                    voisinSimple.add(new Kinetic.Circle({
-                        name: "circle",
-                        x: stage.getWidth() / 3 * 2 + ((suiteParcours.length + 1) * ESPACE_ENTRE_NOEUD),
-                        y: (stage.getHeight() / 6) * 5,
-                        radius: 20,
-                        fill: COLOR1,
-                        stroke: STROKECOLOR,
-                        strokeWidth: 2
-                    }));
-                    // var texteAAfficher = formatNameByLength(monVoisin.data.nom, NB_CHAR_MAX)
-                    voisinSimple.add(new Kinetic.Text({
-                        x: stage.getWidth() / 3 * 2 + ((suiteParcours.length + 1) * ESPACE_ENTRE_NOEUD),
-                        y: (stage.getHeight() / 6) * 5 - 44,
-                        text: monVoisin.data.nom,
-                        fill: TEXTCOLOR,
-                        fontSize: 20,
-                        fontFamily: 'Calibri'
-                    }));
-                    voisinSimple.children[2].on("click tap", function () {
-                        navigateTo(noeud, parcours, historique, monVoisin.id);
-                    });
+                    voisinSimple = createBranche(noeud, parcours, historique, stage, monVoisin, suiteParcours, ESPACE_ENTRE_NOEUD, COLOR1, STROKECOLOR, TEXTCOLOR);
                     suiteParcours.push(voisinSimple);
                     // Création du popupMenu
                     popupMenu = createPopupMenu(popupStage, layerPopup, BACKGROUNDCOLOR, COLOR1);
                     popupMenu.children[1].add(createLinePopupMenu(noeud, parcours, historique, popupStage, COLOR1, STROKECOLOR, TEXTCOLOR, popupMenu, monVoisin));
-
                     nbVoisinsSimple++;
                 } else {
                     //MENU MULTI NOEUD
                     nbVoisinsSimple++;
-                    voisinSimple.children[3].setText("(" + nbVoisinsSimple + ")");
-                    voisinSimple.children[2].off("click tap");
-                    voisinSimple.children[2].on("click tap", function () {
-                        $("#popupmenu").css('zIndex',100);
-                        popupMenu.show();
-                        layerPopup.draw();
-                        
-                    });
+                    switchToMultiNode(popupMenu, layerPopup, nbVoisinsSimple, voisinSimple);
                     popupMenu.children[1].add(createLinePopupMenu(noeud, parcours, historique, popupStage, COLOR1, STROKECOLOR, TEXTCOLOR, popupMenu, monVoisin));
                 }
             } else {
                 if (nbVoisinsParcours == 0) {
-                    //TODO: LIEN PARCOURS
+                    //LIEN PARCOURS
+                    var monParcoursVoisinId = tryGetDifferentParcoursFromNode(monVoisin, parcours.id);
+                    voisinParcours = createBranche(noeud, getInfoParcours(monParcoursVoisinId, data), historique, stage, monVoisin, suiteParcours, ESPACE_ENTRE_NOEUD, getInfoParcours(monParcoursVoisinId, data).couleur1, STROKECOLOR, TEXTCOLOR);
+                    suiteParcours.push(voisinParcours);
+                    popupMenuParcours = createPopupMenu(popupStage, layerPopup, BACKGROUNDCOLOR, getInfoParcours(monParcoursVoisinId, data).couleur1);
+                    for (var p in monVoisin.parcours) {
+                        var info = getInfoParcours(monVoisin.parcours[p].id, data);
+                        nbVoisinsParcours++;
+                        popupMenuParcours.children[1].add(createLinePopupMenu(noeud, info, historique, popupStage, info.couleur1, STROKECOLOR, TEXTCOLOR, popupMenuParcours, monVoisin));
+                        if (nbVoisinsParcours > 1) {
+                            switchToMultiNode(popupMenuParcours, layerPopup, nbVoisinsParcours, voisinParcours);
+                        }
+                    }
+
                 } else {
-                    //TODO: MENU MULTI NOEUD
+                    //MENU MULTI NOEUD
+                    nbVoisinsParcours++;
+                    popupMenuParcours.children[1].add(createLinePopupMenu(noeud, info, historique, popupStage, info.couleur1, STROKECOLOR, TEXTCOLOR, popupMenuParcours, monVoisin));
+                    switchToMultiNode(popupMenuParcours, layerPopup, nbVoisinsParcours, voisinParcours);
                 }
             }
 
+        }
+        //Changement de parcours sur le noeud
+        for (var p in noeud.parcours) {
+            if (noeud.parcours[p].id != parcours.id && noeud.parcours[p].suivant != -1) {
+                var monVoisin = getNodeById(noeud.parcours[p].suivant, data);
+                if (nbVoisinsParcours == 0) {
+                    //LIEN PARCOURS
+                    var monParcoursVoisinId = noeud.parcours[p].id;
+                    voisinParcours = createBranche(noeud, noeud.parcours[p], historique, stage, monVoisin, suiteParcours, ESPACE_ENTRE_NOEUD, getInfoParcours(monParcoursVoisinId, data).couleur1, STROKECOLOR, TEXTCOLOR);
+                    suiteParcours.push(voisinParcours);
+                    popupMenuParcours = createPopupMenu(popupStage, layerPopup, BACKGROUNDCOLOR, getInfoParcours(monParcoursVoisinId, data).couleur1);
+                    for (var p in monVoisin.parcours) {
+                        if (monVoisin.parcours[p].id != parcours.id) {
+                            var info = getInfoParcours(monVoisin.parcours[p].id, data);
+                            nbVoisinsParcours++;
+                            popupMenuParcours.children[1].add(createLinePopupMenu(noeud, info, historique, popupStage, info.couleur1, STROKECOLOR, TEXTCOLOR, popupMenuParcours, monVoisin));
+                            if (nbVoisinsParcours > 1) {
+                                switchToMultiNode(popupMenuParcours, layerPopup, nbVoisinsParcours, voisinParcours);
+                            }
+                        }
+                    }
+                } else {
+                    //MENU MULTI NOEUD
+                    nbVoisinsParcours++;
+                    popupMenuParcours.children[1].add(createLinePopupMenu(noeud, info, historique, popupStage, info.couleur1, STROKECOLOR, TEXTCOLOR, popupMenuParcours, monVoisin));
+                    switchToMultiNode(popupMenuParcours, layerPopup, nbVoisinsParcours, voisinParcours);
+                }
+            }
         }
 
     }
@@ -294,6 +305,7 @@ function createNavigation(data, noeud, parcours, historique, TEXTCOLOR, COLOR1, 
         groupLayer.add(suiteParcours[rond]);
     }
     layerPopup.add(popupMenu);
+    layerPopup.add(popupMenuParcours);
     popupStage.add(layerPopup);
 
     layer.add(groupLayer);
@@ -301,12 +313,92 @@ function createNavigation(data, noeud, parcours, historique, TEXTCOLOR, COLOR1, 
 
 }
 
-/** Crée une branche **/
+/** Creer une branche parcours ou la met a jour. Renvoie le nombre liens sur la branche **/
+function updateParcoursBranch(noeud, parcours, historique, stage, data, nbVoisinsParcours, monVoisin, suiteParcours, voisinParcours, popupStage, popupMenuParcours, layerPopup, ESPACE_ENTRE_NOEUD, STROKECOLOR, TEXTCOLOR, BACKGROUNDCOLOR) {
+    alert("test : " + nbVoisinsParcours + " - " + popupMenuParcours.children.length);
+    if (nbVoisinsParcours == 0) {
+        //LIEN PARCOURS
+        var monParcoursVoisinId = tryGetDifferentParcoursFromNode(monVoisin, parcours.id);
+        voisinParcours = createBranche(noeud, getInfoParcours(monParcoursVoisinId, data), historique, stage, monVoisin, suiteParcours, ESPACE_ENTRE_NOEUD, getInfoParcours(monParcoursVoisinId, data).couleur1, STROKECOLOR, TEXTCOLOR);
+        suiteParcours.push(voisinParcours);
+        popupMenuParcours = createPopupMenu(popupStage, layerPopup, BACKGROUNDCOLOR, getInfoParcours(monParcoursVoisinId, data).couleur1);
+        for (var p in monVoisin.parcours) {
+            var info = getInfoParcours(monVoisin.parcours[p].id, data)
+            nbVoisinsParcours++;
+            popupMenuParcours.children[1].add(createLinePopupMenu(noeud, info, historique, popupStage, info.couleur1, STROKECOLOR, TEXTCOLOR, popupMenuParcours, monVoisin));
+            if (nbVoisinsParcours > 1) {
+                switchToMultiNode(popupMenuParcours, layerPopup, nbVoisinsParcours, voisinParcours);
+            }
+        }
 
+    } else {
+        //MENU MULTI NOEUD
+        nbVoisinsParcours++;
+        popupMenuParcours.children[1].add(createLinePopupMenu(noeud, info, historique, popupStage, info.couleur1, STROKECOLOR, TEXTCOLOR, popupMenuParcours, monVoisin));
+        switchToMultiNode(popupMenuParcours, layerPopup, nbVoisinsParcours, voisinParcours);
+    }
+    return nbVoisinsParcours;
+}
+
+
+/** Transforme un branche simple en lien multiple (avec popup) **/
+function switchToMultiNode(popupMenu, layerPopup, nbLink, branch) {
+    branch.children[3].setText("(" + nbLink + ")");
+    branch.children[2].off("click tap");
+    branch.children[2].on("click tap", function () {
+        $("#popupmenu").css('zIndex', 100);
+        popupMenu.show();
+        layerPopup.draw();
+
+    });
+}
+
+/** Crée une branche **/
+function createBranche(noeud, parcours, historique, stage, monVoisin, tabParcours, ESPACE_ENTRE_NOEUD, COLOR1, STROKECOLOR, TEXTCOLOR) {
+    voisinSimple = new Kinetic.Group({
+        name: monVoisin.id
+    });
+    voisinSimple.add(new Kinetic.Rect({
+        x: stage.getWidth() / 3 * 2 + ((tabParcours.length) * ESPACE_ENTRE_NOEUD),
+        y: stage.getHeight() / 3,
+        fill: COLOR1,
+        width: 200,
+        height: (stage.getHeight() / 6) * 5 - stage.getHeight() / 3,
+        opacity: 0
+    }));
+    voisinSimple.add(new Kinetic.Line({
+        name: "line",
+        points: [stage.getWidth() / 3 * 2 + ((tabParcours.length) * ESPACE_ENTRE_NOEUD), stage.getHeight() / 3, stage.getWidth() / 3 * 2 + ((tabParcours.length + 1) * ESPACE_ENTRE_NOEUD), (stage.getHeight() / 6) * 5],
+        stroke: COLOR1,
+        strokeWidth: 10,
+    }));
+    voisinSimple.add(new Kinetic.Circle({
+        name: "circle",
+        x: stage.getWidth() / 3 * 2 + ((tabParcours.length + 1) * ESPACE_ENTRE_NOEUD),
+        y: (stage.getHeight() / 6) * 5,
+        radius: 20,
+        fill: COLOR1,
+        stroke: STROKECOLOR,
+        strokeWidth: 2
+    }));
+    // var texteAAfficher = formatNameByLength(monVoisin.data.nom, NB_CHAR_MAX)
+    voisinSimple.add(new Kinetic.Text({
+        x: stage.getWidth() / 3 * 2 + ((tabParcours.length + 1) * ESPACE_ENTRE_NOEUD),
+        y: (stage.getHeight() / 6) * 5 - 44,
+        text: monVoisin.data.nom,
+        fill: TEXTCOLOR,
+        fontSize: 20,
+        fontFamily: 'Calibri'
+    }));
+    voisinSimple.children[2].on("click tap", function () {
+        navigateTo(noeud, parcours, historique, monVoisin.id);
+    });
+    return voisinSimple;
+}
 
 
 /** Crée un menu **/
-function createPopupMenu(stage,layer, BACKGROUNDCOLOR, COLOR1) {
+function createPopupMenu(stage, layer, BACKGROUNDCOLOR, COLOR1) {
     var popupMenu = new Kinetic.Group();
     popupMenu.add(new Kinetic.Rect({
         x: 0,
@@ -330,7 +422,7 @@ function createPopupMenu(stage,layer, BACKGROUNDCOLOR, COLOR1) {
 
     });
     groupCroix.add(new Kinetic.Line({
-        points: [stage.getWidth()- 40, 20, stage.getWidth() - 20, 40],
+        points: [stage.getWidth() - 40, 20, stage.getWidth() - 20, 40],
         stroke: COLOR1,
         strokeWidth: 10
     }));
@@ -355,7 +447,7 @@ function createLinePopupMenu(noeud, parcours, historique, stage, COLOR1, STROKEC
     var line = new Kinetic.Group();
     line.add(new Kinetic.Circle({
         x: 50,
-        y: (popupMenu.children[1].children.length +1)* 50,
+        y: (popupMenu.children[1].children.length + 1) * 50,
         radius: 20,
         fill: COLOR1,
         stroke: STROKECOLOR,
@@ -363,7 +455,7 @@ function createLinePopupMenu(noeud, parcours, historique, stage, COLOR1, STROKEC
     }));
     line.add(new Kinetic.Text({
         x: 100,
-        y: (popupMenu.children[1].children.length +1) * 50 - 20,
+        y: (popupMenu.children[1].children.length + 1) * 50 - 20,
         width: stage.getWidth() - 140,
         height: 50,
         text: monVoisin.data.nom,
