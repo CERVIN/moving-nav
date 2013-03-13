@@ -8,25 +8,40 @@
     var j = 0;
     var k = 0;
     var l = 0;
-
+	
 	if (nbrVideo == null){
 		nbrVideo="0";
 	}
 	if (nbrImage == null){
 		nbrImage="0";
 	}
-    //image
-    if (nbrImage != "0") {
-		if(parseInt(nbrImage) + parseInt(nbrVideo) == 1){
+	
+	var nbrMedia=1;
+	if(nbrImage>0){
+		nbrMedia=nbrMedia+1;
+	}
+	if(nbrVideo>0){
+		nbrMedia=nbrMedia+1;
+	}
+	
+	if(nbrMedia !=0){
+		
+		//Carousel indicators
+		if(nbrMedia ==1 || (nbrMedia==2 && nbrImage ==1)){
 			$('.carousel-indicators').append("");
 		}
 		else{
-			for (i = 0; i < nbrImage; i++) {
+			for (i = 0; i < nbrMedia; i++) {
 				var actif = "";
 				if (i == 0) { actif = "class= active" } else { actif = "" };
 				$('.carousel-indicators').append("<li data-target=#myCarousel data-slide-to=" + i + " " + actif + "></li>");
 			}
 		}
+		
+		//Carousel Media
+
+    //image
+    if (nbrImage != "0") {
 
         var image = j;
 		var hiddenobject = 0;
@@ -55,12 +70,6 @@
 	
 	else{
 		if (i == 0) { actif = "class= active" } else { actif = "" };
-		if(nbrImage + nbrVideo <2){
-			$('.carousel-indicators').append("");
-		}
-		else{
-			$('.carousel-indicators').append("<li data-target=#myCarousel data-slide-to=" + i + " " + actif + "></li>");
-		}	
 		$('.carousel-inner').append("<div class=\"" + actif + "item\"><div class=titleMedia>Résumé</div><div class=textOnly><p><span class=legende></span><span class=resume></span></p></div></div>");
 	
 		
@@ -68,23 +77,10 @@
 
     //video
     if (nbrVideo != 0) {
-		if(nbrImage + nbrVideo == 1){
-			$('.carousel-indicators').append("");
-		}
-		else{
-			nbrVideo = parseInt(nbrVideo) + i;
-			for (k = i; k < nbrVideo; k++) {
-				var actif = "";
-				if (k == 0) { actif = "class= active" } else { actif = "" };
-				$('.carousel-indicators').append("<li data-target=#myCarousel data-slide-to=" + k + " " + actif + "></li>");
-			}
-		}
-
-    var actif = "";
-    //if (j == 0) {actif = "active "}else {actif = ""};
-   
-	$('.carousel-inner').append("<div class=\"item\"> <div id=\"video\" class=\"html5gallery\" data-skin=\"vertical\" data-width=\"480\" data-height=\"272\"  data-showimagetoolbox=\"true\" data-showsocialmedia= \"false\"  data-xml=\"./data/"+noeud.id+"/videos.xml\" style=\"display:none;\"></div></div>");
+		 var actif = "";
+	$('.carousel-inner').append("<div class=\"item\"><div class=titleMedia>Vidéo</div> <div id=\"video\" class=\"html5gallery\" data-skin=\"vertical\" data-width=\"480\" data-height=\"272\"  data-showimagetoolbox=\"true\" data-showsocialmedia= \"false\"  data-xml=\"./data/"+noeud.id+"/videos.xml\" style=\"display:none;\"></div></div>");
         }
+	}
 		
     //lien
     if (historique.length != 0) {
