@@ -48,6 +48,23 @@ function getParcoursFromNode(node, id, data) {
     return null;
 }
 
+function tryGetDifferentParcoursFromNode(node, idParcours) {
+    var hasFoundParcours = false;
+    for (var p in node.parcours) {
+        if (node.parcours[p].id != idParcours) {
+            return node.parcours[p].id;
+            break;
+        } else {
+            hasFoundParcours = true;
+        }
+    }
+    if (hasFoundParcours) {
+        return idParcours;
+    }
+    return null;
+}
+
+
 function isNodeParcours(node, id, data) {
     for (var p in node.parcours) {
         if (node.parcours[p].id == id) {
@@ -62,6 +79,16 @@ function getInfoVoisinFromNode(node, idVoisin, data) {
     for (var p in node.voisins) {
         if (node.voisins[p].id == idVoisin) {
             return node.voisins[p];
+            break;
+        }
+    }
+    return null;
+}
+
+function getInfoParcours(idParcours, data) {
+    for (var p in data.info.parcours) {
+        if (data.info.parcours[p].id == idParcours) {
+            return data.info.parcours[p];
             break;
         }
     }

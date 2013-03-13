@@ -12,7 +12,7 @@
         },
 		{
           "id": "2",
-          "debut": "19",
+          "debut": "24",
           "nom": "La science",
 		  "image": "2.jpg",
 		  "couleur1": "#4FD6FF",
@@ -105,6 +105,12 @@
               "suivant": "5",
               "lien": "Illustration",
               "legende": "Ces programmes peuvent être enregistrés sur un ruban"
+            },
+			{
+              "id": "2",
+              "suivant": "25",
+              "lien": "Precision",
+              "legende": "Von Neumann détestait les bec bunsen."
             }
           ],
           "voisins": [
@@ -409,7 +415,48 @@
             }
           ],
           "data": { "nom": "Compilateur Java." }
+        },
+		{
+          "id": "24",
+          "parcours": [
+			{
+			  "id": "2",
+              "suivant": "4",
+              "lien": "Logique",
+              "legende": "Von Neumann aussi utilisait des erlenmeyer ..."
+			 }
+			],
+          "voisins": [
+			{
+              "id": "11",
+              "lien": "Precision",
+              "legende": "L'icone représentant Java est une tasse de café et non un erlenmeyer."
+            }
+          ],
+          "data": { 
+			"nom": "L'erlenmeyer",
+			"images": "1"
+			}
+        },
+		{
+          "id": "25",
+          "parcours": [
+			{
+				"id": "2",
+				"suivant": "-1"
+			}
+          ],
+          "voisins": [
+			{
+		      "id": "20",
+              "lien": "Logique",
+              "legende": "La machine LISP n'utilise pas de bec bunsen."
+			  }
+			],
+          "data": {
+            "nom": "Bec Bunsen",
+            "images": "1"
+          }
         }
-		
 	]
 }
