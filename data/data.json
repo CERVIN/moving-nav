@@ -5,25 +5,28 @@
           "id": "1",
           "debut": "1",
           "nom": "L'informatique",
-		  "image": "3.jpg",
+		  "image": "1.jpg",
 		  "couleur1": "red",
-		  "couleur2": "#2E0101"
+		  "couleur2": "#2E0101",
+		  "resume" : "Ce parcours raconte l'histoire de l'informatique depuis ses débuts jusqu'à maintenant."
         },
 		{
           "id": "2",
           "debut": "24",
           "nom": "La science",
-		  "image": "1.jpg",
+		  "image": "2.jpg",
 		  "couleur1": "#4FD6FF",
-		  "couleur2": "#107391"
+		  "couleur2": "#107391",
+		  "resume" : "Ce parcours raconte l'histoire de la science depuis ses débuts jusqu'à maintenant."
         },
 		{
           "id": "3",
           "debut": "5",
           "nom": "L'astronomie",
-		  "image": "2.jpg",
+		  "image": "3.jpg",
 		  "couleur1": "#B1FF2B",
-		  "couleur2": "#5E8A12"
+		  "couleur2": "#5E8A12",
+		  "resume" : "Ce parcours raconte l'histoire de l'astronomie depuis ses débuts jusqu'à maintenant."
         }
       ]
     },

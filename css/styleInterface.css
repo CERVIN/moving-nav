@@ -59,16 +59,17 @@ div.contenu{
 }
 
 .textCarrousel{
-	width:50%;
+	width:45%;
 	float:right;
 	text-align:justify;
 	color:#FFFFFF;
 	margin-top: 2%;
+	margin-right: 5%;
 	
 }
 
 .textCarrousel p{
-	padding: 2% 10% 0% 2%;
+	padding: 2% 3% 0% 2%;
 	height:260px;
 	max-height:260px;
 	overflow-y: auto;
@@ -125,4 +126,14 @@ div.info{
     right: 1%;
     width: 50%;
     height: 60%;
+}
+
+#galleryPhoto{
+	left:33%;
+	margin-top: 2%;
+}
+
+#video{
+	left:30%;
+	margin-top:3%;
 }

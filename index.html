@@ -26,8 +26,10 @@
 			var debut = json.info.parcours[key].debut;
 			var nom = json.info.parcours[key].nom;
 			var image = json.info.parcours[key].image;
+			var resume=json.info.parcours[key].resume;
+			var couleur=json.info.parcours[key].couleur1;
 					
-			$("#parcoursList").append('<li>'+id+nom+'<a href="exploration.html?parcours='+id+'"><img src="../moving-nav/images/'+image+'" /></a>'+"</li>");
+			$("#parcoursList").append('<li><div id=imgCarousel><a href="exploration.html?parcours='+id+'"><img src="../moving-nav/images/'+image+'" /></a></div><div id=texteCarousel><h3 style= color:'+couleur+'>'+nom+'</h3><p>'+resume+'</p></div>'+"</li>");
 						
 		}
 		
