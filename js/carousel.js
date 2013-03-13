@@ -38,7 +38,7 @@
 
                 $('.carousel-inner').append("<div class=\"" + actif + "item\"><div class=titleMedia>Résumé</div><div class=imageCarrousel><img src=data/" + noeud.id + "/image" + image + ".jpg width=auto height=auto/></div> <div class=textCarrousel><p><span class=legende></span><span class=resume></span></p></div></div>");
 				
-				$('.carousel-inner').append("<div class=\"item\"><div class=titleMedia>Visionneuse</div> <div class=\"html5gallery\" data-skin=\"horizontal\" data-width=\"400\" data-height=\"225\" style=\"dispay:block; position:relative; left:20%; width:660px; height: 371px;\"> <a href=data/" + noeud.id + "/image" + image + ".jpg><img src=data/" + noeud.id + "/image" + image + ".jpg alt=\"image"+image +"\"></a>  </div></div></div>");
+				$('.carousel-inner').append("<div class=\"item\"><div class=titleMedia>Visionneuse</div> <div id=galleryPhoto class=\"html5gallery\" data-skin=\"horizontal\" data-width=\"400\" data-height=\"225\" style=\"dispay:block; position:relative; width:660px; height: 371px;\"> <a href=data/" + noeud.id + "/image" + image + ".jpg><img src=data/" + noeud.id + "/image" + image + ".jpg alt=\"image"+image +"\"></a>  </div></div></div>");
 
             }
             else {
