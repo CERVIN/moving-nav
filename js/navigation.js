@@ -122,8 +122,10 @@ function createNavigation(data, noeud, parcours, historique, TEXTCOLOR, COLOR1, 
 
     /* Zone futur */
 
-    var popupMenu;
+    var popupMenu =new Kinetic.Group();
+    //alert("2 : "+(noeud.voisins.length));
     // Récupération noeuds voisins
+    //alert(noeud.id);
     if (noeud.voisins.length != 0) {
         var nbVoisinsParcours = 0;
         var nbVoisinsSimple = 0;
@@ -184,8 +186,10 @@ function createNavigation(data, noeud, parcours, historique, TEXTCOLOR, COLOR1, 
                     voisinSimple.children[3].setText("(" + nbVoisinsSimple + ")");
                     voisinSimple.children[2].off("click tap");
                     voisinSimple.children[2].on("click tap", function () {
+                        $("#popupmenu").css('zIndex',100);
                         popupMenu.show();
                         layerPopup.draw();
+                        
                     });
                     popupMenu.children[1].add(createLinePopupMenu(noeud, parcours, historique, popupStage, COLOR1, STROKECOLOR, TEXTCOLOR, popupMenu, monVoisin));
                 }
@@ -338,6 +342,7 @@ function createPopupMenu(stage,layer, BACKGROUNDCOLOR, COLOR1) {
     groupCroix.on("click tap", function () {
         popupMenu.hide();
         layer.draw();
+        $("#popupmenu").css('zIndex', -100);
     });
     popupMenu.add(groupNoeud);
     popupMenu.add(groupCroix);
