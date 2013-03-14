@@ -19,8 +19,8 @@
 </head>
 
 <body>
-    <div class="info">
-     <p><a href="index.html" class="btn btn-small btn btn-danger btnInfo" type="button">Home</a></p>
+    <div id="info">
+     <a href="index.html" class="btn-danger btn btn-small bouton-home " type="button">Home</a>
     </div>
     <div id="myCarousel" class="contenu carousel slide" data-interval="false">
         <!-- Carousel indicator -->
@@ -59,6 +59,7 @@
 
             /* Récupération de l'historique */
             var historique = getHistorique();
+
 
             /* Création du carroussel */
             createCarousel(data,noeud,parcours,historique);
