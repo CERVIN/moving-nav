@@ -34,8 +34,8 @@
    
    #texteCarousel{
 	   position:relative;
-	   width:250px;
-	   height: 90px;
+	   width:27%;
+	   height: 17%;
 	   background-color:#000;
 	   margin-top:5%;
 	   margin-left:7%;
@@ -47,6 +47,7 @@
    #texteCarousel p{
 	   margin-top:-8%;
    }
+
    
 
 
