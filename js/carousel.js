@@ -53,7 +53,7 @@
 
                 $('.carousel-inner').append("<div class=\"" + actif + "item\"><div class=titleMedia>Résumé</div><div class=imageCarrousel><img src=data/" + noeud.id + "/image" + image + ".jpg width=auto height=auto/></div> <div class=textCarrousel><p><span class=legende></span><span class=resume></span></p></div></div>");
 				
-				$('.carousel-inner').append("<div class=\"item\"><div class=titleMedia>Visionneuse</div> <div id=galleryPhoto class=\"html5gallery\" data-skin=\"horizontal\" data-width=\"400\" data-height=\"225\" style=\"dispay:block; position:relative; width:660px; height: 371px;\"> <a href=data/" + noeud.id + "/image" + image + ".jpg><img src=data/" + noeud.id + "/image" + image + ".jpg alt=\"image"+image +"\"></a>  </div></div></div>");
+				$('.carousel-inner').append("<div class=\"item\"><div class=titleMedia>Visionneuse</div> <div id=galleryPhoto class=\"html5gallery\" data-skin=\"horizontal\" > <a href=data/" + noeud.id + "/image" + image + ".jpg><img src=data/" + noeud.id + "/image" + image + ".jpg alt=\"image"+image +"\"></a>  </div></div></div>");
 
             }
             else {
@@ -71,7 +71,6 @@
 	else{
 		if (i == 0) { actif = "class= active" } else { actif = "" };
 		$('.carousel-inner').append("<div class=\"" + actif + "item\"><div class=titleMedia>Résumé</div><div class=textOnly><p><span class=legende></span><span class=resume></span></p></div></div>");
-	
 		
 	}
 
@@ -109,5 +108,22 @@
     //Resume
     $('.textCarrousel p .resume').load('data/' + noeud.id + '/resume.txt');
 	$('.textOnly p .resume').load('data/' + noeud.id + '/resume.txt');
-    $('.info p').append(parcours.nom + " - " + name);
+	$('#info').append(parcours.nom + " - " + name);
+
+    /*CSS dynamique*/
+    //Info
+	$('#info').css('font-size', ($("#info").height() / 3) * 2);
+	$('#info a.bouton-home').css('height', ($("#info").height() / 3) * 2);
+	$('#info a.bouton-home').css('font-size', ($("#info").height() / 3) * 2);
+	$('#info a.bouton-home').css('line-height', (($("#info").height() / 3) * 2) + "px");
+	$('#info a.bouton-home').css('padding', 0);
+
+    //Caroussel
+	$('#myCarousel').css('font-size', ($("#info").height() / 3) * 2);
+	$('#myCarousel .titleMedia').css('height', (($("#myCarousel").height() * 1) / 10) + 'px');
+	$('#myCarousel .titleMedia').css('font-size', $("#myCarousel .titleMedia").height());
+	$('#myCarousel .imageCarrousel').css('height', (($("#myCarousel").height() * 84) / 100) + 'px');
+	$('#myCarousel .imageCarrousel img').css('max-height', $("#myCarousel .imageCarrousel").height() + 'px');
+	$('#myCarousel .textOnly').css('height', (($("#myCarousel").height() * 84) / 100) + 'px');
+	$('#myCarousel .textCarrousel').css('height', (($("#myCarousel").height() * 84) / 100) + 'px');
 }
