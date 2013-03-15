@@ -46,6 +46,11 @@ div#output {
 #imgCarousel a {
     height:100%;
     width:100%;
+    color:#000;
+}
+
+#imgCarousel a:link {
+    color:#000;
 }
 
 #texteCarousel {
@@ -61,6 +66,10 @@ div#output {
     overflow-y: auto;
 }
 
+    #texteCarousel h3 {
+        margin: 0;
+    }
+
     #texteCarousel p {
-        margin-top: -8%;
+        margin: 0;
     }
