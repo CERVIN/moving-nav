@@ -86,7 +86,10 @@
         var parent = getNodeById(historique[historique.length - 1], data);
         var legende;
         if (isNodeParcours(parent, parcours.id, data)) {
-           legende = getParcoursFromNode(parent, parcours.id, data).legende;
+            var infoParcours = getParcoursFromNode(parent, parcours.id, data);
+            if (infoParcours.suivant == noeud.id) {
+                legende = infoParcours.legende;
+            }
         } else {
             var info = getInfoVoisinFromNode(parent, noeud.id, data);
             if (info != null) {
