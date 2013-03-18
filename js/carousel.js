@@ -125,8 +125,8 @@
 	$('#myCarousel').css('font-size', ($("#info").height() / 3) * 2);
 	$('#myCarousel .titleMedia').css('height', (($("#myCarousel").height() * 1) / 10) + 'px');
 	$('#myCarousel .titleMedia').css('font-size', $("#myCarousel .titleMedia").height());
-	$('#myCarousel .imageCarrousel').css('height', (($("#myCarousel").height() * 84) / 100) + 'px');
+	$('#myCarousel .imageCarrousel').css('height', (($("#myCarousel").height() * 85) / 100) + 'px');
 	$('#myCarousel .imageCarrousel img').css('max-height', $("#myCarousel .imageCarrousel").height() + 'px');
-	$('#myCarousel .textOnly').css('height', (($("#myCarousel").height() * 84) / 100) + 'px');
-	$('#myCarousel .textCarrousel').css('height', (($("#myCarousel").height() * 84) / 100) + 'px');
+	$('#myCarousel .textOnly').css('height', (($("#myCarousel").height() * 85) / 100) + 'px');
+	$('#myCarousel .textCarrousel').css('height', (($("#myCarousel").height() * 85) / 100) + 'px');
 }
