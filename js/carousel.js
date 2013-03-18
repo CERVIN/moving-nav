@@ -113,11 +113,11 @@
     /*CSS dynamique*/
     //Info
 	$('#info').css('font-size', ($("#info").height() / 3) * 2);
-	$('#info a.bouton-home').css('height', ($("#info").height() / 3) * 2);
+	/*$('#info a.bouton-home').css('height', ($("#info").height() / 3) * 2);
 	$('#info a.bouton-home').css('font-size', ($("#info").height() / 3) * 2);
 	$('#info a.bouton-home').css('line-height', (($("#info").height() / 3) * 2) + "px");
 	$('#info a.bouton-home').css('padding', 0);
-
+*/
     //Caroussel
 	$('#myCarousel').css('font-size', ($("#info").height() / 3) * 2);
 	$('#myCarousel .titleMedia').css('height', (($("#myCarousel").height() * 1) / 10) + 'px');
