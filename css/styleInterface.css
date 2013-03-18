@@ -44,7 +44,7 @@ div.contenu{
 
 .carousel-inner{
 	height:100%;
-	background: #333;
+	background: #444;
 }
 
 .imageCarrousel{
@@ -99,14 +99,14 @@ div.contenu{
 
 div.navigation{
 	height:33%;
-	background-color:#222;
+	background-color:#333;
 	margin-right:auto;
 	margin-left:auto;
 }
 
 div#info{
 	height:5%;
-	background-color:#222;
+	background-color:#333;
 	margin-right:auto;
 	margin-left:auto;
 	color:#FFFFFF;

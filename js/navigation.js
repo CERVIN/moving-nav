@@ -28,7 +28,7 @@ function createNavigation(data, noeud, parcours, historique) {
     COLOR2 = parcours.couleur2;
     COLORDEFAULT = '#F58F00';
     STROKECOLOR = '#000';
-    ESPACE_ENTRE_NOEUD = document.body.clientWidth / 10;
+    ESPACE_ENTRE_NOEUD = (document.body.clientWidth / 10)*2;
     NB_CHAR_MAX = 15;
     BACKGROUNDCOLOR = '#000';
     FONTSIZE = $(".navigation").height() / 10;
