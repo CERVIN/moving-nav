@@ -115,12 +115,14 @@
 
     /*CSS dynamique*/
     //Info
+	var heightBtn=$('#info a.bouton-home').css('height', ($("#info").height() / 3) * 2.7);
 	$('#info').css('font-size', ($("#info").height() / 3) * 2);
-	/*$('#info a.bouton-home').css('height', ($("#info").height() / 3) * 2);
-	$('#info a.bouton-home').css('font-size', ($("#info").height() / 3) * 2);
-	$('#info a.bouton-home').css('line-height', (($("#info").height() / 3) * 2) + "px");
+	$('#info a.bouton-home').css('height', ($("#info").height() / 3) * 3);
+	$('#info a.bouton-home').css('font-size', ($("#info").height() / 3) * 2.3);
+	$('#info a.bouton-home').css('line-height', (($("#info").height() / 3) * 2.8) + "px");
+	$('#info a.bouton-home').css('width', ($("#info").height() / 3) * 7 + "px");
 	$('#info a.bouton-home').css('padding', 0);
-*/
+
     //Caroussel
 	$('#myCarousel').css('font-size', ($("#info").height() / 3) * 2);
 	$('#myCarousel .titleMedia').css('height', (($("#myCarousel").height() * 1) / 10) + 'px');
