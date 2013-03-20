@@ -30,7 +30,7 @@ function createNavigation(data, noeud, parcours, historique) {
     COLOR2 = parcours.couleur2;
     COLORDEFAULT = '#F58F00';
     STROKECOLOR = '#000';
-    ESPACE_ENTRE_NOEUD = (document.body.clientWidth / 10)*2;
+    ESPACE_ENTRE_NOEUD = (document.body.clientWidth / 10) * 2;
     NB_CHAR_MAX = 15;
     BACKGROUNDCOLOR = '#000';
 
@@ -51,20 +51,20 @@ function createNavigation(data, noeud, parcours, historique) {
         previousNode = historique[historique.length - 1];
     }
 
-    var parcoursInfo = getParcoursFromNode(noeud,parcours.id,data);
+    var parcoursInfo = getParcoursFromNode(noeud, parcours.id, data);
     if (parcoursInfo != null) {
         nextNode = parcoursInfo.suivant;
     } else {
         var indiceHisto = historique.length - 1;
         var infoPrecedente = getParcoursFromNode(noeud, parcours.id, data);
         while (indiceHisto >= 0 && infoPrecedente == null) {
-            infoPrecedente = getParcoursFromNode(getNodeById(historique[indiceHisto],data), parcours.id, data);
+            infoPrecedente = getParcoursFromNode(getNodeById(historique[indiceHisto], data), parcours.id, data);
         }
         if (infoPrecedente != null) {
             nextNode = infoPrecedente.suivant;
         }
     }
-    
+
     /* Noeud précédent */
     if (previousNode != -1) {
         var stage = new Kinetic.Stage({
@@ -88,7 +88,7 @@ function createNavigation(data, noeud, parcours, historique) {
         });
 
         var triangle = new Kinetic.RegularPolygon({
-            x: stage.getWidth() /2,
+            x: stage.getWidth() / 2,
             y: stage.getHeight() / 2,
             sides: 3,
             radius: NODE_RADIUS,
@@ -108,7 +108,7 @@ function createNavigation(data, noeud, parcours, historique) {
         layer.add(group);
         stage.add(layer);
     } else {
-        
+
         $("#previousItem").hide();
     }
 
@@ -220,7 +220,7 @@ function createNavigation(data, noeud, parcours, historique) {
         var texteAAfficher = formatNameByLength(noeudHisto.data.nom, NB_CHAR_MAX)
 
         var texte = new Kinetic.Text({
-            x: stage.getWidth() / 3 - ((precedentParcours.length + 1) * ESPACE_ENTRE_NOEUD) - (texteAAfficher.length / 2) * FONTSIZE /2,
+            x: stage.getWidth() / 3 - ((precedentParcours.length + 1) * ESPACE_ENTRE_NOEUD) - (texteAAfficher.length / 2) * FONTSIZE / 2,
             y: stage.getHeight() / 3 - ESPACE_TEXTE,
             text: texteAAfficher,
             fill: TEXTCOLOR,
@@ -261,7 +261,7 @@ function createNavigation(data, noeud, parcours, historique) {
     });
 
     var texteNoeud = new Kinetic.Text({
-        x: stage.getWidth() / 2 - (noeud.data.nom.length / 2) * FONTSIZE/2,
+        x: stage.getWidth() / 2 - (noeud.data.nom.length / 2) * FONTSIZE / 2,
         y: stage.getHeight() / 3 - ESPACE_TEXTE,
         text: noeud.data.nom,
         fill: TEXTCOLOR,
@@ -344,8 +344,18 @@ function createNavigation(data, noeud, parcours, historique) {
                 } else {
                     //MENU MULTI NOEUD
                     nbVoisinsParcours++;
-                    popupMenuParcours.children[1].add(createLinePopupMenu(noeud, info, historique, popupStage, info.couleur1, STROKECOLOR, TEXTCOLOR, popupMenuParcours, monVoisin));
-                    switchToMultiNode(popupMenuParcours, layerPopup, nbVoisinsParcours, voisinParcours);
+                    for (var p in monVoisin.parcours) {
+                        if (monVoisin.parcours[p].id != parcours.id) {
+                            var info = getInfoParcours(monVoisin.parcours[p].id, data);
+                            nbVoisinsParcours++;
+                            popupMenuParcours.children[1].add(createLinePopupMenu(noeud, info, historique, popupStage, info.couleur1, STROKECOLOR, TEXTCOLOR, popupMenuParcours, monVoisin));
+                            if (nbVoisinsParcours > 1) {
+                                switchToMultiNode(popupMenuParcours, layerPopup, nbVoisinsParcours, voisinParcours);
+                            }
+                        }
+                    }
+                    //popupMenuParcours.children[1].add(createLinePopupMenu(noeud, info, historique, popupStage, info.couleur1, STROKECOLOR, TEXTCOLOR, popupMenuParcours, monVoisin));
+                    //switchToMultiNode(popupMenuParcours, layerPopup, nbVoisinsParcours, voisinParcours);
                 }
             }
         }
@@ -363,6 +373,7 @@ function createNavigation(data, noeud, parcours, historique) {
     }
 
     var suivant = getParcoursFromNode(noeudParcoursPrecedent, parcours.id, data).suivant;
+
     while (suivant != -1) {
         var noeudSuivant = getNodeById(suivant, data);
         var group = new Kinetic.Group({
@@ -381,7 +392,7 @@ function createNavigation(data, noeud, parcours, historique) {
 
         var texteAAfficher = formatNameByLength(noeudSuivant.data.nom, NB_CHAR_MAX)
         var texte = new Kinetic.Text({
-            x: stage.getWidth() / 3 * 2 + ((suiteParcours.length) * ESPACE_ENTRE_NOEUD) - (texteAAfficher.length / 2) * FONTSIZE /2 ,
+            x: stage.getWidth() / 3 * 2 + ((suiteParcours.length) * ESPACE_ENTRE_NOEUD) - (texteAAfficher.length / 2) * FONTSIZE / 2,
             y: stage.getHeight() / 3 - ESPACE_TEXTE,
             text: texteAAfficher,
             fill: TEXTCOLOR,
@@ -461,6 +472,7 @@ function updateParcoursBranch(noeud, parcours, historique, stage, data, nbVoisin
             var info = getInfoParcours(monVoisin.parcours[p].id, data)
             nbVoisinsParcours++;
             popupMenuParcours.children[1].add(createLinePopupMenu(noeud, info, historique, popupStage, info.couleur1, STROKECOLOR, TEXTCOLOR, popupMenuParcours, monVoisin));
+            
             if (nbVoisinsParcours > 1) {
                 switchToMultiNode(popupMenuParcours, layerPopup, nbVoisinsParcours, voisinParcours);
             }
@@ -520,9 +532,9 @@ function createBranche(noeud, parcours, historique, stage, monVoisin, tabParcour
     }));
     var texteAAfficher = formatNameByLength(monVoisin.data.nom, NB_CHAR_MAX)
     voisinSimple.add(new Kinetic.Text({
-        x: stage.getWidth() / 3 * 2 + ((tabParcours.length + 1) * ESPACE_ENTRE_NOEUD) ,
+        x: stage.getWidth() / 3 * 2 + ((tabParcours.length + 1) * ESPACE_ENTRE_NOEUD),
         y: (stage.getHeight() / 6) * 5 - ESPACE_TEXTE,
-        text:texteAAfficher,
+        text: texteAAfficher,
         fill: TEXTCOLOR,
         fontSize: FONTSIZE,
         fontFamily: FONTFAMILY
@@ -549,11 +561,22 @@ function createPopupMenu(stage, layer, BACKGROUNDCOLOR, COLOR1) {
     }));
     var groupCroix = new Kinetic.Group();
     var groupNoeud = new Kinetic.Group({
+        x: 0,
+        y: 0,
         draggable: true,
         dragBoundFunc: function (pos) {
+            this.setX(this.getAbsolutePosition().x);
+            var myY = pos.y;
+            if (myY > 0) {
+                myY = 0;
+            } else if ((this.children.length + 1) * (3 * NODE_RADIUS) + myY <= stage.getHeight()) {
+                myY = this.getY();
+            }
+            this.setY(myY);
+
             return {
                 x: this.getAbsolutePosition().x,
-                y: pos.y
+                y: myY
             }
         }
 
@@ -562,7 +585,7 @@ function createPopupMenu(stage, layer, BACKGROUNDCOLOR, COLOR1) {
         x: stage.getWidth() - (3 * NODE_RADIUS),
         y: 0,
         fill: 'red',
-        width: 3* NODE_RADIUS,
+        width: 3 * NODE_RADIUS,
         height: (3 * NODE_RADIUS),
         opacity: 0
     }));
@@ -599,12 +622,22 @@ function createLinePopupMenu(noeud, parcours, historique, stage, COLOR1, STROKEC
         strokeWidth: STROKE_WIDTH,
     }));
     line.add(new Kinetic.Text({
-        x: (4*NODE_RADIUS),
+        x: (4 * NODE_RADIUS),
         y: (popupMenu.children[1].children.length + 1) * (3 * NODE_RADIUS) - (NODE_RADIUS),
         width: stage.getWidth() - (7 * NODE_RADIUS),
-        height: 2 * NODE_RADIUS,
+        height: NODE_RADIUS,
         text: monVoisin.data.nom,
         fill: TEXTCOLOR,
+        fontSize: FONTSIZE,
+        fontFamily: FONTFAMILY
+    }));
+    line.add(new Kinetic.Text({
+        x: (4 * NODE_RADIUS),
+        y: (popupMenu.children[1].children.length + 1) * (3 * NODE_RADIUS),
+        width: stage.getWidth() - (7 * NODE_RADIUS),
+        height: NODE_RADIUS,
+        text: parcours.nom,
+        fill: parcours.couleur1,
         fontSize: FONTSIZE,
         fontFamily: FONTFAMILY
     }));

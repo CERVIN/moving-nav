@@ -21,7 +21,7 @@
         },
 		{
           "id": "3",
-          "debut": "5",
+          "debut": "26",
           "nom": "L'astronomie",
 		  "image": "3.jpg",
 		  "couleur1": "#B1FF2B",
@@ -111,6 +111,12 @@
               "suivant": "25",
               "lien": "Precision",
               "legende": "Von Neumann détestait les bec bunsen."
+            },
+			{
+              "id": "3",
+              "suivant": "28",
+              "lien": "Precision",
+              "legende": "Von Neumann était fan de Jupiter"
             }
           ],
           "voisins": [
@@ -353,6 +359,11 @@
               "id": "21",
               "lien": "Illustration",
               "legende": "Certaines grammaire ont des propriétés qui les rendent faciles à décoder."
+            },
+			{
+              "id": "4",
+              "lien": "Precision",
+              "legende": "Noam Chomsky était le meilleur ami de Von Neumann."
             }
           ],
           "data": {
@@ -456,6 +467,117 @@
           "data": {
             "nom": "Bec Bunsen",
             "images": "1"
+          }
+        },
+		{
+          "id": "26",
+          "parcours": [
+			{
+				"id": "3",
+				"suivant": "27",
+				"lien": "Logique",
+				"legende": "Les étoiles sont observées par des navettes spatiales."
+			}
+          ],
+          "voisins": [
+			],
+          "data": {
+            "nom": "Etoile",
+            "images": "4",
+			"videos": "1"
+          }
+        },
+		{
+          "id": "27",
+          "parcours": [
+			{
+				"id": "3",
+				"suivant": "4",
+				"lien": "Illustration",
+				"legende": "Von Neumann est le père des navettes spatiales"
+			}
+          ],
+          "voisins": [
+			{
+		      "id": "1",
+              "lien": "Precision",
+              "legende": "Le SEA OME P2 était trop vieux pour être installé sur une navette spatiale."
+			  },
+			  {
+		      "id": "2",
+              "lien": "Precision",
+              "legende": "Le Bull Gamma 3 était trop vieux pour être installé sur une navette spatiale."
+			  },
+			  {
+		      "id": "10",
+              "lien": "Precision",
+              "legende": "Les compilateurs étaient utilisé par les navettes spatiales."
+			  },
+			  {
+		      "id": "22",
+              "lien": "Precision",
+              "legende": "Jericho était un concept intéressant pour une navette. "
+			  },
+			  {
+		      "id": "20",
+              "lien": "Precision",
+              "legende": "Une machine langage n'est pas une navette spatiale."
+			  },
+			  {
+		      "id": "14",
+              "lien": "Precision",
+              "legende": "CSPM était très bien pour une navette. "
+			  },
+			  {
+		      "id": "21",
+              "lien": "Precision",
+              "legende": "Lex / Yacc était inutile pour une navette. "
+			  },
+			  {
+		      "id": "19",
+              "lien": "Precision",
+              "legende": "Chomsky était fan de navette spatiales. "
+			  },
+			  {
+		      "id": "18",
+              "lien": "Precision",
+              "legende": "La navette a été testée grâce à cet émulateur."
+			  }
+			],
+          "data": {
+            "nom": "Navette Spatiale",
+            "images": "2"
+          }
+        },
+		{
+          "id": "28",
+          "parcours": [
+			{
+				"id": "3",
+				"suivant": "29",
+				"lien": "Precision",
+				"legende": "Le nom de Jupiter vient du dieu Jupiter."
+			}
+          ],
+          "voisins": [
+			],
+          "data": {
+            "nom": "Jupiter (planète)",
+            "images": "1"
+          }
+        },
+		{
+          "id": "29",
+          "parcours": [
+			{
+				"id": "3",
+				"suivant": "-1"
+			}
+          ],
+          "voisins": [
+			],
+          "data": {
+            "nom": "Jupiter (dieu)"
           }
         }
 	]
