@@ -74,8 +74,15 @@ function createNavigation(data, noeud, parcours, historique) {
         });
 
         var layer = new Kinetic.Layer();
+        var previousParcours = parcours;
+        var previousNodeInfo = getNodeById(previousNode, data);
+        if (!isNodeParcours(previousNodeInfo, parcours.id, data)) {
+            previousParcours = tryGetDifferentParcoursFromNode(previousNodeInfo, parcours.id);
+        }
 
-        var group = new Kinetic.Group();
+        var group = new Kinetic.Group({
+            name: noeud.id + "K" + parcours.id + "K" + historique[h]
+        });
 
         var zone = new Kinetic.Rect({
             x: 0,
@@ -99,7 +106,7 @@ function createNavigation(data, noeud, parcours, historique) {
         });
 
         group.on("click tap", function () {
-            navigateTo(noeud, parcours, historique, previousNode);
+            navigateTo(noeud, previousParcours, historique, previousNode);
         });
 
         group.add(zone);
@@ -649,7 +656,7 @@ function createLinePopupMenu(noeud, parcours, historique, stage, COLOR1, STROKEC
         height: (2 * NODE_RADIUS),
         opacity: 0
     }));
-    line.children[0].on("click tap", function () {
+    line.on("click tap", function () {
         navigateTo(noeud, parcours, historique, monVoisin.id);
     });
 
