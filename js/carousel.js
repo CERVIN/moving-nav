@@ -131,6 +131,18 @@
 	$('#myCarousel .imageCarrousel img').css('max-height', $("#myCarousel .imageCarrousel").height() + 'px');
 	$('#myCarousel .textOnly').css('height', (($("#myCarousel").height() * 85) / 100) + 'px');
 	$('#myCarousel .textCarrousel').css('height', (($("#myCarousel").height() * 85) / 100) + 'px');
-	//$('#myCarousel li').css('background-color', parcours.couleur1);
-	//$('#myCarousel li.active').css('background-color', "#FFF");
+
+
+    //$('#myCarousel li').css('background-color', parcours.couleur1);
+    //$('#myCarousel li.active').css('background-color', "#FFF");
+
+    //$("#controlRight").click(function () {
+    //    $('#myCarousel li').css('background-color', parcours.couleur1);
+    //    $('#myCarousel li.active').css('background-color', "#FFF");
+    //});
+
+    //$("#controlLeft").click(function () {
+    //    $('#myCarousel li').css('background-color', parcours.couleur1);
+    //    $('#myCarousel li.active').css('background-color', "#FFF");
+    //});
 }
