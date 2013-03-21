@@ -11,10 +11,11 @@
 <div id="output"> </div>
 
 
-<script src="js/jquery-1.9.1.min.js"></script> 
-<script src="js/data.js"></script> 
-    <script type="text/javascript">$("#output").css('height',$(document).height());</script>
-<script src="js/fredhq-roundabout/jquery.roundabout.js"></script> 
+<script type="text/javascript" src="js/jquery-1.9.1.min.js"></script>            
+<script type="text/javascript" src="js/jquery.touchwipe.min.js"></script>
+<script type="text/javascript" src="js/data.js"></script> 
+<script type="text/javascript">$("#output").css('height',$(document).height());</script>
+<script type="text/javascript" src="js/fredhq-roundabout/jquery.roundabout.js"></script> 
 
 <script>
 	
@@ -36,10 +37,17 @@
 						
 		}
 		
-		$("#parcoursList").roundabout({ shape:'rollerCoaster'});
-
-	    
-		
+		// Chargement du carousel
+		$("#parcoursList").roundabout();
+    
+		// Gestion du swipe
+		$("#parcoursList").touchwipe({
+		     wipeLeft: function() { $("#parcoursList").roundabout("animateToNextChild"); },
+		     wipeRight: function() { $("#parcoursList").roundabout("animateToPreviousChild");},
+		     min_move_x: 20,
+		     min_move_y: 20,
+		     preventDefaultEvents: true
+		});
 		
 	};
 

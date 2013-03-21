@@ -1,26 +1,34 @@
 // JavaScript Document
 
-function parser(url) {
-	$.ajax({
-    type: "GET",
-    url: url,
-    dataType: "json",
-    success: showData,
-	error: errorfunction
-	});
+  function parser(url){
+  
+	var req = new XMLHttpRequest();
+	req.open("GET", url, true);
 
-}
+	req.onreadystatechange = function() {
+		if (req.readyState == 4) {
+			if (req.status == 200 || req.status == 0) {
+				showData(JSON.parse(req.responseText));
+				}
+			}	
+		};
+	req.send(null);
+	}
+	
+	  function parser(){
+  
+	var req = new XMLHttpRequest();
+	req.open("GET", "data/data.json", true);
 
-function parser(){
-    $.ajax({
-    type: "GET",
-    url: "data/data.json",
-    dataType: "json",
-    success: showData,
-	error: errorfunction
-  });
-   
-}
+	req.onreadystatechange = function() {
+		if (req.readyState == 4) {
+			if (req.status == 200 || req.status == 0) {
+				showData(JSON.parse(req.responseText));
+				}
+			}	
+		};
+	req.send(null);
+	}
 
 function errorfunction(json)
 {
