@@ -51,10 +51,10 @@
             if (j == 0) {
                 actif = "active ";
 
-                $('.carousel-inner').append("<div class=\"" + actif + "item\"><div class=titleMedia>Résumé</div><div class=imageCarrousel><img src=data/" + noeud.id + "/image" + image + ".jpg width=auto height=auto/></div> <div class=textCarrousel><p><span class=legende></span><span class=resume></span></p></div></div>");
+                $('.carousel-inner').append("<div class=\"" + actif + "item\"><div class=titleMedia>RÃ©sumÃ©</div><div class=imageCarrousel><img src=data/" + noeud.id + "/image" + image + ".jpg width=auto height=auto/></div> <div class=textCarrousel><p><span class=legende></span><span class=resume></span></p></div></div>");
 				
-				$('.carousel-inner').append("<div class=\"item\"><div class=titleMedia>Visionneuse</div> <div id=galleryPhoto class=\"html5gallery\" data-skin=\"horizontal\" > <a href=data/" + noeud.id + "/image" + image + ".jpg><img src=data/" + noeud.id + "/image" + image + ".jpg alt=\"image"+image +"\"></a>  </div></div></div>");
-
+				$('.carousel-inner').append("<div class=\"item\"><div class=titleMedia>Visionneuse</div> <div id=galleryPhoto class=\"html5gallery\" data-skin=\"vertical\" data-width=\"250\" data-height=\"120\"> <a href=data/" + noeud.id + "/image" + image + ".jpg><img src=data/" + noeud.id + "/image" + image + ".jpg alt=\"image"+image +"\"></a> </div></div>");
+				
             }
             else {
                 actif = "";
@@ -64,21 +64,29 @@
             }
 
         }
+    	document.getElementById("galleryPhoto").style.left = "10%";
+    	document.getElementById("galleryPhoto").style.marginTop = "2%";
+    	document.getElementById("galleryPhoto").style.borderStyle = "solid";
+    	document.getElementById("galleryPhoto").style.borderColor = "#fff";
 
 
     }
 	
 	else{
 		if (i == 0) { actif = "class= active" } else { actif = "" };
-		$('.carousel-inner').append("<div class=\"" + actif + "item\"><div class=titleMedia>Résumé</div><div class=textOnly><p><span class=legende></span><span class=resume></span></p></div></div>");
+		$('.carousel-inner').append("<div class=\"" + actif + "item\"><div class=titleMedia>RÃ©sumÃ©</div><div class=textOnly><p><span class=legende></span><span class=resume></span></p></div></div>");
 		
 	}
 
     //video
     if (nbrVideo != 0) {
 		 var actif = "";
-	$('.carousel-inner').append("<div class=\"item\"><div class=titleMedia>Vidéo</div> <div id=\"video\" class=\"html5gallery\" data-skin=\"vertical\" data-width=\"480\" data-height=\"272\"  data-showimagetoolbox=\"true\" data-showsocialmedia= \"false\"  data-xml=\"./data/"+noeud.id+"/videos.xml\" style=\"display:none;\"></div></div>");
-        }
+	$('.carousel-inner').append("<div class=\"item\"><div class=titleMedia>VidÃ©o</div> <div id=video class=\"html5gallery\" data-skin=\"vertical\" data-width=\"320\" data-height=\"120\"  data-showimagetoolbox=\"true\" data-showsocialmedia= \"false\"  data-xml=\"./data/"+noeud.id+"/videos.xml\" style=\"display:none;\"></div></div>");
+	document.getElementById("video").style.left = "10%";
+	document.getElementById("video").style.marginTop = "2%";
+	document.getElementById("video").style.borderStyle = "solid";
+	document.getElementById("video").style.borderColor = "#fff";    
+    }
 	}
 		
     //lien
@@ -107,7 +115,6 @@
 			document.getElementById('myCarousel').removeChild(document.getElementById('controlRight'));
 		}
 
-
     //Resume
     $('.textCarrousel p .resume').load('data/' + noeud.id + '/resume.txt');
 	$('.textOnly p .resume').load('data/' + noeud.id + '/resume.txt');
@@ -131,6 +138,8 @@
 	$('#myCarousel .imageCarrousel img').css('max-height', $("#myCarousel .imageCarrousel").height() + 'px');
 	$('#myCarousel .textOnly').css('height', (($("#myCarousel").height() * 85) / 100) + 'px');
 	$('#myCarousel .textCarrousel').css('height', (($("#myCarousel").height() * 85) / 100) + 'px');
-	//$('#myCarousel li').css('background-color', parcours.couleur1);
-	//$('#myCarousel li.active').css('background-color', "#FFF");
+	
+
+	
+	loadHtml5Gallery("");
 }

@@ -1,4 +1,4 @@
-﻿@charset "utf-8";
+﻿ï»¿@charset "utf-8";
 /* CSS Document */
 
 html {
@@ -37,7 +37,7 @@ div.contenu{
 
 
 #myCarousel li{
-	background-color:#AAA;
+	background-color:#F00;
 }
 
 #myCarousel li.active{
@@ -148,10 +148,6 @@ div#info{
     height: 60%;
 }
 
-#galleryPhoto{
-	left:33%;
-	margin-top: 2%;
-}
 
 #video{
 	left:30%;

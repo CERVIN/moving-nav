@@ -1,15 +1,7 @@
-﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+﻿ï»¿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <script type="text/javascript" src="js/html5gallery.js"></script>
-    <script type="text/javascript" src="js/kinetic-v4.3.3.min.js"></script>
-    <script type="text/javascript" src="js/jquery-1.9.1.min.js"></script>
-    <script type="text/javascript" src="js/data.js"></script>
-    <script type="text/javascript" src="js/parametres.js"></script>
-    <script type="text/javascript" src="js/carousel.js"></script>
-    <script type="text/javascript" src="js/navigation.js"></script>
-    <script src="js/bootstrap.min.js"></script>
     <link rel="stylesheet"  href="css/html5gallery.css"  charset="utf-8" />
 	<link rel="stylesheet"  href="css/styleInterface.css"  charset="utf-8" />
     <link href="css/bootstrap.min.css" rel="stylesheet"  media="screen">
@@ -38,6 +30,19 @@
         <div id="container"></div>
     </div>
     <div id="nextItem"></div>
+	
+	<script type="text/javascript" src="js/jquery.js"></script>
+        
+	<script type="text/javascript" src="js/data.js"></script>
+    <script type="text/javascript" src="js/parametres.js"></script>        
+    <script type="text/javascript" src="js/carousel.js"></script>
+    <script type="text/javascript" src="js/gallery.js"></script>
+    <script type="text/javascript" src="js/navigation.js"></script>
+        
+	
+    <script type="text/javascript" src="js/kinetic-v4.3.3.min.js"></script>
+    <script type="text/javascript" src="js/bootstrap.min.js"></script>
+        <script type="text/javascript" src="js/html5gallery.js"></script>
 
     <script type="text/javascript" >
 
@@ -46,31 +51,32 @@
 
         function showData(data) {
 			
-            /* Recupération du parcours */
+            /* RecupÃ©ration du parcours */
             var parcours = getParcours(data);
             if (parcours == null) {
                 window.location = "index.html";
             }
 
-            /* Récupération du noeud en cours */
+            /* RÃ©cupÃ©ration du noeud en cours */
             var noeud = getNoeud(data, parcours)
             if (noeud == null) {
                 window.location = "index.html";
             }
 
 
-            /* Récupération de l'historique */
+            /* RÃ©cupÃ©ration de l'historique */
             var historique = getHistorique();
 
 
-            /* Création du carroussel */
+            /* CrÃ©ation du carroussel */
             createCarousel(data,noeud,parcours,historique);
 
-            /* Création de la scène */
+            /* CrÃ©ation de la scÃ¨ne */
             createNavigation(data, noeud, parcours, historique);
 
         }
 
     </script>
+    
 </body>
 </html>
